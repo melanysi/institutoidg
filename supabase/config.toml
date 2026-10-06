@@ -1,0 +1,2 @@
+[functions.submit-application]
+verify_jwt = false
