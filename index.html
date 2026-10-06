@@ -1,0 +1,3195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Instituto Desafiando Gigantes: projetos sociais, esporte, educação e cursos profissionalizantes gratuitos na Zona Leste de São Paulo." />
+    <meta name="keywords" content="ONG, instituto, projetos sociais, futebol, educação, cultura, São Paulo, voluntariado, doação" />
+    <meta name="author" content="Instituto Desafiando Gigantes" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Instituto Desafiando Gigantes" />
+    <meta property="og:description" content="Projetos sociais, esporte, educação e cursos profissionalizantes gratuitos na Zona Leste de São Paulo." />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Instituto Desafiando Gigantes" />
+    <meta name="twitter:description" content="Projetos sociais, esporte, educação e cursos profissionalizantes gratuitos na Zona Leste de São Paulo." />
+
+    <title>Instituto Desafiando Gigantes — Transformando Vidas</title>
+
+    <style>
+        :root {
+            --navy: #20242b;
+            --navy-light: #343a43;
+            --orange: #f39a24;
+            --orange-dark: #dc7d12;
+            --green: #39a85b;
+            --blue: #3295c9;
+            --pink: #e548a5;
+            --bg: #ffffff;
+            --muted: #69717c;
+            --line: #e8eaed;
+            --white: #fff;
+            --danger: #d55232;
+            --shadow: 0 12px 32px rgba(32,36,43,0.07);
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI Variable", "Segoe UI", Aptos, system-ui, sans-serif;
+            background: var(--bg);
+            color: #292d33;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .screen { 
+            display: none; 
+        }
+
+        .screen.active { 
+            display: block; 
+        }
+
+        /* Header */
+        .site-header {
+            background: rgba(255,255,255,0.96);
+            border-bottom: 1px solid var(--line);
+            padding: 15px max(40px, calc((100vw - 1200px) / 2));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 22px rgba(32,36,43,0.045);
+            backdrop-filter: blur(14px);
+        }
+
+        .site-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 16px;
+            text-decoration: none;
+            cursor: pointer;
+            letter-spacing: -0.025em;
+        }
+
+        .site-logo .logo-box {
+            width: 42px;
+            height: 42px;
+            background:
+                linear-gradient(var(--blue), var(--blue)) 0 0 / 48% 48%,
+                linear-gradient(var(--pink), var(--pink)) 100% 0 / 48% 48%,
+                linear-gradient(var(--orange), var(--orange)) 0 100% / 48% 48%,
+                linear-gradient(var(--green), var(--green)) 100% 100% / 48% 48%,
+                white;
+            background-repeat: no-repeat;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 800;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.55);
+            box-shadow: 0 4px 12px rgba(32,36,43,0.12);
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .site-nav a {
+            color: #555d67;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 180ms ease;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .site-nav a:hover,
+        .site-nav a.active {
+            color: var(--navy);
+        }
+
+        .site-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            right: 25%;
+            height: 3px;
+            background: var(--pink);
+            border-radius: 4px;
+        }
+
+        .btn-header {
+            padding: 11px 19px;
+            border-radius: 9px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-outline-navy {
+            border: 2px solid var(--navy);
+            color: var(--navy);
+            background: white;
+        }
+
+        .btn-outline-navy:hover {
+            background: var(--navy);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: white;
+            box-shadow: 0 5px 14px rgba(32,36,43,0.15);
+        }
+
+        .btn-primary:hover {
+            background: var(--navy-light);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px rgba(32,36,43,0.2);
+        }
+
+        /* Hero */
+        .hero {
+            background:
+                radial-gradient(ellipse at 82% 20%, rgba(57,168,91,0.07), transparent 30%),
+                radial-gradient(ellipse at 12% 85%, rgba(229,72,165,0.06), transparent 27%),
+                #f7f8fa;
+            color: var(--navy);
+            padding: 78px 40px 88px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(32,36,43,0.045) 0.7px, transparent 0.7px);
+            background-size: 20px 20px;
+            mask-image: linear-gradient(90deg, transparent 20%, rgba(0,0,0,0.55));
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 16%;
+            right: 11%;
+            width: 136px;
+            height: 136px;
+            background:
+                linear-gradient(rgba(50,149,201,0.14), rgba(50,149,201,0.14)) 0 0 / 48% 48%,
+                linear-gradient(rgba(229,72,165,0.12), rgba(229,72,165,0.12)) 100% 0 / 48% 48%,
+                linear-gradient(rgba(243,154,36,0.13), rgba(243,154,36,0.13)) 0 100% / 48% 48%,
+                linear-gradient(rgba(57,168,91,0.13), rgba(57,168,91,0.13)) 100% 100% / 48% 48%;
+            background-repeat: no-repeat;
+            border-radius: 20px;
+            transform: rotate(8deg);
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 570px;
+        }
+
+        .hero-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+            align-items: center;
+            gap: clamp(38px, 6vw, 82px);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 19px;
+            color: #505966;
+            font-size: 12px;
+            font-weight: 750;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+        }
+
+        .hero-eyebrow::before {
+            width: 27px;
+            height: 4px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--blue) 0 25%, var(--pink) 25% 50%, var(--orange) 50% 75%, var(--green) 75%);
+            content: "";
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 5vw, 62px);
+            font-weight: 760;
+            letter-spacing: -0.055em;
+            margin-bottom: 18px;
+            line-height: 1.2;
+            color: var(--navy);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--muted);
+            margin: 0 0 30px;
+            max-width: 650px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .hero-photo {
+            position: relative;
+            z-index: 1;
+            isolation: isolate;
+            margin: 8px 12px 12px 0;
+        }
+
+        .hero-photo::before {
+            position: absolute;
+            z-index: -1;
+            inset: 14px -12px -12px 14px;
+            border-radius: 30px;
+            background:
+                linear-gradient(rgba(50,149,201,0.14), rgba(50,149,201,0.14)) 0 0 / 49% 49%,
+                linear-gradient(rgba(229,72,165,0.13), rgba(229,72,165,0.13)) 100% 0 / 49% 49%,
+                linear-gradient(rgba(243,154,36,0.14), rgba(243,154,36,0.14)) 0 100% / 49% 49%,
+                linear-gradient(rgba(57,168,91,0.14), rgba(57,168,91,0.14)) 100% 100% / 49% 49%;
+            background-repeat: no-repeat;
+            content: "";
+        }
+
+        .hero-photo img {
+            display: block;
+            width: 100%;
+            height: clamp(300px, 36vw, 460px);
+            border: 8px solid white;
+            border-radius: 28px;
+            box-shadow: 0 22px 55px rgba(32,36,43,0.16);
+            object-fit: cover;
+            object-position: center 42%;
+        }
+
+        .hero-photo figcaption {
+            position: absolute;
+            right: 24px;
+            bottom: 24px;
+            left: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: fit-content;
+            max-width: calc(100% - 48px);
+            padding: 11px 16px;
+            border: 1px solid rgba(255,255,255,0.7);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.94);
+            box-shadow: 0 8px 22px rgba(32,36,43,0.12);
+            color: var(--navy);
+            font-size: 13px;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+        }
+
+        .photo-mark {
+            width: 13px;
+            height: 13px;
+            flex: 0 0 13px;
+            border-radius: 4px;
+            background: conic-gradient(var(--blue) 0 25%, var(--pink) 0 50%, var(--orange) 0 75%, var(--green) 0);
+            transform: rotate(-8deg);
+        }
+
+        .btn-hero {
+            padding: 14px 25px;
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-hero-white {
+            background: var(--navy);
+            color: white;
+            box-shadow: 0 7px 18px rgba(32,36,43,0.16);
+        }
+
+        .btn-hero-white:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(32,36,43,0.2);
+        }
+
+        .btn-hero-outline {
+            border: 1px solid #d8dce1;
+            color: var(--navy);
+            background: white;
+            box-shadow: 0 5px 14px rgba(32,36,43,0.05);
+        }
+
+        .btn-hero-outline:hover {
+            background: #f5f6f7;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            max-width: 1200px;
+            margin: 76px auto;
+            padding: 0 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(30px, 3.5vw, 40px);
+            font-weight: 750;
+            color: var(--navy);
+            letter-spacing: -0.04em;
+            margin-bottom: 12px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--muted);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .section-header .divider {
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue) 0 25%, var(--pink) 25% 50%, var(--orange) 50% 75%, var(--green) 75%);
+            margin: 18px auto 0;
+            border-radius: 4px;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            margin-bottom: 70px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 18px;
+            padding: 35px 30px;
+            text-align: center;
+            border: 1px solid var(--line);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+            border-color: transparent;
+        }
+
+        .stat-card .number {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .stat-card .label {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .site-footer {
+            background:
+                radial-gradient(circle at 92% 20%, rgba(50,149,201,0.14), transparent 20%),
+                #252a31;
+            color: white;
+            padding: 58px 40px 30px;
+            margin-top: 84px;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1.2fr;
+            gap: 40px;
+            margin-bottom: 38px;
+        }
+
+        .footer-col h4 {
+            font-size: 15px;
+            margin-bottom: 14px;
+            color: rgba(255,255,255,0.95);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: rgba(255,255,255,0.78);
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-links {
+            display: grid;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.18);
+            color: rgba(255,255,255,0.72);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .community-gallery {
+            padding: 56px 40px;
+            border: 1px solid #edf0f2;
+            border-radius: 24px;
+            background: #f7f8fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            grid-auto-rows: 150px;
+            gap: 14px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            min-width: 0;
+            border-radius: 16px;
+            background: #e8eaed;
+            box-shadow: 0 8px 22px rgba(32,36,43,0.09);
+        }
+
+        .gallery-item:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 350ms ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+
+        .gallery-item figcaption {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 32px 14px 13px;
+            background: linear-gradient(transparent, rgba(22,27,32,0.72));
+            color: white;
+            font-size: 13px;
+            font-weight: 650;
+            line-height: 1.4;
+        }
+
+        .footer-partners {
+            max-width: 1200px;
+            margin: 0 auto 28px;
+            padding: 38px 0 34px;
+            border-top: 1px solid rgba(255,255,255,0.16);
+            border-bottom: 1px solid rgba(255,255,255,0.16);
+            scroll-margin-top: 96px;
+        }
+
+        .footer-partners-heading {
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.96);
+            font-size: 21px;
+            font-weight: 750;
+            letter-spacing: -0.025em;
+            text-align: center;
+        }
+
+        .footer-partners-intro {
+            margin-bottom: 30px;
+            color: rgba(255,255,255,0.82);
+            font-size: 15px;
+            line-height: 1.65;
+            text-align: center;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .partner-card {
+            display: flex;
+            min-width: 0;
+            min-height: 204px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 13px;
+            padding: 15px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 15px;
+            background: rgba(255,255,255,0.055);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+            transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(255,255,255,0.27);
+            background: rgba(255,255,255,0.09);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.16);
+        }
+
+        .partner-card img {
+            display: block;
+            width: 100%;
+            height: clamp(118px, 12vw, 150px);
+            padding: 5px;
+            border: 1px solid rgba(32,36,43,0.06);
+            border-radius: 11px;
+            background: white;
+            object-fit: contain;
+        }
+
+        .partner-card h3 {
+            color: rgba(255,255,255,0.94);
+            font-size: 13px;
+            font-weight: 650;
+            line-height: 1.4;
+            text-align: center;
+        }
+
+        .privacy-card {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 30px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: #f8fafb;
+            box-shadow: 0 10px 28px rgba(32,36,43,0.055);
+        }
+
+        .privacy-intro {
+            color: #4f5863;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .privacy-rights {
+            margin-top: 23px;
+            padding: 22px;
+            border: 1px solid #e5eaee;
+            border-radius: 13px;
+            background: white;
+        }
+
+        .privacy-rights-heading {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: var(--navy);
+            font-size: 18px;
+            font-weight: 750;
+        }
+
+        .privacy-icon {
+            display: grid;
+            width: 40px;
+            height: 40px;
+            flex: 0 0 40px;
+            place-items: center;
+            border-radius: 12px;
+            background: rgba(57,168,91,0.11);
+            color: #287b43;
+        }
+
+        .privacy-icon svg {
+            width: 21px;
+            height: 21px;
+        }
+
+        .privacy-rights p {
+            color: #525a64;
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        .privacy-email {
+            color: #286647;
+            font-weight: 700;
+            text-decoration-color: rgba(40,102,71,0.4);
+            text-underline-offset: 3px;
+            overflow-wrap: anywhere;
+        }
+
+        .privacy-email:hover {
+            color: #1e5037;
+            text-decoration-color: currentColor;
+        }
+
+        .privacy-note {
+            margin-top: 12px;
+            color: var(--muted) !important;
+            font-size: 13px !important;
+        }
+
+        .pillar-card {
+            padding: 30px 28px;
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--card-accent, var(--blue));
+        }
+
+        .pillar-card:nth-child(2) {
+            --card-accent: var(--green);
+        }
+
+        .pillar-card:nth-child(3) {
+            --card-accent: var(--pink);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(32,36,43,0.1);
+            border-color: #d9dde2;
+        }
+
+        .pillar-card h3 {
+            margin-bottom: 9px;
+            color: var(--navy);
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .pillar-card p,
+        .about-copy {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .about-copy {
+            max-width: 780px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .about-copy p + p {
+            margin-top: 16px;
+        }
+
+        .mission-title {
+            margin: 26px 0 7px;
+            color: var(--navy);
+            font-size: 18px;
+        }
+
+        .brand-signature {
+            margin-top: 30px;
+            color: var(--navy);
+            font-size: clamp(25px, 4vw, 38px);
+            font-weight: 800;
+            letter-spacing: -0.045em;
+            line-height: 1.2;
+        }
+
+        .brand-signature span {
+            background: linear-gradient(90deg, var(--blue), var(--pink), var(--orange), var(--green));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .section#sobre {
+            padding: 46px 40px;
+            border-radius: 20px;
+            background: #f7f8fa;
+        }
+
+        .cta {
+            padding: 48px 32px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background:
+                radial-gradient(circle at 0 100%, rgba(229,72,165,0.07), transparent 22%),
+                #f7f8fa;
+            text-align: center;
+        }
+
+        .cta h2 {
+            margin-bottom: 10px;
+            color: var(--navy);
+            font-size: clamp(25px, 3vw, 32px);
+            font-weight: 750;
+            letter-spacing: -0.04em;
+        }
+
+        .cta p {
+            margin: 0 auto;
+            color: var(--muted);
+            max-width: 620px;
+            font-size: 15px;
+        }
+
+        .feature-grid,
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .participation-grid,
+        .opportunity-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .opportunity-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .participation-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 240px;
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: white;
+            box-shadow: var(--shadow);
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .participation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 36px rgba(32,36,43,0.1);
+        }
+
+        .participation-icon {
+            display: grid;
+            width: 44px;
+            height: 44px;
+            margin-bottom: 18px;
+            place-items: center;
+            border-radius: 12px;
+            background: var(--icon-bg, rgba(50,149,201,0.11));
+            font-size: 22px;
+        }
+
+        .participation-card:nth-child(2) .participation-icon {
+            --icon-bg: rgba(57,168,91,0.12);
+        }
+
+        .participation-card:nth-child(3) .participation-icon {
+            --icon-bg: rgba(229,72,165,0.1);
+        }
+
+        .participation-card:nth-child(4) .participation-icon {
+            --icon-bg: rgba(243,154,36,0.14);
+        }
+
+        .participation-card h3 {
+            margin-bottom: 8px;
+            color: var(--navy);
+            font-size: 17px;
+        }
+
+        .participation-card p {
+            margin-bottom: 20px;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .participation-card .btn-header {
+            margin-top: auto;
+        }
+
+        .journey-back {
+            display: inline-block;
+            margin-bottom: 18px;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .journey-back:hover {
+            color: var(--blue);
+        }
+
+        .journey-copy {
+            max-width: 820px;
+            margin: 0 auto 28px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .journey-copy p + p {
+            margin-top: 12px;
+        }
+
+        .journey-list {
+            display: grid;
+            gap: 11px;
+            max-width: 760px;
+            margin: 18px auto 0;
+            padding-left: 22px;
+            color: #525a64;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .journey-cta {
+            display: flex;
+            justify-content: center;
+            margin: 26px 0;
+        }
+
+        .journey-form-panel {
+            margin-top: 24px;
+            padding: 26px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: #f7f8fa;
+        }
+
+        .journey-form-panel[hidden],
+        [data-journey-page][hidden],
+        #participe[hidden] {
+            display: none;
+        }
+
+        .course-info {
+            width: 100%;
+            padding-top: 8px;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .course-info summary {
+            padding: 6px 0;
+            color: var(--blue);
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .course-info p {
+            margin: 5px 0;
+        }
+
+        .portal-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .feature-card,
+        .portal-card,
+        .learning-card {
+            padding: 28px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .feature-card {
+            border-top: 3px solid var(--feature-accent, var(--blue));
+        }
+
+        .feature-card:nth-child(2) {
+            --feature-accent: var(--green);
+        }
+
+        .feature-card:nth-child(3) {
+            --feature-accent: var(--pink);
+        }
+
+        .feature-card p + p {
+            margin-top: 10px;
+        }
+
+        .event-heading {
+            margin: 36px 0 18px;
+            color: var(--navy);
+            font-size: 22px;
+            letter-spacing: -0.03em;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .course-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: white;
+            box-shadow: 0 8px 24px rgba(32,36,43,0.055);
+            transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            border-color: #d9dde2;
+            box-shadow: 0 16px 34px rgba(32,36,43,0.11);
+        }
+
+        .course-art {
+            position: relative;
+            display: grid;
+            width: 100%;
+            height: 205px;
+            overflow: hidden;
+            place-items: center;
+            background: var(--course-tint, #eef6fb);
+        }
+
+        .course-card:nth-child(2) .course-art {
+            --course-tint: #edf7f0;
+        }
+
+        .course-card:nth-child(3) .course-art {
+            --course-tint: #fff5e9;
+        }
+
+        .course-card:nth-child(4) .course-art {
+            --course-tint: #eef4fc;
+        }
+
+        .course-card:nth-child(5) .course-art {
+            --course-tint: #fff0f7;
+        }
+
+        .course-card:nth-child(6) .course-art {
+            --course-tint: #fff4ed;
+        }
+
+        .course-card:nth-child(7) .course-art {
+            --course-tint: #f5f2eb;
+        }
+
+        .course-art img {
+            position: absolute;
+            z-index: 1;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 250ms ease;
+        }
+
+        .course-card:hover .course-art img {
+            transform: scale(1.04);
+        }
+
+        .course-card-content {
+            display: flex;
+            width: 100%;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 19px 20px 20px;
+        }
+
+        .course-card h3 {
+            color: var(--navy);
+            font-size: 18px;
+            line-height: 1.35;
+        }
+
+        .course-card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .course-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: #287b43;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .course-status::before {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            content: "";
+        }
+
+        .course-card .btn-header {
+            margin-top: auto;
+            align-self: stretch;
+            text-align: center;
+        }
+
+        .course-facts {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin: 24px 0 8px;
+        }
+
+        .course-fact {
+            min-width: 0;
+            padding: 17px;
+            border: 1px solid var(--line);
+            border-radius: 13px;
+            background: #fbfcfd;
+        }
+
+        .course-fact strong {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 750;
+        }
+
+        .course-fact span {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+        .course-overview {
+            margin-bottom: 28px;
+            padding: 24px;
+            border: 1px solid #e4edf4;
+            border-radius: 16px;
+            background:
+                radial-gradient(circle at 96% 0, rgba(50,149,201,0.08), transparent 25%),
+                #f7fafc;
+        }
+
+        .course-overview > p {
+            max-width: 900px;
+            color: #505966;
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        .course-highlights {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .course-highlight {
+            display: flex;
+            min-height: 48px;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 13px;
+            border: 1px solid rgba(50,149,201,0.11);
+            border-radius: 11px;
+            background: white;
+            color: #414954;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.45;
+        }
+
+        .course-highlight::before {
+            width: 9px;
+            height: 9px;
+            flex: 0 0 9px;
+            border-radius: 3px;
+            background: var(--highlight-accent, var(--blue));
+            content: "";
+            transform: rotate(-8deg);
+        }
+
+        .course-highlight:nth-child(2) {
+            --highlight-accent: var(--green);
+        }
+
+        .course-highlight:nth-child(3) {
+            --highlight-accent: var(--pink);
+        }
+
+        .course-highlight:nth-child(4) {
+            --highlight-accent: var(--orange);
+        }
+
+        .course-registration-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 18px 0 0;
+            padding: 15px 17px;
+            border: 1px solid #f3dfbb;
+            border-radius: 12px;
+            background: #fff9ef;
+            color: #5d4a2e;
+            font-size: 13px;
+            line-height: 1.65;
+        }
+
+        .course-registration-note::before {
+            width: 10px;
+            height: 10px;
+            flex: 0 0 10px;
+            margin-top: 5px;
+            border-radius: 50%;
+            background: var(--orange);
+            content: "";
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .course-registration-note {
+            margin-top: 12px;
+        }
+
+        .honeypot {
+            position: absolute;
+            left: -10000px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .feature-card h3,
+        .portal-card h3,
+        .learning-card h3 {
+            margin-bottom: 9px;
+            color: var(--navy);
+            font-size: 18px;
+            letter-spacing: -0.025em;
+        }
+
+        .feature-card p,
+        .portal-card > p,
+        .learning-card p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        .application-form,
+        #login-form {
+            display: grid;
+            gap: 16px;
+            margin-top: 22px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .form-field {
+            display: grid;
+            align-content: start;
+            gap: 6px;
+            color: #414852;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        [data-minor-field][hidden] {
+            display: none;
+        }
+
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            min-height: 44px;
+            padding: 10px 12px;
+            border: 1px solid #d9dde2;
+            border-radius: 8px;
+            background: white;
+            color: #292d33;
+            font: inherit;
+            font-weight: 400;
+        }
+
+        .form-field textarea {
+            min-height: 88px;
+            resize: vertical;
+        }
+
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            outline: 3px solid rgba(50,149,201,0.18);
+            border-color: var(--blue);
+        }
+
+        .consent {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .consent input {
+            margin-top: 4px;
+            accent-color: var(--green);
+        }
+
+        .form-note {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .form-result {
+            padding: 12px 14px;
+            border-radius: 8px;
+            background: #edf8f0;
+            color: #24723d;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .captcha-widget {
+            min-height: 66px;
+        }
+
+        .form-result[data-state="error"] {
+            background: #fff1ef;
+            color: #9f3221;
+        }
+
+        .form-submit {
+            justify-self: start;
+        }
+
+        .learning-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 16px;
+            padding-left: 19px;
+            color: #525a64;
+            font-size: 14px;
+        }
+
+        #account-status {
+            margin-top: 16px;
+            padding: 14px 16px;
+            border-radius: 9px;
+            background: #f2f5f7;
+            color: #4e5863;
+            font-size: 14px;
+        }
+
+        #account-status[data-state="error"] {
+            background: #fff1ef;
+            color: #9f3221;
+        }
+
+        #account-status[data-state="success"] {
+            background: #edf8f0;
+            color: #24723d;
+        }
+
+        #admin-applications {
+            margin-top: 26px;
+        }
+
+        #admin-applications[hidden],
+        #login-form[hidden] {
+            display: none;
+        }
+
+        [data-admin-list] {
+            display: grid;
+            gap: 14px;
+            margin-top: 14px;
+        }
+
+        .admin-card {
+            padding: 18px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: white;
+        }
+
+        .admin-card h3 {
+            margin-bottom: 6px;
+            color: var(--navy);
+            font-size: 16px;
+        }
+
+        .admin-card p,
+        .admin-actions {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .admin-card pre {
+            overflow: auto;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 7px;
+            background: #f7f8fa;
+            color: #444b54;
+            font-size: 12px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .admin-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .admin-actions .btn-header {
+            min-height: 36px;
+            padding: 8px 12px;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .admin-actions select {
+            min-height: 36px;
+            padding: 6px 9px;
+            border: 1px solid var(--line);
+            border-radius: 7px;
+            background: white;
+            color: var(--navy);
+            font: inherit;
+        }
+
+        .admin-filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 16px 0;
+        }
+
+        .admin-filters label {
+            display: grid;
+            gap: 5px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .admin-filters select {
+            min-height: 40px;
+            min-width: 180px;
+            padding: 8px;
+            border: 1px solid var(--line);
+            border-radius: 7px;
+            background: white;
+            color: var(--navy);
+        }
+
+        #sign-out {
+            margin-top: 14px;
+        }
+
+        @media (max-width: 800px) {
+            .feature-grid,
+            .portal-grid,
+            .participation-grid,
+            .opportunity-grid,
+            .course-grid,
+            .partners-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            #parceiros {
+                scroll-margin-top: 180px;
+            }
+        }
+
+        @media (min-width: 801px) and (max-width: 1000px) {
+            .partners-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .feature-grid,
+            .portal-grid,
+            .participation-grid,
+            .opportunity-grid,
+            .course-grid,
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .course-facts {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .course-highlights {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .course-overview {
+                padding: 19px;
+            }
+
+            .course-fact {
+                padding: 14px;
+            }
+
+            .feature-card,
+            .portal-card,
+            .learning-card,
+            .journey-form-panel {
+                padding: 23px;
+            }
+
+            .privacy-card {
+                padding: 21px;
+            }
+
+            .privacy-rights {
+                padding: 18px;
+            }
+
+            .privacy-intro {
+                font-size: 15px;
+            }
+
+            .participation-card {
+                min-height: auto;
+            }
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--blue);
+            outline-offset: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .site-header {
+                padding: 13px 22px;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .site-nav {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 25px;
+                flex-wrap: wrap;
+            }
+
+            .stats-grid,
+            .footer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hero {
+                padding: 70px 24px 78px;
+            }
+
+            .hero-layout {
+                grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
+                gap: 26px;
+            }
+
+            .hero h1 {
+                font-size: clamp(34px, 5vw, 46px);
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-photo img {
+                height: clamp(270px, 42vw, 340px);
+                border-width: 6px;
+                border-radius: 23px;
+            }
+
+            .hero-photo figcaption {
+                right: 17px;
+                bottom: 17px;
+                left: 17px;
+                padding: 9px 12px;
+                font-size: 12px;
+            }
+
+            .community-gallery {
+                padding: 38px 24px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-auto-rows: 135px;
+            }
+
+            .section {
+                padding: 0 24px;
+            }
+
+            .hero::after {
+                right: 5%;
+                top: 10%;
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .site-header {
+                padding: 12px 16px;
+            }
+
+            .site-logo {
+                font-size: 14px;
+                gap: 9px;
+            }
+
+            .site-logo .logo-box {
+                width: 38px;
+                height: 38px;
+            }
+
+            .site-nav {
+                gap: 8px 22px;
+            }
+
+            .site-nav a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 52px 20px 62px;
+            }
+
+            .hero-layout {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .hero-content {
+                max-width: 520px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .hero-eyebrow {
+                justify-content: center;
+                font-size: 10px;
+            }
+
+            .hero h1 {
+                font-size: clamp(37px, 10vw, 48px);
+            }
+
+            .hero p {
+                margin: 0 auto 24px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .hero-photo {
+                width: min(100%, 470px);
+                margin: 0 auto 10px;
+            }
+
+            .hero-photo img {
+                height: clamp(250px, 74vw, 310px);
+            }
+
+            .community-gallery {
+                padding: 30px 16px;
+                border-radius: 18px;
+            }
+
+            .partners-grid {
+                gap: 10px;
+            }
+
+            .partner-card {
+                min-height: 174px;
+                gap: 11px;
+                padding: 11px 9px;
+                border-radius: 13px;
+            }
+
+            .partner-card img {
+                height: 122px;
+            }
+
+            .partner-card h3 {
+                font-size: 12px;
+            }
+
+            .footer-partners {
+                padding: 30px 0 26px;
+            }
+
+            .footer-partners-heading {
+                font-size: 17px;
+            }
+
+            .footer-partners-intro {
+                margin-bottom: 23px;
+                font-size: 13px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-auto-rows: 132px;
+                gap: 10px;
+            }
+
+            .gallery-item:first-child {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .gallery-item {
+                border-radius: 12px;
+            }
+
+            .gallery-item figcaption {
+                padding: 26px 10px 9px;
+                font-size: 11px;
+            }
+
+            .hero::after {
+                right: -26px;
+                top: 7%;
+                width: 84px;
+                height: 84px;
+                opacity: 0.7;
+            }
+
+            .hero p,
+            .section-header p,
+            .about-copy {
+                font-size: 15px;
+            }
+
+            .section {
+                margin: 58px auto;
+                padding: 0 18px;
+            }
+
+            .section-header {
+                margin-bottom: 30px;
+            }
+
+            .stats-grid,
+            .pillars-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .stat-card {
+                padding: 28px 22px;
+            }
+
+            .section#sobre {
+                padding: 34px 20px;
+            }
+
+            .pillar-card {
+                padding: 26px 24px;
+            }
+
+            .site-footer {
+                padding: 42px 22px 24px;
+                margin-top: 62px;
+            }
+
+            .cta {
+                padding: 34px 20px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partner-card {
+                min-height: 0;
+                padding: 14px;
+            }
+
+            .partner-card img {
+                height: 142px;
+            }
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .faq-assistant {
+            position: fixed;
+            right: max(22px, env(safe-area-inset-right));
+            bottom: max(22px, env(safe-area-inset-bottom));
+            z-index: 1100;
+            display: grid;
+            width: 410px;
+            max-width: calc(100vw - 40px);
+            justify-items: end;
+            gap: 12px;
+        }
+
+        .faq-assistant-panel[hidden],
+        .faq-assistant-nudge[hidden] {
+            display: none;
+        }
+
+        .faq-assistant-toggle {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 68px;
+            height: 68px;
+            padding: 5px;
+            border: 0;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 8px 26px rgba(32, 36, 43, 0.24);
+            cursor: pointer;
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        .faq-assistant-toggle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(32, 36, 43, 0.28);
+        }
+
+        .faq-assistant-toggle .assistant-avatar {
+            width: 56px;
+            height: 56px;
+            flex-basis: 56px;
+        }
+
+        .faq-assistant-toggle .assistant-avatar img {
+            object-fit: contain;
+            object-position: 50% 50%;
+            transform: scale(0.92);
+        }
+
+        .faq-assistant-toggle .assistant-avatar-mark {
+            font-size: 14px;
+        }
+
+        .assistant-avatar {
+            position: relative;
+            display: inline-grid;
+            width: 42px;
+            height: 42px;
+            flex: 0 0 42px;
+            place-items: center;
+            overflow: hidden;
+            border-radius: 50%;
+            background: transparent;
+        }
+
+        .assistant-avatar-mark {
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            text-shadow: 0 1px 3px rgba(32, 36, 43, 0.7);
+        }
+
+        .assistant-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 50% 50%;
+        }
+
+        .assistant-avatar--large {
+            width: 46px;
+            height: 46px;
+            flex-basis: 46px;
+        }
+
+        .faq-assistant-online-dot {
+            position: absolute;
+            right: 2px;
+            bottom: 2px;
+            width: 12px;
+            height: 12px;
+            border: 2px solid white;
+            border-radius: 50%;
+            background: #35b768;
+        }
+
+        .faq-assistant-nudge {
+            position: absolute;
+            right: 0;
+            bottom: 82px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: min(255px, calc(100vw - 40px));
+            padding: 10px 12px 10px 14px;
+            border: 1px solid var(--line);
+            border-radius: 14px 14px 4px 14px;
+            background: white;
+            color: var(--navy);
+            box-shadow: 0 7px 22px rgba(32, 36, 43, 0.14);
+            font-size: 13px;
+            font-weight: 650;
+            animation: assistant-appear 380ms ease both;
+        }
+
+        .faq-assistant-nudge-dismiss {
+            display: grid;
+            width: 25px;
+            height: 25px;
+            flex: 0 0 25px;
+            place-items: center;
+            border: 0;
+            border-radius: 50%;
+            background: #f2f5f7;
+            color: var(--muted);
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .faq-assistant-panel {
+            display: grid;
+            grid-template-rows: auto minmax(100px, 1fr) auto auto;
+            width: 100%;
+            height: min(640px, calc(100dvh - 132px));
+            min-height: 360px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 18px 50px rgba(32, 36, 43, 0.22);
+            transform-origin: bottom right;
+            animation: assistant-appear 220ms ease both;
+        }
+
+        .faq-assistant-header {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            padding: 13px 15px;
+            background: var(--navy);
+            color: white;
+        }
+
+        .faq-assistant-header-copy {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .faq-assistant-header h2 {
+            font-size: 15px;
+            line-height: 1.3;
+        }
+
+        .faq-assistant-subtitle {
+            margin-top: 2px;
+            color: rgba(255,255,255,0.78);
+            font-size: 10px;
+            line-height: 1.3;
+        }
+
+        .faq-assistant-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 4px;
+            color: rgba(255,255,255,0.82);
+            font-size: 11px;
+        }
+
+        .faq-assistant-status::before {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #57d889;
+            content: "";
+        }
+
+        .faq-assistant-header-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .faq-assistant-window-button {
+            display: grid;
+            width: 34px;
+            height: 34px;
+            place-items: center;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 50%;
+            background: transparent;
+            color: white;
+            font: inherit;
+            font-size: 19px;
+            cursor: pointer;
+        }
+
+        .faq-assistant-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+            overflow-y: auto;
+            padding: 16px 13px;
+            overscroll-behavior: contain;
+            scroll-behavior: smooth;
+        }
+
+        .faq-assistant-message-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 7px;
+            max-width: 94%;
+        }
+
+        .faq-assistant-message-row.is-user {
+            align-self: flex-end;
+        }
+
+        .faq-assistant-message-row .assistant-avatar {
+            width: 30px;
+            height: 30px;
+            flex-basis: 30px;
+        }
+
+        .faq-assistant-message-row .assistant-avatar-mark {
+            font-size: 8px;
+        }
+
+        .faq-assistant-message {
+            max-width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #edf0f2;
+            border-radius: 14px 14px 14px 4px;
+            background: #f7f8fa;
+            color: #343a43;
+            font-size: 13px;
+            line-height: 1.55;
+            white-space: pre-line;
+            overflow-wrap: anywhere;
+        }
+
+        .faq-assistant-message-row.is-user .faq-assistant-message {
+            border-color: #e5f0f7;
+            border-radius: 14px 14px 4px 14px;
+            background: #edf5fa;
+        }
+
+        .faq-assistant-message a {
+            display: inline-block;
+            margin-top: 8px;
+            color: #245d7d;
+            font-weight: 700;
+            text-underline-offset: 3px;
+        }
+
+        .faq-assistant-message-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin: 0 0 0 37px;
+        }
+
+        .faq-assistant-message-actions button,
+        .faq-assistant-message-actions a {
+            display: inline-block;
+            padding: 7px 10px;
+            border: 1px solid #dfe4e8;
+            border-radius: 999px;
+            background: white;
+            color: var(--navy);
+            font: inherit;
+            font-size: 11px;
+            font-weight: 650;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .faq-assistant-message-actions .is-primary {
+            border-color: var(--navy);
+            background: var(--navy);
+            color: white;
+        }
+
+        .faq-assistant-quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 7px;
+            padding: 0 13px 12px;
+        }
+
+        .faq-assistant-quick-actions button {
+            min-height: 35px;
+            padding: 6px 8px;
+            border: 1px solid #e1e5e9;
+            border-radius: 10px;
+            background: white;
+            color: #343a43;
+            font: inherit;
+            font-size: 11px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .faq-assistant-quick-actions button:hover,
+        .faq-assistant-message-actions button:hover,
+        .faq-assistant-message-actions a:hover {
+            border-color: var(--blue);
+            background: #f2f8fb;
+        }
+
+        .faq-assistant-form {
+            display: flex;
+            gap: 8px;
+            padding: 11px 12px;
+            border-top: 1px solid var(--line);
+            background: white;
+        }
+
+        .faq-assistant-form input {
+            min-width: 0;
+            min-height: 42px;
+            flex: 1;
+            padding: 9px 12px;
+            border: 1px solid #d6dbe0;
+            border-radius: 11px;
+            font: inherit;
+            font-size: 13px;
+        }
+
+        .faq-assistant-form button {
+            min-width: 70px;
+            padding: 0 13px;
+            border: 0;
+            border-radius: 11px;
+            background: var(--navy);
+            color: white;
+            font: inherit;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .faq-assistant-form input:focus-visible,
+        .faq-assistant-form button:focus-visible,
+        .faq-assistant-toggle:focus-visible,
+        .faq-assistant-window-button:focus-visible,
+        .faq-assistant-nudge-dismiss:focus-visible,
+        .faq-assistant-quick-actions button:focus-visible,
+        .faq-assistant-message-actions button:focus-visible,
+        .faq-assistant-message-actions a:focus-visible {
+            outline: 3px solid rgba(50, 149, 201, 0.5);
+            outline-offset: 2px;
+        }
+
+        .faq-assistant-typing {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            min-width: 46px;
+        }
+
+        .faq-assistant-typing span {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #7b8791;
+            animation: assistant-typing 900ms ease-in-out infinite;
+        }
+
+        .faq-assistant-typing span:nth-child(2) {
+            animation-delay: 120ms;
+        }
+
+        .faq-assistant-typing span:nth-child(3) {
+            animation-delay: 240ms;
+        }
+
+        .faq-assistant-typing::after {
+            margin-left: 4px;
+            color: var(--muted);
+            content: "digitando...";
+            font-size: 11px;
+        }
+
+        .faq-assistant-toggle.is-waving {
+            animation: assistant-wave 550ms ease-in-out;
+        }
+
+        @keyframes assistant-appear {
+            from { opacity: 0; transform: translateY(8px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes assistant-typing {
+            0%, 60%, 100% { opacity: 0.35; transform: translateY(0); }
+            30% { opacity: 1; transform: translateY(-3px); }
+        }
+
+        @keyframes assistant-wave {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(-9deg); }
+            55% { transform: rotate(8deg); }
+            80% { transform: rotate(-4deg); }
+        }
+
+        @media (max-width: 560px) {
+            .faq-assistant {
+                right: max(12px, env(safe-area-inset-right));
+                bottom: max(12px, env(safe-area-inset-bottom));
+            }
+
+            .faq-assistant-panel {
+                height: min(620px, calc(100dvh - 96px));
+                min-height: min(360px, calc(100dvh - 96px));
+            }
+
+            .faq-assistant-toggle {
+                width: 60px;
+                height: 60px;
+            }
+
+            .faq-assistant-nudge {
+                bottom: 73px;
+            }
+
+            .faq-assistant-quick-actions {
+                gap: 6px;
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+
+            .faq-assistant-quick-actions button {
+                font-size: 10px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .faq-assistant *,
+            .faq-assistant *::before,
+            .faq-assistant *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="site-logo" href="#inicio" aria-label="Instituto Desafiando Gigantes - início">
+            <span class="logo-box" aria-hidden="true">IDG</span>
+            <span>Instituto Desafiando Gigantes</span>
+        </a>
+        <nav class="site-nav" aria-label="Navegação principal">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#parceiros">Parceiros</a>
+            <a href="#participe">Participe</a>
+            <a href="#oportunidades">Oportunidades</a>
+        </nav>
+        <a class="btn-header btn-primary" href="#participe">Participe</a>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <span class="hero-eyebrow">Instituto Desafiando Gigantes</span>
+                    <h1>Transformando desafios em oportunidades</h1>
+                    <p>Projetos sociais, esporte, educação e cursos profissionalizantes gratuitos para ampliar oportunidades na Zona Leste de São Paulo.</p>
+                    <div class="hero-buttons">
+                        <a class="btn-hero btn-hero-white" href="#sobre">Conheça o Instituto</a>
+                        <a class="btn-hero btn-hero-outline" href="#atuacao">Nossas frentes</a>
+                    </div>
+                </div>
+                <figure class="hero-photo">
+                    <img src="images/comunidade.jpg" alt="Crianças, famílias e integrantes do Instituto reunidos em uma ação comunitária" width="1024" height="768" fetchpriority="high" />
+                    <figcaption><span class="photo-mark" aria-hidden="true"></span>Instituto e comunidade</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section" id="sobre">
+            <div class="section-header">
+                <h2>Quem Somos</h2>
+                <p>Oportunidades para transformar vidas e fortalecer comunidades.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="about-copy">
+                <p>O Instituto Desafiando Gigantes é uma organização social que acredita no poder das oportunidades para transformar vidas e fortalecer comunidades. Atuamos na Zona Leste de São Paulo, desenvolvendo iniciativas voltadas à educação, esporte, capacitação profissional e desenvolvimento social, buscando ampliar o acesso a oportunidades para crianças, jovens, adultos e famílias da comunidade.</p>
+                <h3 class="mission-title">Nossa missão</h3>
+                <p>Promover inclusão, desenvolvimento e autonomia, criando oportunidades que contribuam para o crescimento pessoal, educacional e profissional da comunidade.</p>
+                <h3 class="mission-title">O que fazemos</h3>
+                <p>Nossas ações são desenvolvidas a partir de diferentes frentes, como projetos sociais para crianças e jovens, atividades esportivas, incentivo à educação e cursos profissionalizantes gratuitos para adultos. Também buscamos construir parcerias com empresas, instituições e pessoas que compartilham do propósito de gerar impacto positivo e novas oportunidades para a comunidade.</p>
+                <h3 class="mission-title">Nosso propósito</h3>
+                <p>Acreditamos que o lugar onde uma pessoa nasce ou vive não deve limitar onde ela pode chegar. Por isso, trabalhamos para que a periferia seja cada vez mais um espaço de educação, cultura, esporte, formação profissional, oportunidades e transformação social.</p>
+                <blockquote class="brand-signature">Desafiando limites.<br /><span>Transformando futuros.</span></blockquote>
+            </div>
+        </section>
+
+        <section class="section" id="atuacao">
+            <div class="section-header">
+                <h2>Nossas frentes</h2>
+                <p>Três caminhos que ajudam a transformar desafios em experiências de aprendizado e crescimento.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="pillars-grid">
+                <article class="pillar-card">
+                    <h3>Esporte</h3>
+                    <p>Atividades esportivas podem promover saúde, convivência, disciplina e trabalho em equipe.</p>
+                </article>
+                <article class="pillar-card">
+                    <h3>Educação</h3>
+                    <p>Aprender abre caminhos, fortalece a autonomia e amplia as oportunidades para o futuro.</p>
+                </article>
+                <article class="pillar-card">
+                    <h3>Capacitação profissional</h3>
+                    <p>Cursos gratuitos para adultos, com certificado, contribuindo para a qualificação, geração de renda e autonomia.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section community-gallery" aria-labelledby="gallery-title">
+            <div class="section-header">
+                <h2 id="gallery-title">Nossa comunidade em ação</h2>
+                <p>Registros de encontros, atividades e momentos compartilhados com a comunidade.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="gallery-grid">
+                <figure class="gallery-item">
+                    <img src="images/festa-comunitaria.jpg" alt="Famílias reunidas em um encontro comunitário decorado para uma festa" width="855" height="854" loading="lazy" decoding="async" />
+                    <figcaption>Convivência em festa comunitária</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/equipe-parceira.jpg" alt="Integrantes do Instituto e parceiros reunidos em uma ação na comunidade" width="768" height="1024" loading="lazy" decoding="async" />
+                    <figcaption>Equipe e parceiros reunidos</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/encontro-instituto.jpg" alt="Crianças, famílias e equipe reunidas em frente ao espaço do Instituto" width="768" height="1024" loading="lazy" decoding="async" />
+                    <figcaption>Um encontro na comunidade</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/atividade-com-criancas.jpg" alt="Crianças participando de atividade acompanhadas por uma adulta" width="768" height="1024" loading="lazy" decoding="async" />
+                    <figcaption>Atividade com crianças</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/acao-educativa.jpg" alt="Criança participa de uma atividade educativa ao lado de profissionais" width="768" height="1024" loading="lazy" decoding="async" />
+                    <figcaption>Educação e cuidado</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/entrega-solidaria.jpg" alt="Crianças recebem caixas durante uma ação de entrega de itens" width="768" height="1024" loading="lazy" decoding="async" />
+                    <figcaption>Entrega solidária</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/brincadeiras.jpg" alt="Crianças brincam juntas durante uma atividade comunitária" width="768" height="1024" loading="lazy" decoding="async" />
+                    <figcaption>Brincadeiras e convivência</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/acao-comunitaria.jpg" alt="Equipe organiza uma ação comunitária com crianças e famílias" width="1024" height="768" loading="lazy" decoding="async" />
+                    <figcaption>Ação comunitária</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section" id="projetos" data-journey-page="projetos" hidden>
+            <a class="journey-back" href="#oportunidades">← Voltar às oportunidades</a>
+            <div class="section-header">
+                <h2>Projetos e frentes de atuação</h2>
+                <p>As ações sociais do Instituto envolvem infância, esporte e educação. Os cursos profissionalizantes são uma iniciativa própria de qualificação gratuita para adultos.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <h3>Projeto Criança Feliz</h3>
+                    <p>Ação de outubro com atividades recreativas, educativas e sociais para crianças da comunidade, promovendo lazer, convivência e integração. É realizada em parceria com a Coterleste, em espaço diferente da sede. Pais e responsáveis podem acompanhar as divulgações para consultar a programação e participação.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Projeto de Esporte</h3>
+                    <p>Práticas esportivas para crianças e jovens, incentivando saúde, disciplina, trabalho em equipe, convivência e desenvolvimento pessoal. As atividades acontecem na Rua Danças Húngaras, 72, conforme a programação. Consulte o Instituto sobre modalidades, turmas e vagas.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Educação e Desenvolvimento</h3>
+                    <p>Ações para crianças e jovens com incentivo aos estudos, apoio ao desenvolvimento educacional e ampliação do acesso à educação e a novas oportunidades. Atividades na Rua Danças Húngaras, 72, conforme o cronograma; acompanhe as divulgações para saber o que está disponível.</p>
+                </article>
+            </div>
+            <h3 class="event-heading">Cultura e convivência comunitária</h3>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <h3>Natal Solidário</h3>
+                    <p>Ação no período do Natal, com confraternização, atividades para crianças e distribuição de presentes e doações. Realizada na sede do Instituto, na Rua Danças Húngaras, 72. As datas, a programação e as orientações de participação são divulgadas pelo Instituto.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Ação de Páscoa</h3>
+                    <p>Atividade comemorativa para crianças da comunidade, com integração e entregas relacionadas à data. Realizada na sede do Instituto, na Rua Danças Húngaras, 72. Acompanhe as divulgações para consultar as informações de cada edição.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Festa Caipira</h3>
+                    <p>Encontro de cultura e convivência para crianças, jovens e famílias, com brincadeiras, comidas típicas e momentos de lazer. Realizado no período das festas juninas ou julinas, na Rua Danças Húngaras, 72. Datas e programação são divulgadas pelo Instituto.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Festa de Dia das Crianças</h3>
+                    <p>Ação própria do Instituto, realizada em outubro na Rua Danças Húngaras, 72, com lazer, integração, alimentação e comemoração para as crianças da comunidade. É diferente do Projeto Criança Feliz, realizado com a Coterleste em outro local. Acompanhe as divulgações para saber as datas e como participar.</p>
+                </article>
+            </div>
+            <h3 class="event-heading">Campanhas de conscientização</h3>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <h3>Setembro Amarelo</h3>
+                    <p>Ação anual de conscientização e prevenção ao suicídio, com palestras e aulas dinâmicas abertas à comunidade. O local, as datas e a programação podem variar; acompanhe as divulgações oficiais do Instituto.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Outubro Rosa</h3>
+                    <p>Ação social anual de conscientização, com palestras e aulas dinâmicas abertas à comunidade. O local, as datas e a programação podem variar; acompanhe as divulgações oficiais do Instituto.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Novembro Azul</h3>
+                    <p>Ação social anual de conscientização, com palestras e aulas dinâmicas abertas à comunidade. O local, as datas e a programação podem variar; acompanhe as divulgações oficiais do Instituto.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="oportunidades" data-journey-page="oportunidades" hidden>
+            <a class="journey-back" href="#participe">← Voltar a Participe</a>
+            <div class="section-header">
+                <h2>Oportunidades para participar</h2>
+                <p>Conheça as atividades e ações do Instituto. Consulte informações antes de demonstrar interesse ou fazer uma inscrição.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="opportunity-grid">
+                <article class="participation-card">
+                    <span class="participation-icon" aria-hidden="true">🎓</span>
+                    <h3>Cursos profissionalizantes</h3>
+                    <p>Cursos gratuitos para adultos, com certificado e sem exigência de experiência anterior. Consulte cursos, horários e vagas.</p>
+                    <a class="btn-header btn-primary" href="#cursos">Conhecer os cursos</a>
+                </article>
+                <article class="participation-card">
+                    <span class="participation-icon" aria-hidden="true">⚽</span>
+                    <h3>Esporte</h3>
+                    <p>Atividades para crianças e jovens. Modalidades, turmas e disponibilidade são informadas pelo Instituto.</p>
+                    <a class="btn-header btn-outline-navy" href="#projetos">Conhecer os projetos</a>
+                </article>
+                <article class="participation-card">
+                    <span class="participation-icon" aria-hidden="true">📚</span>
+                    <h3>Educação</h3>
+                    <p>Ações de incentivo aos estudos e desenvolvimento educacional para crianças e jovens.</p>
+                    <a class="btn-header btn-outline-navy" href="#projetos">Conhecer os projetos</a>
+                </article>
+                <article class="participation-card">
+                    <span class="participation-icon" aria-hidden="true">🎉</span>
+                    <h3>Eventos e ações</h3>
+                    <p>Conheça as ações sociais, festas comunitárias e campanhas realizadas pelo Instituto; a programação varia por edição.</p>
+                    <a class="btn-header btn-outline-navy" href="#projetos">Ver eventos e ações</a>
+                </article>
+                <article class="participation-card">
+                    <span class="participation-icon" aria-hidden="true">🤝</span>
+                    <h3>Preciso de apoio</h3>
+                    <p>Envie uma solicitação relacionada às ações sociais e aos apoios disponíveis no momento.</p>
+                    <a class="btn-header btn-outline-navy" href="#atendimento">Conhecer o atendimento</a>
+                </article>
+                <article class="participation-card">
+                    <span class="participation-icon" aria-hidden="true">✨</span>
+                    <h3>Outros projetos</h3>
+                    <p>Novas oportunidades e projetos podem ser apresentados nesta área quando forem divulgados pelo Instituto.</p>
+                    <a class="btn-header btn-outline-navy" href="#projetos">Ver projetos</a>
+                </article>
+            </div>
+            <p class="form-note">Novas atividades e projetos podem ser acrescentados a esta área conforme forem divulgados pelo Instituto.</p>
+        </section>
+
+        <section class="section" id="voluntariado" data-journey-page="voluntariado" hidden>
+            <a class="journey-back" href="#participe">← Voltar a Participe</a>
+            <div class="section-header">
+                <h2>Seja um voluntário</h2>
+                <p>Doe seu tempo, conhecimento e habilidades para colaborar com as atividades e projetos do Instituto.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="portal-card">
+                <div class="journey-copy">
+                    <p>Voluntariar-se é contribuir com o trabalho comunitário do Instituto, compartilhando habilidades e disponibilidade em ações que apoiam crianças, jovens e famílias.</p>
+                    <p>Há oportunidades em educação, esporte, atividades com crianças e jovens, cursos profissionalizantes, eventos, ações sociais, comunicação, redes sociais e apoio administrativo.</p>
+                    <ul class="journey-list">
+                        <li>É necessário ter 18 anos ou mais.</li>
+                        <li>A equipe analisará sua área de interesse, habilidades e disponibilidade.</li>
+                        <li>O envio demonstra interesse e não garante uma vaga. O Instituto entrará em contato quando houver uma oportunidade compatível.</li>
+                        <li>Atividades com crianças e adolescentes podem exigir verificações adicionais posteriormente.</li>
+                    </ul>
+                </div>
+                <div class="journey-cta">
+                    <a class="btn-header btn-primary" href="#form-voluntariado">Quero me inscrever como voluntário</a>
+                </div>
+                <div class="journey-form-panel" id="form-voluntariado" data-journey-form hidden>
+                <h3>Manifestação de interesse no voluntariado</h3>
+                <form class="application-form" method="post" data-application-form="volunteer">
+                    <div class="honeypot" aria-hidden="true"><label>Deixe este campo vazio<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+                    <div class="form-grid">
+                        <label class="form-field">Nome completo
+                            <input name="full_name" autocomplete="name" maxlength="120" required />
+                        </label>
+                        <label class="form-field">E-mail
+                            <input name="email" type="email" autocomplete="email" maxlength="254" required />
+                        </label>
+                        <label class="form-field">Data de nascimento
+                            <input name="date_of_birth" type="date" autocomplete="bday" required />
+                        </label>
+                        <label class="form-field">Telefone
+                            <input name="phone" type="tel" autocomplete="tel" maxlength="40" required />
+                        </label>
+                        <label class="form-field">Bairro ou região
+                            <input name="neighborhood" maxlength="100" autocomplete="address-level3" required />
+                        </label>
+                        <label class="form-field">Área em que gostaria de contribuir
+                            <select name="interests" required>
+                                <option value="">Selecione</option>
+                                <option>Esporte</option>
+                                <option>Educação</option>
+                                <option>Atividades com crianças e jovens</option>
+                                <option>Cursos profissionalizantes</option>
+                                <option>Eventos e ações sociais</option>
+                                <option>Comunicação e redes sociais</option>
+                                <option>Apoio administrativo</option>
+                                <option>Outra área</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label class="form-field">Habilidades ou experiências que podem contribuir
+                        <textarea name="skills" maxlength="1000" required></textarea>
+                    </label>
+                    <label class="form-field">Disponibilidade de dias e horários
+                        <input name="availability" maxlength="200" placeholder="Ex.: dias da semana e horários" required />
+                    </label>
+                    <label class="form-field">Por que deseja ser voluntário?
+                        <textarea name="motivation" maxlength="1000" required></textarea>
+                    </label>
+                    <label class="consent"><input name="privacy_consent" type="checkbox" required /> Declaro ter 18 anos ou mais e autorizo o uso destes dados para analisar minha inscrição e entrar em contato. O envio não garante aprovação; atividades com crianças e adolescentes podem exigir verificações adicionais posteriormente.</label>
+                    <div class="captcha-widget" data-turnstile-widget></div>
+                    <button class="btn-header btn-primary form-submit" type="submit" disabled>Enviar manifestação de interesse</button>
+                    <p class="form-result" role="status" aria-live="polite" hidden></p>
+                </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="atendimento" data-journey-page="atendimento" hidden>
+            <a class="journey-back" href="#oportunidades">← Voltar às oportunidades</a>
+            <div class="section-header">
+                <h2>Preciso de apoio</h2>
+                <p>Se você busca informações sobre atendimento ou apoio, envie uma solicitação. A equipe analisará seu cadastro em particular.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="portal-card">
+                <div class="journey-copy">
+                    <p>As solicitações podem estar relacionadas a ações sociais, projetos e apoios disponíveis no momento. Cada pedido é analisado conforme os critérios e a disponibilidade de cada ação.</p>
+                    <p>Quando a solicitação envolver criança ou adolescente, o formulário deverá ser preenchido por pai, mãe ou responsável adulto. O envio não garante automaticamente o recebimento de apoio ou a participação em uma atividade.</p>
+                </div>
+                <div class="journey-cta">
+                    <a class="btn-header btn-primary" href="#form-atendimento">Quero solicitar atendimento</a>
+                </div>
+                <div class="journey-form-panel" id="form-atendimento" data-journey-form hidden>
+                <h3>Formulário de solicitação</h3>
+                <form class="application-form" method="post" data-application-form="beneficiary">
+                    <div class="honeypot" aria-hidden="true"><label>Deixe este campo vazio<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+                    <div class="form-grid">
+                        <label class="form-field">Nome completo do responsável
+                            <input name="full_name" autocomplete="name" maxlength="120" required />
+                        </label>
+                        <label class="form-field">E-mail
+                            <input name="email" type="email" autocomplete="email" maxlength="254" required />
+                        </label>
+                        <label class="form-field">Telefone
+                            <input name="phone" type="tel" autocomplete="tel" maxlength="40" required />
+                        </label>
+                        <label class="form-field">Bairro (opcional)
+                            <input name="neighborhood" maxlength="100" autocomplete="address-level3" />
+                        </label>
+                        <label class="form-field">Tipo de apoio ou informação que procura
+                            <select name="support_type" required>
+                                <option value="">Selecione</option>
+                                <option>Informações sobre projetos</option>
+                                <option>Participação em uma ação social</option>
+                                <option>Apoio para minha família</option>
+                                <option>Outro tipo de orientação</option>
+                            </select>
+                        </label>
+                        <label class="form-field">A solicitação é para criança ou adolescente?
+                            <select name="involves_minor" data-minor-selector required>
+                                <option value="no">Não</option>
+                                <option value="yes">Sim</option>
+                            </select>
+                        </label>
+                        <label class="form-field" data-minor-field hidden>Primeiro nome da criança ou adolescente
+                            <input name="minor_first_name" maxlength="80" />
+                        </label>
+                        <label class="form-field" data-minor-field hidden>Faixa etária
+                            <select name="minor_age_range">
+                                <option value="">Selecione</option>
+                                <option>Até 5 anos</option>
+                                <option>6 a 11 anos</option>
+                                <option>12 a 17 anos</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label class="form-field">Breve descrição (não inclua documentos, dados bancários ou informações médicas)
+                        <textarea name="message" maxlength="1000" required></textarea>
+                    </label>
+                    <label class="consent"><input name="privacy_consent" type="checkbox" required /> Declaro ser maior de 18 anos ou pai, mãe ou responsável adulto quando a solicitação envolver uma pessoa menor de idade. Autorizo o uso destes dados para analisar a solicitação e entrar em contato. O envio não garante o recebimento de apoio.</label>
+                    <div class="captcha-widget" data-turnstile-widget></div>
+                    <button class="btn-header btn-primary form-submit" type="submit" disabled>Enviar solicitação</button>
+                    <p class="form-result" role="status" aria-live="polite" hidden></p>
+                </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="apoio" data-journey-page="apoio" hidden>
+            <a class="journey-back" href="#participe">← Voltar a Participe</a>
+            <div class="section-header">
+                <h2>Formas de apoiar o Instituto</h2>
+                <p>Há diferentes maneiras de contribuir com os projetos, eventos e ações da comunidade.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="portal-card">
+                <div class="journey-copy">
+                    <p>O apoio pode envolver patrocínio, contribuição a projetos e eventos, materiais, alimentos e outros itens necessários, serviços profissionais ou outras formas de contribuição. A disponibilidade de cada modalidade depende das necessidades das ações em andamento e será confirmada pela equipe.</p>
+                    <p>O formulário permite apresentar uma proposta para análise. A equipe verificará se a contribuição é adequada e possível e entrará em contato para combinar os próximos passos.</p>
+                    <p>Contribuições financeiras só serão recebidas quando houver uma forma institucional oficial divulgada. Não faça pagamentos usando dados que não estejam publicados nos canais oficiais do Instituto.</p>
+                </div>
+                <div class="journey-cta">
+                    <a class="btn-header btn-primary" href="#form-doacao">Quero apoiar a instituição</a>
+                </div>
+                <div class="journey-form-panel" id="form-doacao" data-journey-form hidden>
+                <h3>Conte como gostaria de apoiar</h3>
+                <form class="application-form" method="post" data-application-form="donation">
+                    <div class="honeypot" aria-hidden="true"><label>Deixe este campo vazio<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+                    <div class="form-grid">
+                        <label class="form-field">Nome completo
+                            <input name="full_name" autocomplete="name" maxlength="120" required />
+                        </label>
+                        <label class="form-field">E-mail
+                            <input name="email" type="email" autocomplete="email" maxlength="254" required />
+                        </label>
+                        <label class="form-field">Telefone
+                            <input name="phone" type="tel" autocomplete="tel" maxlength="40" required />
+                        </label>
+                        <label class="form-field">Tipo de doação
+                            <select name="donation_type" required>
+                                <option value="">Selecione</option>
+                                <option>Alimentos</option>
+                                <option>Roupas ou brinquedos</option>
+                                <option>Materiais escolares</option>
+                                <option>Materiais para cursos e oficinas</option>
+                                <option>Equipamentos ou itens para ações sociais</option>
+                                <option>Serviços profissionais</option>
+                                <option>Patrocínio a projetos</option>
+                                <option>Patrocínio a eventos e ações</option>
+                                <option>Apoio financeiro — quero conversar com a equipe</option>
+                                <option>Outro tipo de doação</option>
+                            </select>
+                        </label>
+                        <label class="form-field">Quantidade aproximada (opcional)
+                            <input name="quantity" maxlength="100" />
+                        </label>
+                    </div>
+                    <label class="form-field">Breve descrição
+                        <textarea name="description" maxlength="1000" required></textarea>
+                    </label>
+                    <label class="consent"><input name="privacy_consent" type="checkbox" required /> Autorizo o uso destes dados para avaliar a possibilidade de recebimento da doação e entrar em contato. O envio não confirma que a doação poderá ser recebida.</label>
+                    <div class="captcha-widget" data-turnstile-widget></div>
+                    <button class="btn-header btn-primary form-submit" type="submit" disabled>Quero oferecer uma doação</button>
+                    <p class="form-result" role="status" aria-live="polite" hidden></p>
+                </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="cursos" data-journey-page="cursos" hidden>
+            <a class="journey-back" href="#oportunidades">← Voltar às oportunidades</a>
+            <div class="section-header">
+                <h2>Cursos profissionalizantes gratuitos</h2>
+                <p>Formação para ampliar oportunidades, desenvolver habilidades e contribuir para a geração de renda e autonomia.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="portal-card">
+                <div class="course-overview">
+                    <p>Todos os cursos são 100% gratuitos, destinados a pessoas com 18 anos ou mais, não exigem experiência anterior e oferecem certificado de conclusão. As aulas acontecem de segunda a sexta-feira, das 19h às 22h, conforme o cronograma de cada curso.</p>
+                    <div class="course-highlights" aria-label="Benefícios e requisitos dos cursos">
+                        <span class="course-highlight">100% gratuito</span>
+                        <span class="course-highlight">18 anos ou mais</span>
+                        <span class="course-highlight">Sem experiência anterior</span>
+                        <span class="course-highlight">Certificado de conclusão</span>
+                    </div>
+                    <p class="course-registration-note">Todas as turmas estão com vagas abertas no momento. A inscrição será analisada e a vaga só estará confirmada após o retorno do Instituto.</p>
+                </div>
+                <div class="course-grid">
+                    <article class="course-card">
+                        <div class="course-art"><img src="images/cursos/manicure.jpg" alt="" width="274" height="355" loading="lazy" decoding="async" /></div>
+                        <div class="course-card-content"><h3>Manicure</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Manicure">Inscreva-se</a></div>
+                    </article>
+                    <article class="course-card">
+                        <div class="course-art"><img src="images/cursos/cuidador-idoso.jpg" alt="" width="311" height="355" loading="lazy" decoding="async" /></div>
+                        <div class="course-card-content"><h3>Cuidador de Idoso</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Cuidador de Idoso">Inscreva-se</a></div>
+                    </article>
+                    <article class="course-card">
+                        <div class="course-art"><img src="images/cursos/recepcionista.jpg" alt="" width="269" height="355" loading="lazy" decoding="async" /></div>
+                        <div class="course-card-content"><h3>Recepcionista</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Recepcionista">Inscreva-se</a></div>
+                    </article>
+                    <article class="course-card">
+                        <div class="course-art"><img src="images/cursos/portaria-acesso.jpg" alt="" width="235" height="355" loading="lazy" decoding="async" /></div>
+                        <div class="course-card-content"><h3>Portaria e Controlador de Acesso</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Portaria e Controlador de Acesso">Inscreva-se</a></div>
+                    </article>
+                    <article class="course-card">
+                        <div class="course-art"><img src="images/cursos/trancista.jpg" alt="" width="330" height="358" loading="lazy" decoding="async" /></div>
+                        <div class="course-card-content"><h3>Trancista</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Trancista">Inscreva-se</a></div>
+                    </article>
+                    <article class="course-card">
+                        <div class="course-art"><img src="images/cursos/cuidador-infantil.jpg" alt="" width="393" height="358" loading="lazy" decoding="async" /></div>
+                        <div class="course-card-content"><h3>Cuidador Infantil</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Cuidador Infantil">Inscreva-se</a></div>
+                    </article>
+                    <article class="course-card">
+                        <div class="course-art"><img src="images/cursos/panificacao.jpg" alt="" width="382" height="358" loading="lazy" decoding="async" /></div>
+                        <div class="course-card-content"><h3>Panificação</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Panificação">Inscreva-se</a></div>
+                    </article>
+                </div>
+                <div class="course-facts">
+                    <div class="course-fact"><strong>Local</strong><span>Instituto Desafiando Gigantes — Rua Danças Húngaras, 72</span></div>
+                    <div class="course-fact"><strong>Horário</strong><span>Segunda a sexta-feira, das 19h às 22h</span></div>
+                    <div class="course-fact"><strong>Requisitos</strong><span>18 anos ou mais; sem experiência prévia</span></div>
+                    <div class="course-fact"><strong>Certificado</strong><span>Oferecido ao concluir o curso</span></div>
+                </div>
+                <div class="journey-cta">
+                    <a class="btn-header btn-primary" href="#form-inscricao">Quero me inscrever em um curso</a>
+                </div>
+                <div class="journey-form-panel" id="painel-form-inscricao" data-journey-form hidden>
+                <form class="application-form" id="form-inscricao" method="post" data-application-form="course">
+                    <div class="honeypot" aria-hidden="true"><label>Deixe este campo vazio<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+                    <h3>Inscrição nos cursos</h3>
+                    <p>Preencha seus dados e escolha a turma. Enviar a inscrição não garante automaticamente uma vaga; a equipe confirmará a disponibilidade posteriormente.</p>
+                    <div class="form-grid">
+                        <label class="form-field">Nome completo
+                            <input name="full_name" autocomplete="name" maxlength="120" required />
+                        </label>
+                        <label class="form-field">Data de nascimento
+                            <input name="date_of_birth" type="date" autocomplete="bday" required />
+                        </label>
+                        <label class="form-field">E-mail
+                            <input name="email" type="email" autocomplete="email" maxlength="254" required />
+                        </label>
+                        <label class="form-field">Telefone
+                            <input name="phone" type="tel" autocomplete="tel" maxlength="40" required />
+                        </label>
+                        <label class="form-field">Bairro ou região
+                            <input name="neighborhood" maxlength="100" autocomplete="address-level3" required />
+                        </label>
+                        <label class="form-field">Curso desejado
+                            <select name="course_name" id="course-choice" required>
+                                <option value="">Selecione um curso</option>
+                                <option>Manicure</option>
+                                <option>Cuidador de Idoso</option>
+                                <option>Recepcionista</option>
+                                <option>Portaria e Controlador de Acesso</option>
+                                <option>Trancista</option>
+                                <option>Cuidador Infantil</option>
+                                <option>Panificação</option>
+                            </select>
+                        </label>
+                        <label class="form-field">Disponibilidade de horário
+                            <input name="availability" maxlength="160" placeholder="Confirme sua disponibilidade à noite" required />
+                        </label>
+                    </div>
+                    <label class="consent"><input name="privacy_consent" type="checkbox" required /> Declaro ter 18 anos ou mais e autorizo o uso destes dados para analisar minha inscrição e entrar em contato. A inscrição não garante vaga; a equipe confirmará posteriormente.</label>
+                    <div class="captcha-widget" data-turnstile-widget></div>
+                    <button class="btn-header btn-primary form-submit" type="submit" disabled>Enviar inscrição</button>
+                    <p class="form-result" role="status" aria-live="polite" hidden></p>
+                </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="patrocinio" data-journey-page="parcerias" hidden>
+            <a class="journey-back" href="#participe">← Voltar a Participe</a>
+            <div class="section-header">
+                <h2>Seja um parceiro</h2>
+                <p>Construa iniciativas em conjunto com o Instituto Desafiando Gigantes e a comunidade da Zona Leste.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="portal-card">
+                <div class="journey-copy">
+                    <p>Ser parceiro significa unir experiências, recursos e conhecimentos em iniciativas que fortaleçam os projetos e as oportunidades oferecidas à comunidade.</p>
+                    <p>Empresas, organizações, instituições, profissionais e grupos podem propor projetos, ações, eventos, serviços ou outras iniciativas conjuntas. As possibilidades incluem apoio a atividades com crianças e jovens, educação, esporte, cursos profissionalizantes e ações comunitárias.</p>
+                    <p>Compartilhe sua ideia pelo formulário. A equipe avaliará a proposta conforme as necessidades e possibilidades do Instituto e entrará em contato. O envio não confirma uma parceria.</p>
+                </div>
+                <div class="journey-cta">
+                    <a class="btn-header btn-primary" href="#form-parcerias">Tenho interesse em ser parceiro</a>
+                </div>
+                <div class="journey-form-panel" id="form-parcerias" data-journey-form hidden>
+                <h3>Conte sua proposta de parceria</h3>
+                <form class="application-form" method="post" data-application-form="sponsor">
+                    <div class="honeypot" aria-hidden="true"><label>Deixe este campo vazio<input name="website" tabindex="-1" autocomplete="off" /></label></div>
+                    <div class="form-grid">
+                        <label class="form-field">Nome do contato
+                            <input name="full_name" autocomplete="name" maxlength="120" required />
+                        </label>
+                        <label class="form-field">E-mail
+                            <input name="email" type="email" autocomplete="email" maxlength="254" required />
+                        </label>
+                        <label class="form-field">Telefone
+                            <input name="phone" type="tel" autocomplete="tel" maxlength="40" required />
+                        </label>
+                        <label class="form-field">Organização (opcional)
+                            <input name="organization" maxlength="160" autocomplete="organization" />
+                        </label>
+                        <label class="form-field">CNPJ (opcional)
+                            <input name="cnpj" inputmode="numeric" maxlength="18" />
+                        </label>
+                        <label class="form-field">Forma de apoio
+                            <select name="support_type" required>
+                                <option value="">Selecione</option>
+                                <option>Apoio financeiro</option>
+                                <option>Doação de materiais, alimentos ou equipamentos</option>
+                                <option>Apoio a cursos</option>
+                                <option>Disponibilização de espaço</option>
+                                <option>Serviços profissionais</option>
+                                <option>Voluntariado</option>
+                                <option>Divulgação</option>
+                                <option>Realização conjunta de ação ou projeto</option>
+                                <option>Outra forma de parceria</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label class="form-field">Descreva brevemente a proposta
+                        <textarea name="message" maxlength="1000" required></textarea>
+                    </label>
+                    <label class="consent"><input name="privacy_consent" type="checkbox" required /> Autorizo o uso destes dados para analisar a proposta e entrar em contato. O envio não confirma uma parceria; a equipe avaliará cada proposta.</label>
+                    <div class="captcha-widget" data-turnstile-widget></div>
+                    <button class="btn-header btn-primary form-submit" type="submit" disabled>Enviar proposta</button>
+                    <p class="form-result" role="status" aria-live="polite" hidden></p>
+                </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="acesso" data-journey-page="administrativo" hidden>
+            <a class="journey-back" href="#participe">← Voltar a Participe</a>
+            <div class="section-header">
+                <h2>Área administrativa</h2>
+                <p>Acesso exclusivo da equipe autorizada para organizar os cadastros recebidos e atualizar o andamento de cada solicitação.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="portal-card">
+                <h3>Login da equipe</h3>
+                <form id="login-form" method="post">
+                    <div class="form-grid">
+                        <label class="form-field">E-mail
+                            <input name="email" type="email" autocomplete="email" maxlength="254" required />
+                        </label>
+                        <label class="form-field">Senha
+                            <input name="password" type="password" autocomplete="current-password" required />
+                        </label>
+                    </div>
+                    <button class="btn-header btn-primary form-submit" type="submit">Entrar</button>
+                    <button class="btn-header btn-outline-navy form-submit" id="password-reset-request" type="button">Definir ou recuperar senha</button>
+                </form>
+                <form id="password-update-form" method="post" hidden>
+                    <label class="form-field">Nova senha
+                        <input name="password" type="password" autocomplete="new-password" minlength="12" required />
+                    </label>
+                    <label class="form-field">Confirme a nova senha
+                        <input name="password_confirmation" type="password" autocomplete="new-password" minlength="12" required />
+                    </label>
+                    <button class="btn-header btn-primary form-submit" type="submit">Salvar nova senha</button>
+                </form>
+                <p id="account-status" role="status" aria-live="polite">Área restrita. Faça login com a conta administrativa autorizada pelo Instituto.</p>
+                <div id="admin-applications" hidden>
+                    <button class="btn-header btn-outline-navy" id="sign-out" type="button">Sair</button>
+                    <h3>Cadastros para análise da equipe</h3>
+                    <div class="admin-filters">
+                        <label>Tipo de cadastro
+                            <select data-filter-type>
+                                <option value="">Todos os tipos</option>
+                                <option value="volunteer">Voluntariado</option>
+                                <option value="beneficiary">Solicitação de apoio</option>
+                                <option value="course">Inscrição em curso</option>
+                                <option value="sponsor">Parceria ou patrocínio</option>
+                                <option value="donation">Oferta de doação</option>
+                            </select>
+                        </label>
+                        <label>Status
+                            <select data-filter-status>
+                                <option value="">Todos os status</option>
+                                <option value="pending">Pendente</option>
+                                <option value="reviewing">Em análise</option>
+                                <option value="approved">Aprovado</option>
+                                <option value="rejected">Não aprovado</option>
+                                <option value="completed">Concluído</option>
+                            </select>
+                        </label>
+                    </div>
+                    <div data-admin-list></div>
+                </div>
+                <p class="form-note">Os dados enviados pelos formulários ficam visíveis somente à equipe administrativa autorizada. O retorno ao público será feito pelos dados de contato informados.</p>
+            </div>
+        </section>
+
+        <section class="section" id="privacidade">
+            <div class="section-header">
+                <h2>Privacidade e proteção dos seus dados</h2>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="privacy-card">
+                <p class="privacy-intro">Os dados enviados pelos formulários são utilizados exclusivamente para análise e atendimento pela equipe autorizada do Instituto. Essas informações não ficam disponíveis ao público.</p>
+                <div class="privacy-rights">
+                    <h3 class="privacy-rights-heading">
+                        <span class="privacy-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M7 10V7a5 5 0 0 1 10 0v3m-11 0h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 14v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        Seus dados, seus direitos
+                    </h3>
+                    <p>Para solicitar acesso, correção ou exclusão dos seus dados, entre em contato pelo e-mail <a class="privacy-email" href="mailto:despertando.idg@gmail.com">despertando.idg@gmail.com</a>.</p>
+                    <p class="privacy-note">O Instituto poderá entrar em contato pelo e-mail ou telefone informado no cadastro.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="participe">
+            <div class="section-header">
+                <h2>Participe</h2>
+                <p>Escolha como se conectar com o Instituto. Você verá como funciona antes de demonstrar interesse.</p>
+                <div class="divider" aria-hidden="true"></div>
+            </div>
+            <div class="participation-grid">
+                <article class="participation-card">
+                    <span class="participation-icon" aria-hidden="true">🤝</span>
+                    <h3>Quero ser voluntário</h3>
+                    <p>Doe seu tempo, conhecimento e habilidades para colaborar com as atividades e projetos do Instituto.</p>
+                    <a class="btn-header btn-primary" href="#voluntariado">Conhecer o voluntariado</a>
+                </article>
+                <article class="participation-card">
+                    <span class="participation-icon" aria-hidden="true">💼</span>
+                    <h3>Quero ser parceiro</h3>
+                    <p>Desenvolva projetos, ações ou outras iniciativas com a instituição e a comunidade.</p>
+                    <a class="btn-header btn-outline-navy" href="#patrocinio">Quero ser parceiro</a>
+                </article>
+                <article class="participation-card">
+                    <span class="participation-icon" aria-hidden="true">💛</span>
+                    <h3>Quero apoiar</h3>
+                    <p>Conheça formas de contribuir com projetos, eventos e ações do Instituto.</p>
+                    <a class="btn-header btn-outline-navy" href="#apoio">Conhecer formas de apoiar</a>
+                </article>
+                <article class="participation-card">
+                    <span class="participation-icon" aria-hidden="true">🌱</span>
+                    <h3>Quero participar</h3>
+                    <p>Explore cursos, projetos, atividades, eventos e outras oportunidades para a comunidade.</p>
+                    <a class="btn-header btn-outline-navy" href="#oportunidades">Ver oportunidades</a>
+                </article>
+            </div>
+            <div class="contact-links">
+                <a class="btn-header btn-outline-navy" href="mailto:despertando.idg@gmail.com">Fale com o Instituto</a>
+                <a class="btn-header btn-outline-navy" href="https://www.instagram.com/institutodesafiandogigantes/" target="_blank" rel="noopener noreferrer">Instagram do Instituto</a>
+            </div>
+        </section>
+    </main>
+
+    <aside class="faq-assistant" aria-label="Assistente virtual Sol do Instituto">
+        <div class="faq-assistant-nudge" id="faq-assistant-nudge" hidden>
+            <span>Oi! ☀️ Eu sou a Sol. Posso te ajudar?</span>
+            <button class="faq-assistant-nudge-dismiss" type="button" aria-label="Dispensar saudação">×</button>
+        </div>
+        <section class="faq-assistant-panel" id="faq-assistant-panel" aria-labelledby="faq-assistant-title" aria-hidden="true" hidden>
+            <header class="faq-assistant-header">
+                <span class="assistant-avatar assistant-avatar--large">
+                    <img src="images/assistente-idg.png" alt="Mascote do Instituto" />
+                    <span class="faq-assistant-online-dot" aria-hidden="true"></span>
+                </span>
+                <div class="faq-assistant-header-copy">
+                    <h2 id="faq-assistant-title">☀️ Sol</h2>
+                    <p class="faq-assistant-subtitle">Assistente Virtual do Instituto</p>
+                    <p class="faq-assistant-status">Online</p>
+                </div>
+                <div class="faq-assistant-header-actions">
+                    <button class="faq-assistant-window-button" id="faq-assistant-minimize" type="button" aria-label="Minimizar atendimento">−</button>
+                    <button class="faq-assistant-window-button faq-assistant-close" type="button" aria-label="Fechar atendimento">×</button>
+                </div>
+            </header>
+            <div class="faq-assistant-messages" id="faq-assistant-messages" role="log" aria-live="polite" aria-relevant="additions text">
+                <div class="faq-assistant-message-row">
+                    <span class="assistant-avatar">
+                        <img src="images/assistente-idg.png" alt="" />
+                    </span>
+                    <p class="faq-assistant-message">Olá! 👋 Eu sou a Sol ☀️, assistente virtual do Instituto. Estou aqui para te ajudar com informações sobre cursos, inscrições, projetos, ações, voluntariado, parcerias e muito mais. Como posso te ajudar hoje? 💙</p>
+                </div>
+            </div>
+            <div class="faq-assistant-quick-actions" aria-label="Acesso rápido">
+                <button type="button" data-assistant-intent="courses">📚 Cursos profissionalizantes</button>
+                <button type="button" data-assistant-intent="registration">📝 Quero me inscrever</button>
+                <button type="button" data-assistant-intent="location">📍 Endereço e horários</button>
+                <button type="button" data-assistant-intent="projects">💙 Projetos e ações</button>
+                <button type="button" data-assistant-intent="volunteer">🙋 Quero ser voluntário(a)</button>
+                <button type="button" data-assistant-intent="partner">🤝 Quero ser parceiro(a)</button>
+                <button type="button" data-assistant-intent="donation">💰 Quero fazer uma doação</button>
+                <button type="button" data-assistant-intent="other">❓ Outras dúvidas</button>
+            </div>
+            <form class="faq-assistant-form" id="faq-assistant-form">
+                <label class="visually-hidden" for="faq-assistant-input">Digite sua pergunta</label>
+                <input id="faq-assistant-input" name="question" type="text" maxlength="300" autocomplete="off" placeholder="Digite sua pergunta..." required />
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+        <button class="faq-assistant-toggle" type="button" aria-label="Abrir assistente Sol do Instituto" aria-expanded="false" aria-controls="faq-assistant-panel">
+            <span class="assistant-avatar">
+                <img src="images/assistente-botao.png" alt="" />
+                <span class="faq-assistant-online-dot" aria-hidden="true"></span>
+            </span>
+        </button>
+    </aside>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Instituto Desafiando Gigantes</h4>
+                <p>Projetos sociais, esporte, educação e cursos profissionalizantes gratuitos na Zona Leste de São Paulo.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="#sobre">Sobre o Instituto</a></li>
+                    <li><a href="#atuacao">Nossas frentes</a></li>
+                    <li><a href="#projetos">Projetos sociais</a></li>
+                    <li><a href="#parceiros">Parceiros</a></li>
+                    <li><a href="#cursos">Cursos profissionalizantes</a></li>
+                    <li><a href="#apoio">Quero apoiar</a></li>
+                    <li><a href="#privacidade">Privacidade e dados</a></li>
+                    <li><a href="#acesso">Área administrativa</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Fale com a gente</h4>
+                <ul class="footer-links">
+                    <li><a href="mailto:despertando.idg@gmail.com">despertando.idg@gmail.com</a></li>
+                    <li><a href="https://www.instagram.com/institutodesafiandogigantes/" target="_blank" rel="noopener noreferrer">@institutodesafiandogigantes</a></li>
+                    <li><p>Rua Danças Húngaras, 72 — Zona Leste de São Paulo</p></li>
+                </ul>
+            </div>
+        </div>
+        <section class="footer-partners" id="parceiros" aria-labelledby="partners-title">
+            <h2 class="footer-partners-heading" id="partners-title">Parceiros que fortalecem nossas ações</h2>
+            <p class="footer-partners-intro">Agradecemos a quem acredita no nosso propósito e caminha com a comunidade.</p>
+            <div class="partners-grid">
+                <article class="partner-card">
+                    <img src="images/parcerias/coterleste.jpg" alt="" width="180" height="145" loading="lazy" decoding="async" />
+                    <h3>Coterleste</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/company-academia.jpg" alt="" width="185" height="150" loading="lazy" decoding="async" />
+                    <h3>Company Academia</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/motoclube-das-loucas.jpg" alt="" width="184" height="151" loading="lazy" decoding="async" />
+                    <h3>Motoclube das Loucas</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/padaria-nova-romano.jpg" alt="" width="185" height="149" loading="lazy" decoding="async" />
+                    <h3>Padaria Nova Romano</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/pjc-mecanica.jpg" alt="" width="181" height="149" loading="lazy" decoding="async" />
+                    <h3>PJC Mecânica Diesel</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/unio-medical.jpg" alt="" width="185" height="151" loading="lazy" decoding="async" />
+                    <h3>Unio Medical</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/casa-rosada.jpg" alt="" width="181" height="151" loading="lazy" decoding="async" />
+                    <h3>Casa Rosada</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/centro-paula-souza.jpg" alt="" width="181" height="153" loading="lazy" decoding="async" />
+                    <h3>CPS — Centro Paula Souza</h3>
+                </article>
+            </div>
+        </section>
+        <div class="footer-bottom">
+            <p>&copy; <span id="year">2026</span> Melany Kauane Souza Inacio.</p>
+        </div>
+    </footer>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="assistant-knowledge.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
