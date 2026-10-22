@@ -108,25 +108,38 @@ function drawMagazinePage(){const st=stories[currentStory],page=magazinePages[ma
 document.getElementById("open-edition").addEventListener("click",()=>{const index=stories.findIndex(s=>s.title.includes("Ditadura"));openStory(index>=0?index:0)});
 
 /* Busca imagens documentais no Wikimedia Commons; exibe apenas arquivos com licença identificada. */
-const archiveQueries=[
-"Brazil community meeting","Brazil black history abolition","Brazil hip hop graffiti","COVID-19 vaccination Brazil","vocational training Brazil","Diretas Ja Brazil 1984","women suffrage Brazil","women rights demonstration Brazil","SUS Brazil health unit","flood Brazil urban","Brazil workers labour movement"
+const archiveThemes=[
+{queries:["Brazil community assembly","participatory democracy Brazil"],match:/community|assembly|democra|comunidade|reuni[aã]o|participa/i,label:"Participação comunitária e cidadania"},
+{queries:["Nelson Mandela portrait","Martin Luther King Jr portrait","Malcolm X portrait"],match:/mandela|martin.luther.king|malcolm.x/i,label:"Lideranças históricas da luta antirracista"},
+{queries:["Racionais MCs Brazilian hip hop","Brazil hip hop graffiti","breakdance Sao Paulo"],match:/racionais|hip.hop|graffiti|breakdance|grafite|rap\b/i,label:"Hip-hop e cultura de rua"},
+{queries:["COVID-19 Brazil pandemic hospital","SARS-CoV-2 virus electron micrograph","COVID-19 vaccination Brazil"],match:/covid|coronavirus|sars.cov|vaccin|pandemi/i,label:"Pandemia de COVID-19"},
+{queries:["vocational education Brazil students","technical education Brazil"],match:/vocational|technical.education|training|educa[cç][aã]o.profissional/i,label:"Educação e formação profissional"},
+{queries:["Diretas Ja Brazil 1984","Brazil military dictatorship protest"],match:/diretas|dictatorship|ditadura|1984/i,label:"Ditadura e redemocratização"},
+{queries:["Brazil women vote history","women suffrage Brazil"],match:/suffrage|voto.feminino|women.vote|mulheres.voto/i,label:"Conquista do voto feminino"},
+{queries:["women rights march Brazil","international womens day Brazil"],match:/women|mulheres|feminis/i,label:"Mobilização pelos direitos das mulheres"},
+{queries:["Sistema Unico de Saude SUS logo","SUS Brasil logo","Unidade Basica de Saude Brasil"],match:/\bsus\b|sistema.unico.de.saude|unidade.basica.de.saude|unidade.de.saude/i,label:"Sistema Único de Saúde (SUS)"},
+{queries:["Amazon rainforest aerial Brazil","Amazon rainforest Brazil river"],match:/amazon|amaz[oô]nia/i,label:"Floresta Amazônica e meio ambiente"},
+{queries:["Carteira de Trabalho e Previdencia Social Brazil","Carteira de Trabalho Digital Brazil","CTPS carteira de trabalho"],match:/carteira.de.trabalho|ctps|work.card|trabalho.digital/i,label:"Carteira de Trabalho brasileira"}
 ];
 const archiveCache=new Map();
 function archivePlain(html){const div=document.createElement("div");div.innerHTML=html||"";return(div.textContent||"").replace(/\\s+/g," ").trim()}
 async function fetchArchive(storyIndex){
  if(archiveCache.has(storyIndex))return archiveCache.get(storyIndex);
  const task=(async()=>{
-  const query=archiveQueries[storyIndex];if(!query)return null;
-  const params=new URLSearchParams({action:"query",format:"json",origin:"*",generator:"search",gsrsearch:query,gsrnamespace:"6",gsrlimit:"12",prop:"imageinfo",iiprop:"url|extmetadata",iiurlwidth:"900"});
+  const theme=archiveThemes[storyIndex];if(!theme)return null;
+  for(const query of theme.queries){
+  const params=new URLSearchParams({action:"query",format:"json",origin:"*",generator:"search",gsrsearch:query,gsrnamespace:"6",gsrlimit:"25",prop:"imageinfo",iiprop:"url|mime|extmetadata",iiurlwidth:"900"});
   const response=await fetch("https://commons.wikimedia.org/w/api.php?"+params.toString());
-  if(!response.ok)throw Error("Acervo indisponível");
+  if(!response.ok)continue;
   const data=await response.json();const pages=Object.values(data.query?.pages||{});
   for(const page of pages){
    const info=page.imageinfo?.[0],meta=info?.extmetadata||{},license=archivePlain(meta.LicenseShortName?.value),author=archivePlain(meta.Artist?.value),credit=archivePlain(meta.Credit?.value),description=archivePlain(meta.ImageDescription?.value);
    const mime=(info?.mime||"").toLowerCase(),url=info?.thumburl||info?.url;
-   if(!url||!/^https:\/\//.test(url)||(!/^(cc by|cc0|public domain|pdm)/i.test(license))||(/\b(svg|gif|webp)\b/i.test(mime))||!/^File:/i.test(page.title))continue;
-   const record={url,full:info.descriptionurl,author:author||credit||"Autoria não informada no registro",license,licenseUrl:meta.LicenseUrl?.value||info.descriptionurl,description:description.slice(0,220),file:page.title.replace(/^File:/,"")};
+   const identity=(page.title+" "+description).slice(0,700);
+   if(!theme.match.test(identity)||!url||!/^https:\/\//.test(url)||(!/^(cc by|cc0|public domain|pdm)/i.test(license))||(/\b(svg|gif|webp)\b/i.test(mime))||!/^File:/i.test(page.title))continue;
+   const record={url,full:info.descriptionurl,author:author||credit||"Autoria não informada no registro",license,licenseUrl:meta.LicenseUrl?.value||info.descriptionurl,description:theme.label+(description?" — "+description.slice(0,180):""),file:page.title.replace(/^File:/,"")};
    archiveCache.set(storyIndex,record);return record;
+  }
   }
   archiveCache.set(storyIndex,null);return null;
  })().catch(()=>null);
