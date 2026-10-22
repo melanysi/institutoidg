@@ -2354,6 +2354,31 @@
 @media(max-width:480px){.site-header{align-items:flex-start}.site-logo{font-size:13px}.hero{padding:40px 20px}.hero h1{font-size:clamp(2rem,10vw,3rem)}.idg-feature{padding:20px}.idg-info{padding:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
+<style id="idg-layout-refinement">
+/* Parceiros ganham protagonismo logo após a abertura. */
+main>.footer-partners{max-width:1200px;margin:20px auto 36px;padding:26px 20px;background:#f5f7fa;border:1px solid #e2e7eb;border-radius:20px}
+main>.footer-partners .footer-partners-heading{color:#20242b}
+main>.footer-partners .footer-partners-intro{color:#525c68}
+main>.footer-partners .partner-card{min-width:0}
+main>.footer-partners .partner-card h3{color:#20242b}
+main>.footer-partners .partners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
+.feature-grid,.pillars-grid,.participation-grid,.opportunity-grid,.course-grid,.portal-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));align-items:stretch}
+.feature-grid>.feature-card,.pillars-grid>*,.participation-grid>*,.opportunity-grid>*,.course-grid>*{min-width:0;height:100%}
+.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,220px);grid-auto-flow:dense}
+.gallery-grid>.gallery-item:first-child{grid-column:span 2;grid-row:span 2}
+.gallery-grid>.gallery-item img{width:100%;height:100%;object-fit:cover}
+.hero-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,4vw,52px)}
+.hero-photo{min-width:0}.hero-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.site-header{gap:14px}.site-logo{min-width:0}.site-logo>span:last-child{line-height:1.2}
+#projetos .feature-grid:has(.feature-card h3:first-child){align-items:stretch}
+#projetos .event-heading+.feature-grid>.feature-card:nth-child(1){background:#fff5c6;border:2px solid #e6b82c;color:#44350b}
+#projetos .event-heading+.feature-grid>.feature-card:nth-child(2){background:#ffe2ee;border:2px solid #e68cb2;color:#5d1f3b}
+#projetos .event-heading+.feature-grid>.feature-card:nth-child(3){background:#deefff;border:2px solid #7db6e5;color:#163b62}
+#projetos .event-heading+.feature-grid>.feature-card h3{color:inherit}
+@media(max-width:760px){.site-header{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding:12px 16px}.site-header>.site-logo{grid-column:1}.site-header>.btn-header{grid-column:2;grid-row:1;white-space:nowrap;padding:9px 12px;font-size:12px}.site-header>.site-nav{grid-column:1/-1;grid-row:2;width:100%;max-width:100%;overflow-x:auto;display:flex;flex-wrap:nowrap;gap:16px;scrollbar-width:thin}.site-nav a{white-space:nowrap;flex:0 0 auto}.hero-layout{grid-template-columns:1fr}.hero-content{max-width:none}.hero-photo{width:100%}.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}.gallery-grid>.gallery-item:first-child{grid-column:span 2;grid-row:span 2}.community-gallery{padding:20px 16px}.feature-grid,.pillars-grid,.participation-grid,.opportunity-grid,.course-grid,.portal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.feature-card,.participation-card,.course-card{padding:16px}.feature-card h3,.participation-card h3{overflow-wrap:anywhere}main>.footer-partners{margin:16px;padding:20px 14px}main>.footer-partners .partners-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.site-logo>span:last-child{font-size:12px}.site-logo .logo-box{width:35px;height:35px;flex:none}.feature-grid,.pillars-grid,.participation-grid,.opportunity-grid,.course-grid,.portal-grid{grid-template-columns:1fr}.gallery-grid{grid-auto-rows:125px}}
+</style>
 </head>
 <body>
     <a class="idg-skip" href="#inicio">Pular para o conteúdo</a>
@@ -2395,6 +2420,44 @@
 
         <section class="idg-feature" aria-labelledby="idg-feature-title"><div><small>Comunicação • Cultura • Educação</small><h2 id="idg-feature-title">IDG Daily — Informação que transforma</h2><p>Conheça matérias sobre democracia, Novembro Negro, cultura hip-hop, saúde pública e oportunidades. Explore os cartões, escolha uma pauta e aprofunde sua leitura.</p><a href="idg-daily.html">Explorar as matérias →</a></div><div aria-hidden="true" style="font-size:clamp(3rem,9vw,6rem);font-weight:900;line-height:1;text-align:center;letter-spacing:-.07em">VOZES<br><span style="color:#f39a24">DA QUEBRADA.</span></div></section>
         <section class="idg-info" aria-labelledby="idg-inscricao-titulo"><h2 id="idg-inscricao-titulo">Inscrições e horários dos cursos</h2><p>Os cursos são gratuitos e destinados a pessoas com 18 anos ou mais. Não é necessário ter experiência anterior. Recomendamos escolher um curso por vez.</p><p>As atividades são divulgadas principalmente no período noturno, de segunda a sexta-feira, geralmente das 19h às 22h. O horário exato de cada turma deve ser confirmado pela equipe.</p><p><strong>Pesquisa de horários:</strong> você pode indicar o turno de sua preferência no formulário. A resposta ajuda o Instituto a entender a demanda, mas não garante abertura de turma naquele horário nem confirmação de vaga.</p><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd5GI2UV71LhK0VAi1o4Afys1TxLSWAjehZGo7XRSo3etU0VQ/viewform" target="_blank" rel="noopener noreferrer">Preencher formulário atualizado de interesse e inscrição ↗</a></p><p>Em caso de dúvidas, escreva para <a href="mailto:despertando.idg@gmail.com">despertando.idg@gmail.com</a>.</p></section>
+        <section class="footer-partners" id="parceiros" aria-labelledby="partners-title">
+            <h2 class="footer-partners-heading" id="partners-title">Parceiros que fortalecem nossas ações</h2>
+            <p class="footer-partners-intro">Agradecemos a quem acredita no nosso propósito e caminha com a comunidade.</p>
+            <div class="partners-grid">
+                <article class="partner-card">
+                    <img src="images/parcerias/coterleste.jpg" alt="" width="180" height="145" loading="lazy" decoding="async" />
+                    <h3>Coterleste</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/company-academia.jpg" alt="" width="185" height="150" loading="lazy" decoding="async" />
+                    <h3>Company Academia</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/motoclube-das-loucas.jpg" alt="" width="184" height="151" loading="lazy" decoding="async" />
+                    <h3>Motoclube das Loucas</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/padaria-nova-romano.jpg" alt="" width="185" height="149" loading="lazy" decoding="async" />
+                    <h3>Padaria Nova Romano</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/pjc-mecanica.jpg" alt="" width="181" height="149" loading="lazy" decoding="async" />
+                    <h3>PJC Mecânica Diesel</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/unio-medical.jpg" alt="" width="185" height="151" loading="lazy" decoding="async" />
+                    <h3>Unio Medical</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/casa-rosada.jpg" alt="" width="181" height="151" loading="lazy" decoding="async" />
+                    <h3>Casa Rosada</h3>
+                </article>
+                <article class="partner-card">
+                    <img src="images/parcerias/centro-paula-souza.jpg" alt="" width="181" height="153" loading="lazy" decoding="async" />
+                    <h3>CPS — Centro Paula Souza</h3>
+                </article>
+            </div>
+        </section>
         <section class="section" id="sobre">
             <div class="section-header">
                 <h2>Quem Somos</h2>
@@ -3158,52 +3221,13 @@
                 </ul>
             </div>
         </div>
-        <section class="footer-partners" id="parceiros" aria-labelledby="partners-title">
-            <h2 class="footer-partners-heading" id="partners-title">Parceiros que fortalecem nossas ações</h2>
-            <p class="footer-partners-intro">Agradecemos a quem acredita no nosso propósito e caminha com a comunidade.</p>
-            <div class="partners-grid">
-                <article class="partner-card">
-                    <img src="images/parcerias/coterleste.jpg" alt="" width="180" height="145" loading="lazy" decoding="async" />
-                    <h3>Coterleste</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/company-academia.jpg" alt="" width="185" height="150" loading="lazy" decoding="async" />
-                    <h3>Company Academia</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/motoclube-das-loucas.jpg" alt="" width="184" height="151" loading="lazy" decoding="async" />
-                    <h3>Motoclube das Loucas</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/padaria-nova-romano.jpg" alt="" width="185" height="149" loading="lazy" decoding="async" />
-                    <h3>Padaria Nova Romano</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/pjc-mecanica.jpg" alt="" width="181" height="149" loading="lazy" decoding="async" />
-                    <h3>PJC Mecânica Diesel</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/unio-medical.jpg" alt="" width="185" height="151" loading="lazy" decoding="async" />
-                    <h3>Unio Medical</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/casa-rosada.jpg" alt="" width="181" height="151" loading="lazy" decoding="async" />
-                    <h3>Casa Rosada</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/centro-paula-souza.jpg" alt="" width="181" height="153" loading="lazy" decoding="async" />
-                    <h3>CPS — Centro Paula Souza</h3>
-                </article>
-            </div>
-        </section>
+        
         <div class="footer-bottom">
             <p>&copy; <span id="year">2026</span> Melany Kauane Souza Inacio.</p>
         </div>
     </footer>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase-config.js"></script>
-    
     <script src="supabase-config.js"></script>
     <script src="assistant-knowledge.js"></script>
     <script src="app.js"></script>
