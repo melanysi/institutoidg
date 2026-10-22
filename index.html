@@ -2344,8 +2344,19 @@
             }
         }
     </style>
+<style id="idg-front-refresh">
+:root{--idg-focus:#176c9b}html{scroll-padding-top:90px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--idg-focus);outline-offset:3px}
+.idg-skip{position:absolute;left:12px;top:-90px;z-index:99999;background:#20242b;color:white;padding:12px 16px;border-radius:8px}.idg-skip:focus{top:12px}
+.idg-feature{max-width:1200px;margin:24px auto;padding:clamp(20px,4vw,36px);background:linear-gradient(120deg,#20242b,#35404c);color:white;border-radius:18px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.idg-feature h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.2;margin:8px 0}.idg-feature p{color:#f0f1f3}.idg-feature a{display:inline-block;background:#f39a24;color:#20242b;padding:12px 18px;border-radius:8px;font-weight:800;text-decoration:none}.idg-feature small{color:#f3c583;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.idg-info{max-width:1200px;margin:30px auto;padding:24px;background:#f4f7f8;border:1px solid #dce5e8;border-radius:16px}.idg-info h2{margin:0 0 12px}.idg-info p{margin:8px 0}.idg-info a{color:#145b85;text-decoration:underline;font-weight:700}
+@media(max-width:900px){.site-header{flex-wrap:wrap;gap:12px;padding:14px 20px}.site-nav{display:flex;overflow-x:auto;gap:16px;max-width:100%;padding:4px 0 10px;scrollbar-width:thin}.site-nav a{flex:none;white-space:nowrap}.idg-feature{grid-template-columns:1fr;margin:18px 16px}.idg-info{margin:18px 16px}}
+@media(max-width:480px){.site-header{align-items:flex-start}.site-logo{font-size:13px}.hero{padding:40px 20px}.hero h1{font-size:clamp(2rem,10vw,3rem)}.idg-feature{padding:20px}.idg-info{padding:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
 </head>
 <body>
+    <a class="idg-skip" href="#inicio">Pular para o conteúdo</a>
     <header class="site-header">
         <a class="site-logo" href="#inicio" aria-label="Instituto Desafiando Gigantes - início">
             <span class="logo-box" aria-hidden="true">IDG</span>
@@ -2355,11 +2366,12 @@
             <a href="#inicio">Início</a>
             <a href="#sobre">Sobre</a>
             <a href="#projetos">Projetos</a>
+            <a href="idg-daily.html">IDG Daily</a>
             <a href="#parceiros">Parceiros</a>
             <a href="#participe">Participe</a>
             <a href="#oportunidades">Oportunidades</a>
         </nav>
-        <a class="btn-header btn-primary" href="#participe">Participe</a>
+        <a class="btn-header btn-primary" href="#cursos">Cursos gratuitos</a>
     </header>
 
     <main>
@@ -2381,6 +2393,8 @@
             </div>
         </section>
 
+        <section class="idg-feature" aria-labelledby="idg-feature-title"><div><small>Comunicação • Cultura • Educação</small><h2 id="idg-feature-title">IDG Daily — Informação que transforma</h2><p>Conheça matérias sobre democracia, Novembro Negro, cultura hip-hop, saúde pública e oportunidades. Explore os cartões, escolha uma pauta e aprofunde sua leitura.</p><a href="idg-daily.html">Explorar as matérias →</a></div><div aria-hidden="true" style="font-size:clamp(3rem,9vw,6rem);font-weight:900;line-height:1;text-align:center;letter-spacing:-.07em">VOZES<br><span style="color:#f39a24">DA QUEBRADA.</span></div></section>
+        <section class="idg-info" aria-labelledby="idg-inscricao-titulo"><h2 id="idg-inscricao-titulo">Inscrições e horários dos cursos</h2><p>Os cursos são gratuitos e destinados a pessoas com 18 anos ou mais. Não é necessário ter experiência anterior. Recomendamos escolher um curso por vez.</p><p>As atividades são divulgadas principalmente no período noturno, de segunda a sexta-feira, geralmente das 19h às 22h. O horário exato de cada turma deve ser confirmado pela equipe.</p><p><strong>Pesquisa de horários:</strong> você pode indicar o turno de sua preferência no formulário. A resposta ajuda o Instituto a entender a demanda, mas não garante abertura de turma naquele horário nem confirmação de vaga.</p><p><a href="https://docs.google.com/forms/d/e/1FAIpQLSd5GI2UV71LhK0VAi1o4Afys1TxLSWAjehZGo7XRSo3etU0VQ/viewform" target="_blank" rel="noopener noreferrer">Preencher formulário atualizado de interesse e inscrição ↗</a></p><p>Em caso de dúvidas, escreva para <a href="mailto:despertando.idg@gmail.com">despertando.idg@gmail.com</a>.</p></section>
         <section class="section" id="sobre">
             <div class="section-header">
                 <h2>Quem Somos</h2>
@@ -3189,7 +3203,7 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="supabase-config.js"></script>
-    <aside style="max-width:1200px;margin:24px auto;padding:22px;border-left:6px solid #f39a24;background:#f6f7f8;border-radius:12px" aria-label="IDG Daily"><h2 style="margin:0 0 8px">IDG Daily — Informação que transforma</h2><p style="margin:0 0 12px">Democracia, cultura periférica, Novembro Negro, saúde pública e oportunidades em matérias interativas.</p><a href="idg-daily.html" style="display:inline-block;padding:11px 16px;background:#20242b;color:white;border-radius:8px;text-decoration:none;font-weight:700">Explorar o IDG Daily →</a></aside>
+    
     <script src="supabase-config.js"></script>
     <script src="assistant-knowledge.js"></script>
     <script src="app.js"></script>
