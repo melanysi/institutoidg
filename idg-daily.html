@@ -37,6 +37,17 @@
 .reader{border-left:0;background:transparent;padding:0;box-shadow:none}
 .reader .reader-actions #prev-story,.reader .reader-actions #next-story{display:none}
 @media(max-width:550px){.magazine-controls{gap:7px}.magazine-controls button{padding:10px 12px;font-size:.85rem}.magazine-visual{min-height:250px}.magazine-page{min-height:480px}}
+
+/* Acervo visual: fotografias com crédito e licença verificados */
+.idg-archive-figure{margin:18px 0 22px;background:#161616;border-radius:14px;overflow:hidden;border:1px solid #ffffff30}
+.idg-archive-figure button{width:100%;padding:0;border:0;background:#171717;color:white;cursor:zoom-in;display:block}
+.idg-archive-figure img{display:block;width:100%;height:clamp(170px,32vw,300px);object-fit:contain;background:#171717}
+.idg-archive-figure figcaption{padding:10px 14px;font-size:.76rem;line-height:1.5;color:#dedede}
+.idg-archive-figure figcaption a{color:#ffdc79;text-decoration:underline}
+.idg-archive-figure .archive-caption{display:block;font-weight:700;color:#fff;margin-bottom:4px}
+.idg-archive-loading{font-size:.85rem;color:#c9c9c9;margin:16px 0}
+.idg-archive-dialog{border:0;border-radius:15px;padding:15px;background:#202020;color:white;width:min(94vw,1000px);max-height:92vh}
+.idg-archive-dialog::backdrop{background:#000d}.idg-archive-dialog img{display:block;max-width:100%;max-height:73vh;object-fit:contain;margin:auto}.idg-archive-dialog a{color:#ffdc79}.idg-archive-dialog button{background:#f8c944;color:#222;border:0;padding:9px 15px;border-radius:8px;font-weight:800;cursor:pointer}
 </style></head><body><header><div class="wrap"><a class="institute-back" href="index.html" aria-label="Voltar ao site do Instituto"><img src="images/file_000000003200820e979b07cd8c0ada9f.png" alt="" width="56" height="40" decoding="async"><span>← Instituto Desafiando Gigantes</span></a><a class="brand" href="#inicio">IDG <span>DAILY</span></a></div></header><div class="bar"></div>
 <section class="hero" id="inicio"><div class="wrap"><div class="eyebrow">Vozes da comunidade • Educação e cultura</div><h1>Informação que<br>transforma.</h1><p>Um espaço para aprender, questionar e conhecer histórias que ajudam a entender o mundo e a nossa realidade.</p></div></section>
 <main class="wrap"><section class="magazine-cover" aria-labelledby="edition-cover-title"><div class="magazine-top"><strong>EDIÇÃO 001</strong><span>História & cidadania</span></div><h2 id="edition-cover-title">IDG <span>DAILY.</span></h2><p>A periferia também produz conhecimento.</p><div class="magazine-visual" role="img" aria-label="Arte editorial em preto e branco sobre o período de 1964 a 1985"><strong>Memória, democracia e resistência.</strong></div><h3>O que foi a ditadura militar no Brasil?</h3><p>Você sabe o que aconteceu com a liberdade de expressão durante esse período?</p><button class="magazine-start" id="open-edition" type="button">◫ COMECE A EXPLORAR →</button></section><div class="intro"><h2>Conhecimento também é transformação social.</h2><p>Explore as pautas deslizando os cartões para o lado. Abra uma matéria para ler o conteúdo completo. Este espaço é educativo e não substitui fontes oficiais ou orientação profissional.</p></div>
@@ -93,6 +104,45 @@ const detailedHistory=[
 let magazinePages=[],magazinePage=0;
 const originalOpenStory=openStory;
 openStory=function(i){currentStory=i;const st=stories[i];const isHistory=st.title.includes("Ditadura");magazinePages=isHistory?detailedHistory:st.body.map((text,j)=>({heading:j===0?"Entenda a pauta":j===1?"O que mudou e por quê?":"O que isso tem a ver com a comunidade?",text}));magazinePage=0;history.replaceState(null,"","#materia-"+(i+1));reader.hidden=false;drawMagazinePage();reader.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});reader.focus({preventScroll:true})};
-function drawMagazinePage(){const st=stories[currentStory],page=magazinePages[magazinePage];article.replaceChildren();const sheet=el("section",undefined,"magazine-page");sheet.append(el("span","EDIÇÃO "+String(currentStory+1).padStart(3,"0")+" · "+st.category,"page-kicker"));const content=el("div");content.append(el("h2",page.heading),el("p",page.text));if(page.sources){const sources=el("div",undefined,"page-sources");sources.append(el("strong","Fontes para aprofundar:"));const ul=el("ul");page.sources.forEach(([name,url])=>{const li=el("li"),a=el("a",name);a.href=url;a.target="_blank";a.rel="noopener noreferrer";li.append(a);ul.append(li)});sources.append(ul);content.append(sources)}sheet.append(content,el("div","IDG DAILY · Informação que transforma     "+(magazinePage+1)+" / "+magazinePages.length,"page-footer"));article.append(sheet);const controls=el("nav",undefined,"magazine-controls");controls.setAttribute("aria-label","Navegação entre páginas da reportagem");const back=action("← Anterior",()=>{magazinePage--;drawMagazinePage()});back.disabled=magazinePage===0;const next=action(magazinePage===magazinePages.length-1?"Concluir leitura ✓":"Próxima →",()=>{if(magazinePage<magazinePages.length-1){magazinePage++;drawMagazinePage()}else{reader.hidden=true;rail.scrollIntoView({behavior:"smooth",block:"start"})}});const dots=el("div",undefined,"magazine-dots");dots.setAttribute("aria-label","Página "+(magazinePage+1)+" de "+magazinePages.length);magazinePages.forEach((_,i)=>{const dot=el("span");if(i===magazinePage)dot.className="active";dots.append(dot)});controls.append(back,dots,next);article.append(controls);document.getElementById("reading-fill").style.width=Math.round((magazinePage+1)/magazinePages.length*100)+"%";reader.querySelector(".reading-progress").setAttribute("aria-valuenow",String(Math.round((magazinePage+1)/magazinePages.length*100)))}
+function drawMagazinePage(){const st=stories[currentStory],page=magazinePages[magazinePage];article.replaceChildren();const sheet=el("section",undefined,"magazine-page");sheet.append(el("span","EDIÇÃO "+String(currentStory+1).padStart(3,"0")+" · "+st.category,"page-kicker"));const content=el("div");content.append(el("h2",page.heading));if(magazinePage===0)attachArchive(content,currentStory);content.append(el("p",page.text));if(page.sources){const sources=el("div",undefined,"page-sources");sources.append(el("strong","Fontes para aprofundar:"));const ul=el("ul");page.sources.forEach(([name,url])=>{const li=el("li"),a=el("a",name);a.href=url;a.target="_blank";a.rel="noopener noreferrer";li.append(a);ul.append(li)});sources.append(ul);content.append(sources)}sheet.append(content,el("div","IDG DAILY · Informação que transforma     "+(magazinePage+1)+" / "+magazinePages.length,"page-footer"));article.append(sheet);const controls=el("nav",undefined,"magazine-controls");controls.setAttribute("aria-label","Navegação entre páginas da reportagem");const back=action("← Anterior",()=>{magazinePage--;drawMagazinePage()});back.disabled=magazinePage===0;const next=action(magazinePage===magazinePages.length-1?"Concluir leitura ✓":"Próxima →",()=>{if(magazinePage<magazinePages.length-1){magazinePage++;drawMagazinePage()}else{reader.hidden=true;rail.scrollIntoView({behavior:"smooth",block:"start"})}});const dots=el("div",undefined,"magazine-dots");dots.setAttribute("aria-label","Página "+(magazinePage+1)+" de "+magazinePages.length);magazinePages.forEach((_,i)=>{const dot=el("span");if(i===magazinePage)dot.className="active";dots.append(dot)});controls.append(back,dots,next);article.append(controls);document.getElementById("reading-fill").style.width=Math.round((magazinePage+1)/magazinePages.length*100)+"%";reader.querySelector(".reading-progress").setAttribute("aria-valuenow",String(Math.round((magazinePage+1)/magazinePages.length*100)))}
 document.getElementById("open-edition").addEventListener("click",()=>{const index=stories.findIndex(s=>s.title.includes("Ditadura"));openStory(index>=0?index:0)});
+
+/* Busca imagens documentais no Wikimedia Commons; exibe apenas arquivos com licença identificada. */
+const archiveQueries=[
+"Brazil community meeting","Brazil black history abolition","Brazil hip hop graffiti","COVID-19 vaccination Brazil","vocational training Brazil","Diretas Ja Brazil 1984","women suffrage Brazil","women rights demonstration Brazil","SUS Brazil health unit","flood Brazil urban","Brazil workers labour movement"
+];
+const archiveCache=new Map();
+function archivePlain(html){const div=document.createElement("div");div.innerHTML=html||"";return(div.textContent||"").replace(/\\s+/g," ").trim()}
+async function fetchArchive(storyIndex){
+ if(archiveCache.has(storyIndex))return archiveCache.get(storyIndex);
+ const task=(async()=>{
+  const query=archiveQueries[storyIndex];if(!query)return null;
+  const params=new URLSearchParams({action:"query",format:"json",origin:"*",generator:"search",gsrsearch:query,gsrnamespace:"6",gsrlimit:"12",prop:"imageinfo",iiprop:"url|extmetadata",iiurlwidth:"900"});
+  const response=await fetch("https://commons.wikimedia.org/w/api.php?"+params.toString());
+  if(!response.ok)throw Error("Acervo indisponível");
+  const data=await response.json();const pages=Object.values(data.query?.pages||{});
+  for(const page of pages){
+   const info=page.imageinfo?.[0],meta=info?.extmetadata||{},license=archivePlain(meta.LicenseShortName?.value),author=archivePlain(meta.Artist?.value),credit=archivePlain(meta.Credit?.value),description=archivePlain(meta.ImageDescription?.value);
+   const mime=(info?.mime||"").toLowerCase(),url=info?.thumburl||info?.url;
+   if(!url||!/^https:\/\//.test(url)||(!/^(cc by|cc0|public domain|pdm)/i.test(license))||(/\b(svg|gif|webp)\b/i.test(mime))||!/^File:/i.test(page.title))continue;
+   const record={url,full:info.descriptionurl,author:author||credit||"Autoria não informada no registro",license,licenseUrl:meta.LicenseUrl?.value||info.descriptionurl,description:description.slice(0,220),file:page.title.replace(/^File:/,"")};
+   archiveCache.set(storyIndex,record);return record;
+  }
+  archiveCache.set(storyIndex,null);return null;
+ })().catch(()=>null);
+ archiveCache.set(storyIndex,task);return task;
+}
+function attachArchive(container,storyIndex){
+ const placeholder=el("p","Buscando imagem histórica ou documental com licença identificada…","idg-archive-loading");container.append(placeholder);
+ fetchArchive(storyIndex).then(data=>{
+  if(!placeholder.isConnected)return;
+  if(!data){placeholder.textContent="Imagem documental não disponível para esta pauta no momento. O conteúdo da reportagem continua acessível.";return}
+  const figure=el("figure",undefined,"idg-archive-figure"),button=el("button");button.type="button";button.setAttribute("aria-label","Ampliar imagem do acervo");
+  const img=document.createElement("img");img.src=data.url;img.alt="Registro documental relacionado à pauta. "+(data.description||data.file);img.loading="lazy";img.decoding="async";
+  button.append(img);button.addEventListener("click",()=>showArchiveImage(data));const caption=el("figcaption");caption.append(el("span",data.description||"Imagem documental do acervo Wikimedia Commons","archive-caption"));
+  const link=el("a","Ver arquivo, autoria e licença");link.href=data.full;link.target="_blank";link.rel="noopener noreferrer";
+  caption.append(document.createTextNode("Acervo: Wikimedia Commons · "+data.author+" · "+data.license+" · "),link);figure.append(button,caption);placeholder.replaceWith(figure);
+ });
+}
+function showArchiveImage(data){let dialog=document.getElementById("idg-archive-dialog");if(!dialog){dialog=document.createElement("dialog");dialog.id="idg-archive-dialog";dialog.className="idg-archive-dialog";document.body.append(dialog)}dialog.replaceChildren();const close=el("button","Fechar ✕");close.type="button";close.addEventListener("click",()=>dialog.close());const img=document.createElement("img");img.src=data.url;img.alt=data.description||data.file;const p=el("p",data.author+" · "+data.license+" · Wikimedia Commons");const a=el("a","Ver créditos e licença originais ↗");a.href=data.full;a.target="_blank";a.rel="noopener noreferrer";dialog.append(close,img,p,a);dialog.showModal()}
 </script></body></html>
