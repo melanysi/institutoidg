@@ -2344,22 +2344,77 @@
             }
         }
     </style>
-</head>
+<style id="idg-front-refresh">
+:root{--idg-focus:#176c9b}html{scroll-padding-top:90px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--idg-focus);outline-offset:3px}
+.idg-skip{position:absolute;left:12px;top:-90px;z-index:99999;background:#20242b;color:white;padding:12px 16px;border-radius:8px}.idg-skip:focus{top:12px}
+.idg-feature{max-width:1200px;margin:24px auto;padding:clamp(20px,4vw,36px);background:linear-gradient(120deg,#20242b,#35404c);color:white;border-radius:18px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center}
+.idg-feature h2{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.2;margin:8px 0}.idg-feature p{color:#f0f1f3}.idg-feature a{display:inline-block;background:#f39a24;color:#20242b;padding:12px 18px;border-radius:8px;font-weight:800;text-decoration:none}.idg-feature small{color:#f3c583;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.idg-info{max-width:1200px;margin:30px auto;padding:24px;background:#f4f7f8;border:1px solid #dce5e8;border-radius:16px}.idg-info h2{margin:0 0 12px}.idg-info p{margin:8px 0}.idg-info a{color:#145b85;text-decoration:underline;font-weight:700}
+@media(max-width:900px){.site-header{flex-wrap:wrap;gap:12px;padding:14px 20px}.site-nav{display:flex;overflow-x:auto;gap:16px;max-width:100%;padding:4px 0 10px;scrollbar-width:thin}.site-nav a{flex:none;white-space:nowrap}.idg-feature{grid-template-columns:1fr;margin:18px 16px}.idg-info{margin:18px 16px}}
+@media(max-width:480px){.site-header{align-items:flex-start}.site-logo{font-size:13px}.hero{padding:40px 20px}.hero h1{font-size:clamp(2rem,10vw,3rem)}.idg-feature{padding:20px}.idg-info{padding:18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+<style id="idg-layout-refinement">
+/* Parceiros ganham protagonismo logo após a abertura. */
+main>.footer-partners{max-width:1200px;margin:20px auto 36px;padding:26px 20px;background:#f5f7fa;border:1px solid #e2e7eb;border-radius:20px}
+main>.footer-partners .footer-partners-heading{color:#20242b}
+main>.footer-partners .footer-partners-intro{color:#525c68}
+main>.footer-partners .partner-card{min-width:0}
+main>.footer-partners .partner-card h3{color:#20242b}
+main>.footer-partners .partners-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
+.feature-grid,.pillars-grid,.participation-grid,.opportunity-grid,.course-grid,.portal-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));align-items:stretch}
+.feature-grid>.feature-card,.pillars-grid>*,.participation-grid>*,.opportunity-grid>*,.course-grid>*{min-width:0;height:100%}
+.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(150px,17vw,220px);grid-auto-flow:dense}
+.gallery-grid>.gallery-item:first-child{grid-column:span 2;grid-row:span 2}
+.gallery-grid>.gallery-item img{width:100%;height:100%;object-fit:cover}
+.hero-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(20px,4vw,52px)}
+.hero-photo{min-width:0}.hero-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.site-header{gap:14px}.site-logo{min-width:0}.site-logo>span:last-child{line-height:1.2}
+#projetos .feature-grid:has(.feature-card h3:first-child){align-items:stretch}
+#projetos .event-heading+.feature-grid>.feature-card:nth-child(1){background:#fff5c6;border:2px solid #e6b82c;color:#44350b}
+#projetos .event-heading+.feature-grid>.feature-card:nth-child(2){background:#ffe2ee;border:2px solid #e68cb2;color:#5d1f3b}
+#projetos .event-heading+.feature-grid>.feature-card:nth-child(3){background:#deefff;border:2px solid #7db6e5;color:#163b62}
+#projetos .event-heading+.feature-grid>.feature-card h3{color:inherit}
+@media(max-width:760px){.site-header{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding:12px 16px}.site-header>.site-logo{grid-column:1}.site-header>.btn-header{grid-column:2;grid-row:1;white-space:nowrap;padding:9px 12px;font-size:12px}.site-header>.site-nav{grid-column:1/-1;grid-row:2;width:100%;max-width:100%;overflow-x:auto;display:flex;flex-wrap:nowrap;gap:16px;scrollbar-width:thin}.site-nav a{white-space:nowrap;flex:0 0 auto}.hero-layout{grid-template-columns:1fr}.hero-content{max-width:none}.hero-photo{width:100%}.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}.gallery-grid>.gallery-item:first-child{grid-column:span 2;grid-row:span 2}.community-gallery{padding:20px 16px}.feature-grid,.pillars-grid,.participation-grid,.opportunity-grid,.course-grid,.portal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.feature-card,.participation-card,.course-card{padding:16px}.feature-card h3,.participation-card h3{overflow-wrap:anywhere}main>.footer-partners{margin:16px;padding:20px 14px}main>.footer-partners .partners-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.site-logo>span:last-child{font-size:12px}.site-logo .logo-box{width:35px;height:35px;flex:none}.feature-grid,.pillars-grid,.participation-grid,.opportunity-grid,.course-grid,.portal-grid{grid-template-columns:1fr}.gallery-grid{grid-auto-rows:125px}}
+</style>
+<style id="idg-official-logo-style">.site-logo{display:inline-flex;align-items:center;gap:12px;min-width:0}.idg-logo-image{display:block;width:clamp(58px,7vw,82px);height:clamp(42px,5vw,60px);object-fit:contain;object-position:center;border-radius:9px;background:transparent;mix-blend-mode:screen;flex-shrink:0}.site-logo>span:last-child{min-width:0;line-height:1.2}@media(max-width:520px){.idg-logo-image{width:58px;height:45px}.site-logo{gap:8px}.site-logo>span:last-child{font-size:clamp(.75rem,3.2vw,.95rem)}}</style><style id="idg-outbound-links">.idg-image-link,.idg-partner-link{display:block;color:inherit;text-decoration:none}.idg-image-link{position:relative;overflow:hidden;border-radius:inherit}.idg-image-link:focus-visible,.idg-partner-link:focus-visible{outline:3px solid #0b85bd;outline-offset:4px}.idg-partner-link{height:100%;padding:0;transition:transform .2s ease}.idg-partner-link:hover{transform:translateY(-3px)}.idg-partner-link h3{color:inherit}.idg-image-link:hover img{filter:brightness(.97)}</style><style id="idg-link-usability">.partner-card{position:relative}.partner-card .idg-partner-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;min-height:100%;position:relative;z-index:2;cursor:pointer;touch-action:manipulation}.partner-card .idg-partner-link img,.partner-card .idg-partner-link h3{pointer-events:none}.partner-visit-label{display:inline-flex;align-items:center;justify-content:center;padding:5px 10px;border-radius:999px;background:#e9f5ff;color:#155579;font-size:12px;font-weight:750;line-height:1.3}.idg-image-link{display:block;cursor:pointer}.idg-image-link figcaption{pointer-events:none;opacity:.9;transition:opacity .2s,transform .2s}.idg-image-link:hover figcaption,.idg-image-link:focus-visible figcaption{opacity:1;transform:translateY(-2px)}.idg-image-link::after{content:"Ver no mapa ↗";position:absolute;right:14px;top:14px;padding:7px 11px;background:rgba(255,255,255,.92);border-radius:999px;font-size:12px;font-weight:700;color:#254b38;box-shadow:0 2px 12px #0002;opacity:0;transform:translateY(-4px);transition:opacity .2s,transform .2s;pointer-events:none}.idg-image-link:hover::after,.idg-image-link:focus-visible::after{opacity:1;transform:translateY(0)}@media(hover:none){.idg-image-link::after{opacity:1;transform:none;font-size:11px;padding:6px 9px}.partner-visit-label{font-size:11px}}</style><style id="idg-mobile-header-fix">
+/* Cabeçalho compacto no celular, sem links cortados */
+.site-logo .idg-logo-image{mix-blend-mode:normal!important;background:transparent!important;border-radius:0!important;padding:0!important;object-fit:contain!important;filter:none!important;opacity:1!important}
+.idg-mobile-menu{display:none;align-items:center;justify-content:center;gap:7px;border:1px solid #d6d9de;border-radius:11px;background:#fff;color:#20242b;padding:10px 13px;font:inherit;font-size:.88rem;font-weight:750;cursor:pointer}
+.idg-mobile-menu span:first-child{font-size:1.25rem;line-height:1}
+@media(max-width:760px){
+.site-header{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:8px!important;padding:10px 15px!important;position:sticky!important;top:0!important}
+.site-header>.site-logo{grid-column:1!important;grid-row:1!important;min-width:0!important;max-width:100%!important;gap:9px!important}
+.site-header>.site-logo .idg-logo-image{width:58px!important;height:52px!important;flex-shrink:0!important}
+.site-header>.site-logo>span:last-child{font-size:clamp(.85rem,3.4vw,1rem)!important;line-height:1.15!important;overflow-wrap:normal!important}
+.site-header>.idg-mobile-menu{display:inline-flex!important;grid-column:2!important;grid-row:1!important}
+.site-header>.site-nav{display:none!important;grid-column:1/-1!important;grid-row:2!important;width:100%!important;max-width:100%!important;overflow:visible!important;flex-wrap:wrap!important;gap:4px!important;padding:10px 0 4px!important;border-top:1px solid #e8eaed!important;justify-content:flex-start!important}
+.site-header>.site-nav.idg-nav-open{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.site-header>.site-nav a{white-space:normal!important;display:block!important;padding:12px 10px!important;font-size:.9rem!important;border-radius:8px!important;background:#f5f6f8!important}
+.site-header>.site-nav a:focus-visible,.site-header>.site-nav a:hover{background:#e9edf2!important}
+}
+@media(max-width:365px){.site-header>.site-logo .idg-logo-image{width:48px!important;height:46px!important}.site-header>.site-logo>span:last-child{font-size:.78rem!important}.idg-mobile-menu{padding:9px!important}}
+</style></head>
 <body>
+    <a class="idg-skip" href="#inicio">Pular para o conteúdo</a>
     <header class="site-header">
         <a class="site-logo" href="#inicio" aria-label="Instituto Desafiando Gigantes - início">
-            <span class="logo-box" aria-hidden="true">IDG</span>
+            <img class="idg-logo-image" src="images/idg_logo_transparente.png?v=20261022b" alt="" width="72" height="48" decoding="async">
             <span>Instituto Desafiando Gigantes</span>
         </a>
-        <nav class="site-nav" aria-label="Navegação principal">
+        <button class="idg-mobile-menu" type="button" aria-controls="idg-main-nav" aria-expanded="false" aria-label="Abrir menu de navegação"><span aria-hidden="true">☰</span><span>Menu</span></button>
+        <nav class="site-nav" id="idg-main-nav" aria-label="Navegação principal">
             <a href="#inicio">Início</a>
             <a href="#sobre">Sobre</a>
             <a href="#projetos">Projetos</a>
+            <a href="idg-daily.html">IDG Daily</a>
             <a href="#parceiros">Parceiros</a>
             <a href="#participe">Participe</a>
             <a href="#oportunidades">Oportunidades</a>
         </nav>
-        <a class="btn-header btn-primary" href="#participe">Participe</a>
+        
     </header>
 
     <main>
@@ -2375,12 +2430,18 @@
                     </div>
                 </div>
                 <figure class="hero-photo">
+                    <a class="idg-image-link" href="https://share.google/GZpEQ4qMwEgp073jM" target="_blank" rel="noopener noreferrer" aria-label="Ver localização do Instituto Desafiando Gigantes no Google Maps">
                     <img src="images/comunidade.jpg" alt="Crianças, famílias e integrantes do Instituto reunidos em uma ação comunitária" width="1024" height="768" fetchpriority="high" />
                     <figcaption><span class="photo-mark" aria-hidden="true"></span>Instituto e comunidade</figcaption>
+                    </a>
                 </figure>
             </div>
         </section>
 
+        <section class="idg-feature" aria-labelledby="idg-feature-title"><div><small>Comunicação • Cultura • Educação</small><h2 id="idg-feature-title">IDG Daily — Informação que transforma</h2><p>Conheça matérias sobre democracia, Novembro Negro, cultura hip-hop, saúde pública e oportunidades. Explore os cartões, escolha uma pauta e aprofunde sua leitura.</p><a href="idg-daily.html">Explorar as matérias →</a></div><div aria-hidden="true" style="font-size:clamp(3rem,9vw,6rem);font-weight:900;line-height:1;text-align:center;letter-spacing:-.07em">VOZES<br><span style="color:#f39a24">DA QUEBRADA.</span></div></section>
+        
+        
+        
         <section class="section" id="sobre">
             <div class="section-header">
                 <h2>Quem Somos</h2>
@@ -2789,36 +2850,36 @@
                         <span class="course-highlight">Sem experiência anterior</span>
                         <span class="course-highlight">Certificado de conclusão</span>
                     </div>
-                    <p class="course-registration-note">Todas as turmas estão com vagas abertas no momento. A inscrição será analisada e a vaga só estará confirmada após o retorno do Instituto.</p>
+                    <p class="course-registration-note">As inscrições demonstram interesse e serão analisadas pela equipe. A disponibilidade de cada turma e a confirmação de vaga dependem do retorno oficial do Instituto.</p>
                 </div>
                 <div class="course-grid">
                     <article class="course-card">
                         <div class="course-art"><img src="images/cursos/manicure.jpg" alt="" width="274" height="355" loading="lazy" decoding="async" /></div>
-                        <div class="course-card-content"><h3>Manicure</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Manicure">Inscreva-se</a></div>
+                        <div class="course-card-content"><h3>Manicure</h3><span class="course-status">Consulte disponibilidade</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Manicure">Inscreva-se</a></div>
                     </article>
                     <article class="course-card">
                         <div class="course-art"><img src="images/cursos/cuidador-idoso.jpg" alt="" width="311" height="355" loading="lazy" decoding="async" /></div>
-                        <div class="course-card-content"><h3>Cuidador de Idoso</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Cuidador de Idoso">Inscreva-se</a></div>
+                        <div class="course-card-content"><h3>Cuidador de Idoso</h3><span class="course-status">Consulte disponibilidade</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Cuidador de Idoso">Inscreva-se</a></div>
                     </article>
                     <article class="course-card">
                         <div class="course-art"><img src="images/cursos/recepcionista.jpg" alt="" width="269" height="355" loading="lazy" decoding="async" /></div>
-                        <div class="course-card-content"><h3>Recepcionista</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Recepcionista">Inscreva-se</a></div>
+                        <div class="course-card-content"><h3>Recepcionista</h3><span class="course-status">Consulte disponibilidade</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Recepcionista">Inscreva-se</a></div>
                     </article>
                     <article class="course-card">
                         <div class="course-art"><img src="images/cursos/portaria-acesso.jpg" alt="" width="235" height="355" loading="lazy" decoding="async" /></div>
-                        <div class="course-card-content"><h3>Portaria e Controlador de Acesso</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Portaria e Controlador de Acesso">Inscreva-se</a></div>
+                        <div class="course-card-content"><h3>Portaria e Controlador de Acesso</h3><span class="course-status">Consulte disponibilidade</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Portaria e Controlador de Acesso">Inscreva-se</a></div>
                     </article>
                     <article class="course-card">
                         <div class="course-art"><img src="images/cursos/trancista.jpg" alt="" width="330" height="358" loading="lazy" decoding="async" /></div>
-                        <div class="course-card-content"><h3>Trancista</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Trancista">Inscreva-se</a></div>
+                        <div class="course-card-content"><h3>Trancista</h3><span class="course-status">Consulte disponibilidade</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Trancista">Inscreva-se</a></div>
                     </article>
                     <article class="course-card">
                         <div class="course-art"><img src="images/cursos/cuidador-infantil.jpg" alt="" width="393" height="358" loading="lazy" decoding="async" /></div>
-                        <div class="course-card-content"><h3>Cuidador Infantil</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Cuidador Infantil">Inscreva-se</a></div>
+                        <div class="course-card-content"><h3>Cuidador Infantil</h3><span class="course-status">Consulte disponibilidade</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Cuidador Infantil">Inscreva-se</a></div>
                     </article>
                     <article class="course-card">
                         <div class="course-art"><img src="images/cursos/panificacao.jpg" alt="" width="382" height="358" loading="lazy" decoding="async" /></div>
-                        <div class="course-card-content"><h3>Panificação</h3><span class="course-status">Vagas abertas</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Panificação">Inscreva-se</a></div>
+                        <div class="course-card-content"><h3>Panificação</h3><span class="course-status">Consulte disponibilidade</span><details class="course-info"><summary>Saiba mais</summary><p>Curso gratuito para pessoas com 18 anos ou mais, sem experiência prévia e com certificado.</p><p>Local: Rua Danças Húngaras, 72. Aulas em dias úteis, das 19h às 22h, conforme cronograma.</p></details><a class="btn-header btn-outline-navy" href="#form-inscricao" data-course-choice="Panificação">Inscreva-se</a></div>
                     </article>
                 </div>
                 <div class="course-facts">
@@ -3061,6 +3122,41 @@
                 <a class="btn-header btn-outline-navy" href="https://www.instagram.com/institutodesafiandogigantes/" target="_blank" rel="noopener noreferrer">Instagram do Instituto</a>
             </div>
         </section>
+        <section class="footer-partners" id="parceiros" aria-labelledby="partners-title">
+            <h2 class="footer-partners-heading" id="partners-title">Parceiros que fortalecem nossas ações</h2>
+            <p class="footer-partners-intro">Agradecemos a quem acredita no nosso propósito e caminha com a comunidade.</p>
+            <div class="partners-grid">
+                <article class="partner-card">
+                    <a class="idg-partner-link" href="https://www.instagram.com/coterleste/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram de Coterleste"><img src="images/parcerias/coterleste.jpg" alt="" width="180" height="145" loading="lazy" decoding="async" />
+                    <h3>Coterleste</h3><span class="partner-visit-label" aria-hidden="true">Instagram ↗</span></a>
+                </article>
+                <article class="partner-card">
+                    <a class="idg-partner-link" href="https://www.instagram.com/companyacademiasp/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram de Company Academia"><img src="images/parcerias/company-academia.jpg" alt="" width="185" height="150" loading="lazy" decoding="async" />
+                    <h3>Company Academia</h3><span class="partner-visit-label" aria-hidden="true">Instagram ↗</span></a>
+                </article>
+                <article class="partner-card">
+                    <a class="idg-partner-link" href="https://www.instagram.com/lokasmc/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram de Motoclube das Loucas"><img src="images/parcerias/motoclube-das-loucas.jpg" alt="" width="184" height="151" loading="lazy" decoding="async" />
+                    <h3>Motoclube das Loucas</h3><span class="partner-visit-label" aria-hidden="true">Instagram ↗</span></a>
+                </article>
+                <article class="partner-card"><a class="idg-partner-link" href="https://share.google/tjnDCX138YLAjkTTD" target="_blank" rel="noopener noreferrer" aria-label="Abrir localização da Padaria Nova Romano no Google Maps"><img src="images/parcerias/padaria-nova-romano.jpg" alt="" width="185" height="149" loading="lazy" decoding="async" /><h3>Padaria Nova Romano</h3></a></article>
+                <article class="partner-card">
+                    <img src="images/parcerias/pjc-mecanica.jpg" alt="" width="181" height="149" loading="lazy" decoding="async" />
+                    <h3>PJC Mecânica Diesel</h3>
+                </article>
+                <article class="partner-card">
+                    <a class="idg-partner-link" href="https://www.instagram.com/uniomedical/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram de Unio Medical"><img src="images/parcerias/unio-medical.jpg" alt="" width="185" height="151" loading="lazy" decoding="async" />
+                    <h3>Unio Medical</h3><span class="partner-visit-label" aria-hidden="true">Instagram ↗</span></a>
+                </article>
+                <article class="partner-card">
+                    <a class="idg-partner-link" href="https://www.instagram.com/grupocasarosada/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram de Casa Rosada"><img src="images/parcerias/casa-rosada.jpg" alt="" width="181" height="151" loading="lazy" decoding="async" />
+                    <h3>Casa Rosada</h3><span class="partner-visit-label" aria-hidden="true">Instagram ↗</span></a>
+                </article>
+                <article class="partner-card">
+                    <a class="idg-partner-link" href="https://www.instagram.com/centropaulasouza/" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram de CPS — Centro Paula Souza"><img src="images/parcerias/centro-paula-souza.jpg" alt="" width="181" height="153" loading="lazy" decoding="async" />
+                    <h3>CPS — Centro Paula Souza</h3><span class="partner-visit-label" aria-hidden="true">Instagram ↗</span></a>
+                </article>
+            </div>
+        </section>
     </main>
 
     <aside class="faq-assistant" aria-label="Assistente virtual Sol do Instituto">
@@ -3144,44 +3240,7 @@
                 </ul>
             </div>
         </div>
-        <section class="footer-partners" id="parceiros" aria-labelledby="partners-title">
-            <h2 class="footer-partners-heading" id="partners-title">Parceiros que fortalecem nossas ações</h2>
-            <p class="footer-partners-intro">Agradecemos a quem acredita no nosso propósito e caminha com a comunidade.</p>
-            <div class="partners-grid">
-                <article class="partner-card">
-                    <img src="images/parcerias/coterleste.jpg" alt="" width="180" height="145" loading="lazy" decoding="async" />
-                    <h3>Coterleste</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/company-academia.jpg" alt="" width="185" height="150" loading="lazy" decoding="async" />
-                    <h3>Company Academia</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/motoclube-das-loucas.jpg" alt="" width="184" height="151" loading="lazy" decoding="async" />
-                    <h3>Motoclube das Loucas</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/padaria-nova-romano.jpg" alt="" width="185" height="149" loading="lazy" decoding="async" />
-                    <h3>Padaria Nova Romano</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/pjc-mecanica.jpg" alt="" width="181" height="149" loading="lazy" decoding="async" />
-                    <h3>PJC Mecânica Diesel</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/unio-medical.jpg" alt="" width="185" height="151" loading="lazy" decoding="async" />
-                    <h3>Unio Medical</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/casa-rosada.jpg" alt="" width="181" height="151" loading="lazy" decoding="async" />
-                    <h3>Casa Rosada</h3>
-                </article>
-                <article class="partner-card">
-                    <img src="images/parcerias/centro-paula-souza.jpg" alt="" width="181" height="153" loading="lazy" decoding="async" />
-                    <h3>CPS — Centro Paula Souza</h3>
-                </article>
-            </div>
-        </section>
+        
         <div class="footer-bottom">
             <p>&copy; <span id="year">2026</span> Melany Kauane Souza Inacio.</p>
         </div>
@@ -3191,5 +3250,7 @@
     <script src="supabase-config.js"></script>
     <script src="assistant-knowledge.js"></script>
     <script src="app.js"></script>
-</body>
+<script id="idg-mobile-nav-script">
+(function(){const button=document.querySelector(".idg-mobile-menu"),nav=document.getElementById("idg-main-nav");if(!button||!nav)return;function setOpen(open){nav.classList.toggle("idg-nav-open",open);button.setAttribute("aria-expanded",String(open));button.setAttribute("aria-label",open?"Fechar menu de navegação":"Abrir menu de navegação");button.querySelector("span:first-child").textContent=open?"✕":"☰"}button.addEventListener("click",()=>setOpen(button.getAttribute("aria-expanded")!=="true"));nav.addEventListener("click",event=>{if(event.target.closest("a"))setOpen(false)});document.addEventListener("keydown",event=>{if(event.key==="Escape")setOpen(false)});window.addEventListener("resize",()=>{if(innerWidth>760)setOpen(false)})})();
+</script></body>
 </html>
