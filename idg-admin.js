@@ -33,7 +33,7 @@ async function refresh(){
    text.append(title,meta);
    const edit=document.createElement("button");edit.type="button";edit.className="secondary";edit.textContent="Editar";
    edit.addEventListener("click",()=>{editing=ev.id;$("title").value=ev.title;$("starts").value=localValue(ev.starts_at);$("ends").value=localValue(ev.ends_at);$("place").value=ev.location_name||"";$("partners").value=(ev.partner_names||[]).join(", ");$("status").value=ev.status;$("description").value=ev.description||"";$("published").checked=ev.is_published;$("form-heading").textContent="Editar ação";$("save").textContent="Atualizar ação";$("event-form").scrollIntoView({behavior:"smooth"})});
-   item.append(text,edit);$("events").append(item);
+   const remove=document.createElement("button");remove.type="button";remove.className="danger";remove.textContent="Excluir";remove.addEventListener("click",async()=>{if(!confirm("Excluir definitivamente a ação '"+ev.title+"'? As fotos vinculadas ficarão sem ação."))return;remove.disabled=true;try{if(!await isAdmin())throw new Error("Sessão sem autorização.");const {error}=await client.from("idg_events").delete().eq("id",ev.id);if(error)throw error;await refresh();message("Ação excluída.");}catch(err){reportError(err)}finally{remove.disabled=false}});const controls=document.createElement("div");controls.className="actions";controls.append(edit,remove);item.append(text,controls);$("events").append(item);
  }
  if(!records.length)$("events").textContent="Nenhuma ação cadastrada ainda.";
  await refreshMedia();
@@ -49,7 +49,7 @@ async function refreshMedia(){
   details.append(title,meta);
   const preview=document.createElement("button");preview.type="button";preview.className="secondary";preview.textContent="Visualizar";
   preview.addEventListener("click",async()=>{const {data,error}=await client.storage.from("idg-media").createSignedUrl(media.storage_path,60);if(error)return reportError(error);window.open(data.signedUrl,"_blank","noopener,noreferrer")});
-  item.append(details,preview);$("media-list").append(item);
+  const remove=document.createElement("button");remove.type="button";remove.className="danger";remove.textContent="Excluir";remove.addEventListener("click",async()=>{if(!confirm("Excluir definitivamente esta fotografia?"))return;remove.disabled=true;try{if(!await isAdmin())throw new Error("Sessão sem autorização.");const {error:storageError}=await client.storage.from("idg-media").remove([media.storage_path]);if(storageError)throw storageError;const {error}=await client.from("idg_media").delete().eq("id",media.id);if(error)throw error;await refreshMedia();message("Fotografia excluída.");}catch(err){reportError(err)}finally{remove.disabled=false}});const controls=document.createElement("div");controls.className="actions";controls.append(preview,remove);item.append(details,controls);$("media-list").append(item);
  }
  if(!data?.length)$("media-list").textContent="Nenhuma fotografia enviada.";
 }
