@@ -1,0 +1,26 @@
+(()=>{"use strict";
+const root=document.querySelector("#projetos .idg-calendar");if(!root)return;
+const old=root.querySelector(".idg-calendar-grid");if(!old)return;
+const months={JAN:0,FEV:1,MAR:2,ABR:3,MAI:4,JUN:5,JUL:6,AGO:7,SET:8,OUT:9,NOV:10,DEZ:11};
+let events=[...old.querySelectorAll(".idg-calendar-item")].map(el=>{const m=el.querySelector(".idg-calendar-date")?.textContent.match(/(\d+)\s+([A-Z]{3})/);if(!m)return null;const status=el.querySelector(".idg-calendar-status")?.textContent||"";return{title:el.querySelector("h4")?.textContent,description:el.querySelector("p")?.textContent,day:+m[1],month:months[m[2]],year:2026,status:status.includes("Realizada")?"completed":status.includes("Programada")?"planned":"draft",label:status}}).filter(Boolean);
+const box=document.createElement("div");box.className="idg-live-calendar";box.innerHTML='<div class="idg-live-toolbar"><button type="button" id="idg-prev-month" aria-label="Mês anterior">‹</button><h4 id="idg-month-name"></h4><button type="button" id="idg-next-month" aria-label="Próximo mês">›</button></div><div class="idg-live-weekdays"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span></div><div id="idg-live-days" class="idg-live-days"></div><p class="idg-live-legend">🟢 Realizada · 🔵 Confirmada · 🟠 Planejada · ⚪ Data sugerida</p><div id="idg-live-details" aria-live="polite"></div>';
+root.insertBefore(box,old);old.hidden=true;
+const style=document.createElement("style");style.textContent='#projetos .idg-live-calendar{max-width:760px;margin:20px auto;padding:clamp(12px,3vw,24px);border:1px solid #dce4eb;border-radius:20px;background:#fff}#projetos .idg-live-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}#projetos .idg-live-toolbar h4{margin:0;font-size:1.25rem;color:#193d56;text-transform:capitalize}#projetos .idg-live-toolbar button{font-size:1.7rem;border:1px solid #cdd9e4;border-radius:10px;background:#f0f4f8;color:#193d56;width:42px;height:42px;cursor:pointer}#projetos .idg-live-weekdays,#projetos .idg-live-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center}#projetos .idg-live-weekdays span{font-size:.8rem;font-weight:bold;padding:8px 0}#projetos .idg-live-days button{min-height:48px;border:1px solid #dce4eb;border-radius:9px;background:#f8fafc;cursor:pointer;color:#173c54}#projetos .idg-live-days button:disabled{opacity:.5;cursor:default}#projetos .idg-live-days button[aria-pressed=true]{border:2px solid #153b56;background:#e4f1f9}#projetos .idg-live-legend{font-size:.8rem;color:#526476;margin:14px 0}#projetos .idg-live-detail{border:1px solid #e2e8ee;background:#f7f9fc;border-radius:12px;padding:14px;margin-top:8px}#projetos .idg-live-detail h5{font-size:1.05rem;margin:5px 0}#projetos .idg-live-detail p{margin:4px 0}';document.head.append(style);
+let month=new Date().getMonth(),year=2026,selected=null;
+const $=id=>document.getElementById(id);
+function render(){
+ $("idg-month-name").textContent=new Intl.DateTimeFormat("pt-BR",{month:"long",year:"numeric"}).format(new Date(year,month,1));
+ const days=$("idg-live-days");days.replaceChildren();const offset=(new Date(year,month,1).getDay()+6)%7;
+ for(let i=0;i<offset;i++)days.append(document.createElement("span"));
+ for(let d=1;d<=new Date(year,month+1,0).getDate();d++){
+ const found=events.filter(e=>e.year===year&&e.month===month&&e.day===d&&e.status!=="cancelled");
+ const b=document.createElement("button");b.type="button";b.disabled=!found.length;b.setAttribute("aria-pressed",String(selected===d));b.setAttribute("aria-label",d+(found.length?" - "+found.map(e=>e.title).join(", "):""));b.textContent=d;
+ if(found.length){b.textContent=d+" ●";b.addEventListener("click",()=>{selected=d;render()})}days.append(b)}
+ const detail=$("idg-live-details");detail.replaceChildren();const selectedEvents=events.filter(e=>e.year===year&&e.month===month&&e.day===selected);
+ if(!selectedEvents.length){detail.textContent="Toque em uma data marcada para conhecer a ação.";return}
+ for(const ev of selectedEvents){const card=document.createElement("article");card.className="idg-live-detail";const small=document.createElement("small");small.textContent=(ev.label||ev.status)+" · "+ev.day+"/"+(ev.month+1)+"/"+ev.year;const title=document.createElement("h5");title.textContent=ev.title;const desc=document.createElement("p");desc.textContent=ev.description;card.append(small,title,desc);detail.append(card)}
+}
+for(const [id,step] of [["idg-prev-month",-1],["idg-next-month",1]])$(id).addEventListener("click",()=>{const d=new Date(year,month+step,1);year=d.getFullYear();month=d.getMonth();selected=null;render()});render();
+const cfg=window.IDG_SUPABASE_CONFIG;
+if(cfg?.url&&cfg?.publishableKey&&window.supabase){const db=window.supabase.createClient(cfg.url,cfg.publishableKey);db.from("idg_events").select("title,description,starts_at,status").eq("is_published",true).limit(500).then(({data,error})=>{if(error||!data)return;const remote=data.map(e=>{const d=new Date(e.starts_at);return{...e,day:d.getDate(),month:d.getMonth(),year:d.getFullYear(),label:e.status}});const keys=new Set(remote.map(e=>[e.year,e.month,e.day].join("-")));events=[...events.filter(e=>!keys.has([e.year,e.month,e.day].join("-"))),...remote];render()})}
+})();
