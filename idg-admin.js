@@ -55,7 +55,7 @@ async function refreshMedia(){
 }
 async function initialize(){
  if(!client){message("Configuração do Supabase não encontrada.",true);return}
- try{const allowed=await isAdmin();setAccess(allowed);if(allowed){await refresh();message("Acesso administrativo autorizado.")}else message("Entre com uma conta administrativa ativa.");}catch(e){setAccess(false);reportError(e)}
+ try{if(recovering)return;const allowed=await isAdmin();setAccess(allowed);if(allowed){await refresh();message("Acesso administrativo autorizado.")}else message("Entre com uma conta administrativa ativa.");}catch(e){setAccess(false);reportError(e)}
 }
 $("login-form").addEventListener("submit",async e=>{
  e.preventDefault();if(!client)return;
@@ -95,5 +95,48 @@ $("media-form").addEventListener("submit",async e=>{
  e.target.reset();await refreshMedia();message("Imagem armazenada de forma privada.");
  }catch(err){reportError(err)}finally{button.disabled=false}
 });
+
+let recovering=false;
+const showRecovery=active=>{
+ recovering=active;
+ $("login-form").classList.toggle("hidden",active);
+ $("forgot-password").classList.toggle("hidden",active);
+ $("reset-request-form").classList.add("hidden");
+ $("new-password-form").classList.toggle("hidden",!active);
+ $("dashboard").classList.add("hidden");
+ $("logout").classList.add("hidden");
+};
+$("forgot-password").addEventListener("click",()=>{
+ $("reset-request-form").classList.remove("hidden");
+ $("recovery-email").value=$("email").value.trim();
+});
+$("cancel-reset").addEventListener("click",()=>{$("reset-request-form").classList.add("hidden")});
+$("reset-request-form").addEventListener("submit",async e=>{
+ e.preventDefault();const button=e.target.querySelector('button[type="submit"]');button.disabled=true;
+ try{
+  if(!client)throw new Error("Supabase indisponível.");
+  const redirectTo=new URL("admin.html",window.location.href).href;
+  const {error}=await client.auth.resetPasswordForEmail($("recovery-email").value.trim(),{redirectTo});
+  if(error)throw error;
+  $("reset-request-form").classList.add("hidden");
+  message("Se o e-mail estiver cadastrado, você receberá um link para redefinir a senha.");
+ }catch(err){reportError(err)}finally{button.disabled=false}
+});
+$("new-password-form").addEventListener("submit",async e=>{
+ e.preventDefault();const button=e.target.querySelector("button");button.disabled=true;
+ try{
+  const password=$("new-password").value;
+  if(password.length<12||password!==$("confirm-password").value)throw new Error("As senhas devem coincidir e ter ao menos 12 caracteres.");
+  const {error}=await client.auth.updateUser({password});if(error)throw error;
+  await client.auth.signOut();
+  e.target.reset();showRecovery(false);setAccess(false);
+  history.replaceState(null,"",window.location.pathname);
+  message("Senha alterada. Entre novamente com sua nova senha.");
+ }catch(err){reportError(err)}finally{button.disabled=false}
+});
+if(client)client.auth.onAuthStateChange((event)=>{
+ if(event==="PASSWORD_RECOVERY"){showRecovery(true);message("Defina sua nova senha para concluir a recuperação.");}
+});
+
 initialize();
 })();
