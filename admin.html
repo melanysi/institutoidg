@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IDG Admin | Gestão de ações</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#172b3e;background:#f4f6fa}*{box-sizing:border-box}
+body{margin:0}.shell{max-width:980px;margin:auto;padding:24px 16px 70px}header{display:flex;justify-content:space-between;gap:12px;align-items:center}h1{margin:10px 0}h2{font-size:1.2rem}a{color:#205d77}.card{background:white;border:1px solid #dce3ec;border-radius:18px;padding:20px;margin:16px 0;box-shadow:0 3px 15px #0b26300b}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}label{display:block;font-weight:650;font-size:.9rem;margin-bottom:5px}input,select,textarea{width:100%;font:inherit;border:1px solid #a8b6c5;border-radius:9px;padding:11px;background:white}textarea{min-height:95px}
+button{font:inherit;border:0;border-radius:10px;background:#183d57;color:white;padding:11px 17px;cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}.secondary{background:#e9eef3;color:#17354c}.danger{background:#922f42}.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+#message{padding:10px 0;min-height:25px}#message.error{color:#a42335}#message.ok{color:#19644b}
+.list{display:grid;gap:10px}.item{border:1px solid #e2e7ed;border-radius:12px;padding:12px;display:flex;justify-content:space-between;gap:12px;align-items:center}.muted{color:#526578;font-size:.88rem}.hidden{display:none!important}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.item{display:block}.item button{margin-top:10px}}
+</style></head><body><main class="shell">
+<header><div><a href="index.html">← Voltar ao site</a><h1>Gestão IDG</h1><p class="muted">Ações comunitárias e fotografias</p></div><button id="logout" class="secondary hidden">Sair</button></header>
+<p id="message" role="status" aria-live="polite"></p>
+<section id="login-panel" class="card"><h2>Acesso administrativo</h2><p class="muted">Somente contas autorizadas e ativas podem alterar conteúdos.</p><form id="login-form"><div class="grid"><div><label for="email">E-mail</label><input id="email" type="email" autocomplete="username" required></div><div><label for="password">Senha</label><input id="password" type="password" autocomplete="current-password" required></div></div><div class="actions"><button type="submit">Entrar</button></div></form><p><button id="forgot-password" type="button" class="secondary">Esqueci minha senha</button></p><form id="reset-request-form" class="hidden"><label for="recovery-email">E-mail para recuperação</label><input id="recovery-email" type="email" autocomplete="email" required><div class="actions"><button type="submit">Enviar link de recuperação</button><button type="button" id="cancel-reset" class="secondary">Cancelar</button></div></form><form id="new-password-form" class="hidden"><h3>Definir nova senha</h3><label for="new-password">Nova senha (mínimo 12 caracteres)</label><input id="new-password" type="password" autocomplete="new-password" minlength="12" required><label for="confirm-password">Confirmar nova senha</label><input id="confirm-password" type="password" autocomplete="new-password" minlength="12" required><button type="submit">Salvar nova senha</button></form></section>
+<div id="dashboard" class="hidden">
+<section class="card"><h2 id="form-heading">Cadastrar ação</h2><form id="event-form">
+<div class="grid"><div><label for="title">Título</label><input id="title" maxlength="160" required></div><div><label for="starts">Data e hora</label><input id="starts" type="datetime-local" required></div>
+<div><label for="ends">Término (opcional)</label><input id="ends" type="datetime-local"></div><div><label for="place">Local</label><input id="place" maxlength="200"></div>
+<div><label for="partners">Parceiros (separados por vírgula)</label><input id="partners"></div><div><label for="status">Situação</label><select id="status"><option value="draft">Rascunho</option><option value="planned">Planejada</option><option value="confirmed">Confirmada</option><option value="completed">Realizada</option><option value="cancelled">Cancelada</option></select></div></div>
+<p><label for="description">Descrição</label><textarea id="description"></textarea></p><p><label><input id="published" type="checkbox" style="width:auto"> Publicar no calendário público</label></p>
+<div class="actions"><button id="save" type="submit">Salvar ação</button><button id="clear" type="button" class="secondary">Novo cadastro</button></div></form></section>
+<section class="card"><h2>Ações cadastradas</h2><div id="events" class="list"></div></section>
+<section class="card"><h2>Fotografias</h2><p class="muted">Imagens JPG, PNG ou WebP, até 10 MB. Os arquivos são privados até que exista um fluxo de publicação aprovado.</p>
+<form id="media-form"><div class="grid"><div><label for="media-event">Vincular à ação</label><select id="media-event"><option value="">Sem ação vinculada</option></select></div><div><label for="file">Imagem</label><input id="file" type="file" accept="image/jpeg,image/png,image/webp" required></div></div>
+<p><label for="alt">Descrição acessível da imagem</label><input id="alt" maxlength="300" required></p><p><label for="caption">Legenda</label><input id="caption"></p>
+<button type="submit">Enviar fotografia</button></form><div id="media-list" class="list" style="margin-top:14px"></div></section>
+</div></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="idg-admin.js"></script></body></html>
