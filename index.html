@@ -2405,6 +2405,17 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
 .site-header>.site-nav a:focus-visible,.site-header>.site-nav a:hover{background:#e9edf2!important}
 }
 @media(max-width:365px){.site-header>.site-logo .idg-logo-image{width:48px!important;height:46px!important}.site-header>.site-logo>span:last-child{font-size:.78rem!important}.idg-mobile-menu{padding:9px!important}}
+
+/* Calendário editorial das ações comunitárias */
+#projetos .idg-calendar{margin-top:42px;padding-top:28px;border-top:1px solid #e5e8ed}
+#projetos .idg-calendar .section-header h3{font-size:clamp(1.4rem,2.5vw,2rem);color:var(--navy);margin-bottom:8px}
+#projetos .idg-calendar-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#projetos .idg-calendar-item{display:flex;align-items:flex-start;gap:14px;padding:18px;background:#f8fafc;border:1px solid #dfe7ed;border-radius:16px;min-width:0}
+#projetos .idg-calendar-date{flex:0 0 66px;text-align:center;background:#e6f2e9;border:1px solid #a5c8b4;border-radius:12px;padding:12px 5px;color:#285543;font-size:.9rem;font-weight:800}
+#projetos .idg-calendar-item h4{margin:5px 0 6px;color:var(--navy);font-size:1.05rem}
+#projetos .idg-calendar-item p{margin:0;font-size:.93rem;line-height:1.55}
+#projetos .idg-calendar-status{display:inline-block;font-size:.74rem;font-weight:750;color:#4a5665;letter-spacing:.02em}
+@media(max-width:720px){#projetos .idg-calendar-grid{grid-template-columns:1fr}#projetos .idg-calendar-item{padding:14px}}
 </style></head>
 <body>
     <a class="idg-skip" href="#inicio">Pular para o conteúdo</a>
@@ -2587,6 +2598,46 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
                     <h3>Novembro Azul</h3>
                     <p>Ação social anual de conscientização, com palestras e aulas dinâmicas abertas à comunidade. O local, as datas e a programação podem variar; acompanhe as divulgações oficiais do Instituto.</p>
                 </article>
+            </div>
+            <div class="idg-calendar" aria-labelledby="idg-calendar-title">
+                <div class="section-header">
+                    <h3 id="idg-calendar-title">Calendário de ações — 2026</h3>
+                    <p>Conheça as ações realizadas e acompanhe as próximas iniciativas. Datas sugeridas ou aproximadas são identificadas para evitar confusão com eventos confirmados.</p>
+                </div>
+                <div class="idg-calendar-grid">
+                    <article class="idg-calendar-item">
+                        <div class="idg-calendar-date" aria-label="22 de MAR de 2026">22 MAR</div>
+                        <div><span class="idg-calendar-status">Realizada</span><h4>Ação em homenagem às mulheres</h4><p>Encontro comunitário sobre violência doméstica e valorização das mulheres, em parceria com a 11 Paulista.</p></div>
+                    </article>
+                    <article class="idg-calendar-item">
+                        <div class="idg-calendar-date" aria-label="29 de MAR de 2026">29 MAR</div>
+                        <div><span class="idg-calendar-status">Data de referência</span><h4>Ação de Páscoa</h4><p>Domingo anterior à Páscoa de 2026. Data aproximada para organização do calendário, não confirmada como registro histórico.</p></div>
+                    </article>
+                    <article class="idg-calendar-item">
+                        <div class="idg-calendar-date" aria-label="08 de AGO de 2026">08 AGO</div>
+                        <div><span class="idg-calendar-status">Realizada</span><h4>Festa Caipira</h4><p>Confraternização e atividades culturais para a comunidade.</p></div>
+                    </article>
+                    <article class="idg-calendar-item">
+                        <div class="idg-calendar-date" aria-label="27 de SET de 2026">27 SET</div>
+                        <div><span class="idg-calendar-status">Realizada</span><h4>Setembro Amarelo</h4><p>Ação de conscientização sobre saúde mental no Parque Biacica, em parceria com a Company Academia, com conversa e alongamentos.</p></div>
+                    </article>
+                    <article class="idg-calendar-item">
+                        <div class="idg-calendar-date" aria-label="03 de OUT de 2026">03 OUT</div>
+                        <div><span class="idg-calendar-status">Realizada</span><h4>Projeto Criança Feliz</h4><p>Atividade voltada às crianças, em parceria com a Coterleste. Iniciativa diferente da Festa de Dia das Crianças.</p></div>
+                    </article>
+                    <article class="idg-calendar-item">
+                        <div class="idg-calendar-date" aria-label="31 de OUT de 2026">31 OUT</div>
+                        <div><span class="idg-calendar-status">Programada</span><h4>Outubro Rosa</h4><p>Palestra de conscientização sobre a saúde da mulher, em parceria com a Sequencial. Horário e local a divulgar.</p></div>
+                    </article>
+                    <article class="idg-calendar-item">
+                        <div class="idg-calendar-date" aria-label="28 de NOV de 2026">28 NOV</div>
+                        <div><span class="idg-calendar-status">Data sugerida</span><h4>Novembro Azul</h4><p>Último sábado de novembro, reservado como proposta para uma ação de conscientização. Programação a confirmar.</p></div>
+                    </article>
+                    <article class="idg-calendar-item">
+                        <div class="idg-calendar-date" aria-label="19 de DEZ de 2026">19 DEZ</div>
+                        <div><span class="idg-calendar-status">Data sugerida</span><h4>Natal Solidário</h4><p>Sábado do fim de semana anterior ao Natal, reservado como proposta. Programação a confirmar.</p></div>
+                    </article>
+                </div>
             </div>
         </section>
 
