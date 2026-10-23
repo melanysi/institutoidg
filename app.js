@@ -399,10 +399,12 @@
                     form.dataset.turnstileToken = "";
                     submitButton.disabled = true;
                 },
-                "error-callback": () => {
+                "error-callback": errorCode => {
                     form.dataset.turnstileToken = "";
                     submitButton.disabled = true;
-                    showFormStatus(form, "A verificação de segurança falhou. Tente novamente.", true);
+                    const code = typeof errorCode === "string" && /^[0-9]{3,8}$/.test(errorCode) ? errorCode : "não informado";
+                    showFormStatus(form, "A verificação de segurança falhou (código Cloudflare: " + code + "). Nenhum dado foi enviado. Informe este código à equipe.", true);
+                    console.warn("IDG Turnstile error code:", code);
                 }
             });
             captchaWidgets.set(form, widgetId);
