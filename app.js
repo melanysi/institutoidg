@@ -370,36 +370,45 @@
         });
     });
 
-    function prepareCaptcha(form) {
+    function prepareCaptcha(form, attempt = 0) {
         const submitButton = form.querySelector('[type="submit"]');
         if (captchaWidgets.has(form)) return;
-        if (!config || !config.turnstileSiteKey || !window.turnstile) {
-            submitButton.disabled = true;
-            showFormStatus(
-                form,
-                "O formulário será habilitado após configurar a proteção antispam e publicar o serviço seguro de cadastro.",
-                true
-            );
+        submitButton.disabled = true;
+        if (!config || !config.turnstileSiteKey) {
+            showFormStatus(form, "A configuração de segurança não foi carregada. Atualize a página.", true);
             return;
         }
-
-        const widgetId = window.turnstile.render(form.querySelector("[data-turnstile-widget]"), {
-            sitekey: config.turnstileSiteKey,
-            callback: token => {
-                form.dataset.turnstileToken = token;
-                submitButton.disabled = false;
-            },
-            "expired-callback": () => {
-                form.dataset.turnstileToken = "";
-                submitButton.disabled = true;
-            },
-            "error-callback": () => {
-                form.dataset.turnstileToken = "";
-                submitButton.disabled = true;
-                showFormStatus(form, "A verificação antispam falhou. Atualize a página e tente novamente.", true);
+        if (!window.turnstile || typeof window.turnstile.render !== "function") {
+            if (attempt < 30) {
+                if (attempt === 0) showFormStatus(form, "Carregando a verificação de segurança…");
+                window.setTimeout(() => prepareCaptcha(form, attempt + 1), 500);
+            } else {
+                showFormStatus(form, "Não foi possível carregar o Cloudflare. Verifique bloqueadores de conteúdo e tente novamente.", true);
             }
-        });
-        captchaWidgets.set(form, widgetId);
+            return;
+        }
+        try {
+            const widgetId = window.turnstile.render(form.querySelector("[data-turnstile-widget]"), {
+                sitekey: config.turnstileSiteKey,
+                callback: token => {
+                    form.dataset.turnstileToken = token;
+                    submitButton.disabled = false;
+                    showFormStatus(form, "");
+                },
+                "expired-callback": () => {
+                    form.dataset.turnstileToken = "";
+                    submitButton.disabled = true;
+                },
+                "error-callback": () => {
+                    form.dataset.turnstileToken = "";
+                    submitButton.disabled = true;
+                    showFormStatus(form, "A verificação de segurança falhou. Tente novamente.", true);
+                }
+            });
+            captchaWidgets.set(form, widgetId);
+        } catch (error) {
+            showFormStatus(form, "Não foi possível iniciar a verificação de segurança. Atualize a página.", true);
+        }
     }
 
     window.addEventListener("idg:form-visible", event => {
