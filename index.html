@@ -2407,6 +2407,7 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
 @media(max-width:365px){.site-header>.site-logo .idg-logo-image{width:48px!important;height:46px!important}.site-header>.site-logo>span:last-child{font-size:.78rem!important}.idg-mobile-menu{padding:9px!important}}
 
 /* Calendário editorial das ações comunitárias */
+#projetos .idg-calendar-grid[hidden]{display:none!important}
 #projetos .idg-calendar{margin-top:42px;padding-top:28px;border-top:1px solid #e5e8ed}
 #projetos .idg-calendar .section-header h3{font-size:clamp(1.4rem,2.5vw,2rem);color:var(--navy);margin-bottom:8px}
 #projetos .idg-calendar-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
@@ -3328,6 +3329,7 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
     <script src="supabase-config.js"></script>
     <script src="assistant-knowledge.js"></script>
     <script src="app.js"></script>
+    <script src="idg-calendar.js" defer></script>
 <script id="idg-mobile-nav-script">
 (function(){const button=document.querySelector(".idg-mobile-menu"),nav=document.getElementById("idg-main-nav");if(!button||!nav)return;function setOpen(open){nav.classList.toggle("idg-nav-open",open);button.setAttribute("aria-expanded",String(open));button.setAttribute("aria-label",open?"Fechar menu de navegação":"Abrir menu de navegação");button.querySelector("span:first-child").textContent=open?"✕":"☰"}button.addEventListener("click",()=>setOpen(button.getAttribute("aria-expanded")!=="true"));nav.addEventListener("click",event=>{if(event.target.closest("a"))setOpen(false)});document.addEventListener("keydown",event=>{if(event.key==="Escape")setOpen(false)});window.addEventListener("resize",()=>{if(innerWidth>760)setOpen(false)})})();
 </script></body>
