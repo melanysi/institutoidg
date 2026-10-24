@@ -2427,7 +2427,14 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
 #projetos .idg-story-link:hover,#projetos .idg-story-link:focus-visible{background:#344e7d;text-decoration:underline;outline-offset:3px;}
 #projetos .idg-women-grid .feature-card{background:#f7eaf5!important;border:1px solid #d9a7d0!important;color:#4b2746!important;}
 </style>
-<style id="idg-team-access-fix">.footer-bottom{position:relative;z-index:1201}.footer-bottom .team-access-link{position:relative;z-index:1202;display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:160px;pointer-events:auto!important;touch-action:manipulation;cursor:pointer}.faq-assistant-widget{pointer-events:none}.faq-assistant-widget button,.faq-assistant-widget a,.faq-assistant-widget input,.faq-assistant-widget textarea{pointer-events:auto}</style></head>
+<style id="idg-team-access-fix">.footer-bottom{position:relative;z-index:1201}.footer-bottom .team-access-link{position:relative;z-index:1202;display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:160px;pointer-events:auto!important;touch-action:manipulation;cursor:pointer}.faq-assistant-widget{pointer-events:none}.faq-assistant-widget button,.faq-assistant-widget a,.faq-assistant-widget input,.faq-assistant-widget textarea{pointer-events:auto}</style><style id="idg-team-access-layout">
+.idg-team-access-area{max-width:1200px;margin:34px auto 20px;padding:20px 22px;border:1px solid rgba(255,255,255,.17);border-radius:16px;background:rgba(255,255,255,.055);display:flex;justify-content:space-between;align-items:center;gap:20px;position:relative;z-index:1201}
+.idg-team-access-copy strong{font-size:1rem;color:#fff}.idg-team-access-copy p{margin:6px 0 0;color:#c4c7ce;font-size:.87rem;line-height:1.5}
+.idg-team-access-area .team-access-link{font-weight:750;opacity:1;color:#fff;border-color:#c8c0db;border-radius:12px;padding:13px 17px;text-align:center;white-space:normal;flex-shrink:0;background:#34313e}
+.footer-bottom{justify-content:center!important;text-align:center!important;padding-top:16px!important}
+.footer-bottom p{margin:0 auto!important}
+@media(max-width:700px){.idg-team-access-area{display:grid;gap:14px;padding:20px;margin-top:30px}.idg-team-access-area .team-access-link{width:100%;justify-content:center}.footer-bottom{padding-top:16px!important}}
+</style></head>
 <body>
     <a class="idg-skip" href="#inicio">Pular para o conteúdo</a>
     <header class="site-header">
@@ -3323,10 +3330,11 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
             </div>
         </div>
         
-        <div class="footer-bottom">
-            <p>&copy; <span id="year">2026</span> Melany Kauane Souza Inacio.</p>
-            <a id="idg-team-access" href="./admin.html" class="team-access-link" aria-label="Abrir painel administrativo do Instituto Desafiando Gigantes" target="_self"><span aria-hidden="true">🔒</span> Acesso da equipe <span aria-hidden="true">↗</span></a>
+        <div class="idg-team-access-area">
+            <div class="idg-team-access-copy"><strong>Acesso restrito à equipe</strong><p>Área exclusiva para administradores autorizados do Instituto.</p></div>
+            <a id="idg-team-access" href="./admin.html" class="team-access-link" aria-label="Entrar no painel administrativo do Instituto Desafiando Gigantes"><span aria-hidden="true">🔒</span> Entrar no painel administrativo <span aria-hidden="true">↗</span></a>
         </div>
+        <div class="footer-bottom"><p>&copy; <span id="year">2026</span> Melany Kauane Souza Inacio.</p></div>
     </footer>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
