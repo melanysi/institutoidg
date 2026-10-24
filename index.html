@@ -2427,7 +2427,7 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
 #projetos .idg-story-link:hover,#projetos .idg-story-link:focus-visible{background:#344e7d;text-decoration:underline;outline-offset:3px;}
 #projetos .idg-women-grid .feature-card{background:#f7eaf5!important;border:1px solid #d9a7d0!important;color:#4b2746!important;}
 </style>
-</head>
+<style id="idg-team-access-fix">.footer-bottom{position:relative;z-index:1201}.footer-bottom .team-access-link{position:relative;z-index:1202;display:inline-flex;align-items:center;justify-content:center;min-height:48px;min-width:160px;pointer-events:auto!important;touch-action:manipulation;cursor:pointer}.faq-assistant-widget{pointer-events:none}.faq-assistant-widget button,.faq-assistant-widget a,.faq-assistant-widget input,.faq-assistant-widget textarea{pointer-events:auto}</style></head>
 <body>
     <a class="idg-skip" href="#inicio">Pular para o conteúdo</a>
     <header class="site-header">
@@ -3325,7 +3325,7 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
         
         <div class="footer-bottom">
             <p>&copy; <span id="year">2026</span> Melany Kauane Souza Inacio.</p>
-            <a href="https://melanysi.github.io/institutoidg/admin.html" class="team-access-link" aria-label="Abrir painel administrativo do Instituto Desafiando Gigantes"><span aria-hidden="true">🔒</span> Acesso da equipe <span aria-hidden="true">↗</span></a>
+            <a id="idg-team-access" href="./admin.html" class="team-access-link" aria-label="Abrir painel administrativo do Instituto Desafiando Gigantes" target="_self"><span aria-hidden="true">🔒</span> Acesso da equipe <span aria-hidden="true">↗</span></a>
         </div>
     </footer>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
@@ -3336,5 +3336,5 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
     <script src="idg-calendar.js" defer></script>
 <script id="idg-mobile-nav-script">
 (function(){const button=document.querySelector(".idg-mobile-menu"),nav=document.getElementById("idg-main-nav");if(!button||!nav)return;function setOpen(open){nav.classList.toggle("idg-nav-open",open);button.setAttribute("aria-expanded",String(open));button.setAttribute("aria-label",open?"Fechar menu de navegação":"Abrir menu de navegação");button.querySelector("span:first-child").textContent=open?"✕":"☰"}button.addEventListener("click",()=>setOpen(button.getAttribute("aria-expanded")!=="true"));nav.addEventListener("click",event=>{if(event.target.closest("a"))setOpen(false)});document.addEventListener("keydown",event=>{if(event.key==="Escape")setOpen(false)});window.addEventListener("resize",()=>{if(innerWidth>760)setOpen(false)})})();
-</script></body>
+</script><script id="idg-team-access-navigation">(()=>{const link=document.getElementById("idg-team-access");if(!link)return;link.addEventListener("click",event=>{event.preventDefault();event.stopPropagation();window.location.assign(new URL("admin.html",document.baseURI).href)})})();</script></body>
 </html>
