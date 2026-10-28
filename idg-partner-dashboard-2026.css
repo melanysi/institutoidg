@@ -98,3 +98,17 @@ body.idg-partner-redesign{background:#f7f3fa}
 .idg-partner-redesign #portal #project-updates .update small,.idg-partner-redesign #portal #accountability-reports .update small{color:#7a6884}
 .idg-partner-redesign #portal #accountability-reports .update strong{color:#683d82;margin-top:7px;font-size:.9rem}
 @media(max-width:700px){.idg-partner-redesign #portal #project-updates,.idg-partner-redesign #portal #accountability-reports{grid-template-columns:minmax(0,1fr)}}
+
+/* Tablet section polish: sticky navigation, standalone network and empty states */
+@media(min-width:801px){
+.idg-partner-redesign #portal .idg-partner-shell{align-items:start!important}
+.idg-partner-redesign #portal .idg-partner-side{align-self:start!important;height:auto!important;min-height:0!important}
+}
+@media(min-width:1200px){
+.idg-partner-redesign #portal .idg-partner-side{position:sticky!important;top:16px!important}
+}
+.idg-partner-redesign #portal #partner-network{margin:28px 0 2px!important}
+.idg-partner-redesign #portal #partner-projects{margin-top:28px!important}
+.idg-partner-redesign #portal #project-updates:not(:has(.update)),.idg-partner-redesign #portal #accountability-reports:not(:has(.update)){background:#fff;border:1px dashed #d9c7e2;border-radius:16px;padding:22px;color:#6c5b78;line-height:1.55}
+.idg-partner-redesign #portal #project-updates:not(:has(.update))::before,.idg-partner-redesign #portal #accountability-reports:not(:has(.update))::before{content:"";display:block;width:30px;height:4px;background:#a858b5;border-radius:6px;margin-bottom:12px}
+@media(max-width:800px){.idg-partner-redesign #portal .idg-partner-side{min-height:0!important;height:auto!important}}
