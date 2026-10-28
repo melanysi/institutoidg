@@ -125,3 +125,13 @@ body.idg-partner-redesign{background:#f7f3fa}
 .idg-partner-redesign #portal .idg-project-catalogue-card small{font-weight:700;color:#764189}
 @media(max-width:1150px){.idg-partner-redesign #portal .idg-project-catalogue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.idg-partner-redesign #portal .idg-project-catalogue-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Accountability guide: explanatory, never a substitute for published evidence */
+.idg-partner-redesign #portal .idg-accountability-guide{background:linear-gradient(135deg,#fff 0%,#fcf8fe 100%);border:1px solid #eaddec;border-radius:18px;padding:22px;margin:14px 0 18px;box-shadow:0 8px 24px #3b204a0b}
+.idg-partner-redesign #portal .idg-accountability-guide h3{margin:0 0 16px;font-size:1.1rem;color:#3e2852}
+.idg-partner-redesign #portal .idg-accountability-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.idg-partner-redesign #portal .idg-accountability-steps>div{border-left:3px solid #ae66ba;padding:4px 12px;min-width:0}
+.idg-partner-redesign #portal .idg-accountability-steps strong{font-size:.91rem;color:#75408a}
+.idg-partner-redesign #portal .idg-accountability-steps p{font-size:.87rem;line-height:1.55;color:#665c70;margin:7px 0 0}
+.idg-partner-redesign #portal .idg-accountability-guide>.muted{font-size:.82rem;line-height:1.5;margin:16px 0 0}
+@media(max-width:750px){.idg-partner-redesign #portal .idg-accountability-steps{grid-template-columns:minmax(0,1fr)}.idg-partner-redesign #portal .idg-accountability-guide{padding:17px}}
