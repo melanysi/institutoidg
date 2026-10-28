@@ -86,3 +86,15 @@ body.idg-partner-redesign{background:#f7f3fa}
 .idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div span:first-child{min-width:0!important;overflow-wrap:break-word!important;word-break:normal!important;white-space:normal!important}
 .idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div strong{white-space:nowrap!important;text-align:right!important;min-width:90px}
 @media(max-width:520px){.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div{gap:8px!important}.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div strong{min-width:76px;font-size:.82rem!important}}
+
+/* Project updates and accountability — readable, verified editorial cards */
+.idg-partner-redesign #portal .idg-section-intro{border-left:4px solid #a64eac;background:#fbf5fd;padding:12px 16px;border-radius:0 12px 12px 0;margin:2px 0 12px}
+.idg-partner-redesign #portal .idg-section-intro p{margin:5px 0 0;color:#655a72;font-size:.9rem;line-height:1.55}
+.idg-partner-redesign #portal .idg-section-kicker{font-size:.72rem;font-weight:800;letter-spacing:.1em;color:#8d397f}
+.idg-partner-redesign #portal #project-updates,.idg-partner-redesign #portal #accountability-reports{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:14px;min-width:0}
+.idg-partner-redesign #portal #project-updates .update,.idg-partner-redesign #portal #accountability-reports .update{border:1px solid #ebdfee;border-radius:18px;box-shadow:0 7px 22px #39224b0c;background:#fff;min-width:0;overflow-wrap:break-word;display:flex;flex-direction:column;gap:8px}
+.idg-partner-redesign #portal #project-updates .update h3,.idg-partner-redesign #portal #accountability-reports .update h3{font-size:1.06rem;color:#37254a;margin:0;line-height:1.4}
+.idg-partner-redesign #portal #project-updates .update p,.idg-partner-redesign #portal #accountability-reports .update p{margin:0;color:#5f556b;line-height:1.6}
+.idg-partner-redesign #portal #project-updates .update small,.idg-partner-redesign #portal #accountability-reports .update small{color:#7a6884}
+.idg-partner-redesign #portal #accountability-reports .update strong{color:#683d82;margin-top:7px;font-size:.9rem}
+@media(max-width:700px){.idg-partner-redesign #portal #project-updates,.idg-partner-redesign #portal #accountability-reports{grid-template-columns:minmax(0,1fr)}}
