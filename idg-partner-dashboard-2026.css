@@ -70,3 +70,19 @@ body.idg-partner-redesign{background:#f7f3fa}
 .idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div:last-child{border-bottom:0}
 .idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div span:first-child{line-height:1.4}
 @media(max-width:520px){.idg-partner-redesign #portal .idg-course-chart{gap:12px!important}.idg-partner-redesign #portal .idg-course-center strong{font-size:1.65rem}}
+
+/* Tablet hotfix: override legacy desktop two-column chart at >=901px */
+@media(min-width:801px) and (max-width:1199px){
+.idg-partner-redesign #portal .idg-partner-shell{grid-template-columns:minmax(0,1fr)!important}
+.idg-partner-redesign #portal .idg-partner-side{position:static!important;min-height:0!important;padding:14px 18px!important;gap:8px!important}
+.idg-partner-redesign #portal .idg-partner-side nav{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;gap:6px!important;padding:5px 0 10px}
+.idg-partner-redesign #portal .idg-partner-side nav a{white-space:nowrap;flex:0 0 auto}
+.idg-partner-redesign #portal .idg-partner-side>p{display:none}
+}
+.idg-partner-redesign #portal .idg-course-chart{display:flex!important;flex-direction:column!important;align-items:center!important;width:100%!important;max-width:680px!important;min-width:0!important;margin:20px auto!important;gap:20px!important}
+.idg-partner-redesign #portal .idg-course-chart>div:first-child{width:min(100%,300px)!important;max-width:300px!important;flex:none!important}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2){display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;max-width:620px!important;gap:0!important;min-width:0!important}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:16px!important;align-items:center!important;width:100%!important;min-width:0!important}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div span:first-child{min-width:0!important;overflow-wrap:break-word!important;word-break:normal!important;white-space:normal!important}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div strong{white-space:nowrap!important;text-align:right!important;min-width:90px}
+@media(max-width:520px){.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div{gap:8px!important}.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div strong{min-width:76px;font-size:.82rem!important}}
