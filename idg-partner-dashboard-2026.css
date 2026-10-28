@@ -160,3 +160,7 @@ body.idg-partner-redesign{background:#f7f3fa}
 .idg-partner-redesign #portal .idg-agenda-detail p{margin:0 0 7px}
 .idg-partner-redesign #portal .idg-agenda-detail small,.idg-partner-redesign #portal .idg-agenda-footnote{font-size:.8rem;line-height:1.5;color:#76677c}
 @media(max-width:480px){.idg-partner-redesign #portal .idg-agenda-entry{gap:10px;padding:12px}.idg-partner-redesign #portal .idg-agenda-date{flex-basis:64px;min-height:74px}.idg-partner-redesign #portal .idg-agenda-date strong{font-size:1.6rem}}
+
+/* Final mobile polish for agenda date */
+.idg-partner-redesign #portal .idg-agenda-date{gap:2px;padding:8px 4px;box-sizing:border-box}
+.idg-partner-redesign #portal .idg-agenda-date span{display:block;white-space:nowrap;text-align:center;line-height:1.2;letter-spacing:.02em}
