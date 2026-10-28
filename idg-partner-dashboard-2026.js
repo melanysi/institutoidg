@@ -7,7 +7,7 @@ const schedule=mk("section","idg-partner-info-panel");schedule.id="partner-activ
 partners.setAttribute("aria-label","Organizações parceiras do Instituto");schedule.setAttribute("aria-label","Agenda e atividades previstas");overview.append(partners,schedule);const projectsTitle=document.getElementById("partner-projects");const reportsTitle=document.getElementById("partner-reports");if(projectsTitle){projectsTitle.before(overview);const sectionHeading=mk("h2",null,"Rede de apoio e agenda");sectionHeading.id="partner-network";overview.before(sectionHeading)}else document.getElementById("project-updates")?.before(overview);
 // Institutional descriptions only: these are not measured outcomes or published reports.
 const projectsRoot=document.getElementById("project-updates");
-if(projectsRoot){
+if(projectsRoot&&!document.getElementById("idg-project-catalogue")){
  const catalogue=mk("section","idg-project-catalogue");
  catalogue.id="idg-project-catalogue";
  catalogue.append(mk("h3",null,"Conheça nossas frentes de atuação"),mk("p","muted","Apresentação institucional das iniciativas do IDG. Resultados, números e evidências aparecem separadamente, quando publicados pela equipe."));
