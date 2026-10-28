@@ -112,3 +112,16 @@ body.idg-partner-redesign{background:#f7f3fa}
 .idg-partner-redesign #portal #project-updates:not(:has(.update)),.idg-partner-redesign #portal #accountability-reports:not(:has(.update)){background:#fff;border:1px dashed #d9c7e2;border-radius:16px;padding:22px;color:#6c5b78;line-height:1.55}
 .idg-partner-redesign #portal #project-updates:not(:has(.update))::before,.idg-partner-redesign #portal #accountability-reports:not(:has(.update))::before{content:"";display:block;width:30px;height:4px;background:#a858b5;border-radius:6px;margin-bottom:12px}
 @media(max-width:800px){.idg-partner-redesign #portal .idg-partner-side{min-height:0!important;height:auto!important}}
+
+/* Institutional social projects: distinct from verified impact reports */
+.idg-partner-redesign #portal .idg-project-catalogue{margin:4px 0 18px;min-width:0}
+.idg-partner-redesign #portal .idg-project-catalogue>h3{font-size:1.13rem;color:#3d2851;margin:0 0 6px}
+.idg-partner-redesign #portal .idg-project-catalogue>p{margin:0 0 16px;line-height:1.55}
+.idg-partner-redesign #portal .idg-project-catalogue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.idg-partner-redesign #portal .idg-project-catalogue-card{min-width:0;background:#fff;border:1px solid #e9ddeb;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 7px 22px #39224b0a}
+.idg-partner-redesign #portal .idg-project-category{font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#91459c}
+.idg-partner-redesign #portal .idg-project-catalogue-card h4{margin:0;font-size:1.03rem;line-height:1.35;color:#39264e}
+.idg-partner-redesign #portal .idg-project-catalogue-card p{margin:0;color:#665b70;line-height:1.55;flex:1;font-size:.9rem}
+.idg-partner-redesign #portal .idg-project-catalogue-card small{font-weight:700;color:#764189}
+@media(max-width:1150px){.idg-partner-redesign #portal .idg-project-catalogue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.idg-partner-redesign #portal .idg-project-catalogue-grid{grid-template-columns:minmax(0,1fr)}}
