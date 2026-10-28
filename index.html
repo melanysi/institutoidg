@@ -2410,6 +2410,19 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
 }
 @media(max-width:365px){.site-header>.site-logo .idg-logo-image{width:48px!important;height:46px!important}.site-header>.site-logo>span:last-child{font-size:.78rem!important}.idg-mobile-menu{padding:9px!important}}
 
+/* Cards compactos e responsivos do calendário IDG */
+#projetos .idg-calendar-item{background:#fff;border:1px solid #e4e8ee;box-shadow:0 4px 16px rgba(20,40,70,.045);align-items:flex-start}
+#projetos .idg-calendar-item>div:last-child{min-width:0;flex:1}
+#projetos .idg-calendar-item h4{line-height:1.3}
+#projetos .idg-calendar-item p{overflow-wrap:anywhere}
+#projetos .idg-calendar-item:has(.idg-calendar-program) {border-color:#e9d4e7;background:linear-gradient(135deg,#fff 65%,#fff6fb)}
+#projetos .idg-calendar-item:has(.idg-calendar-program) .idg-calendar-date{background:#6b4086;color:#fff;border-color:#6b4086}
+#projetos .idg-calendar-program-title{font-weight:800;color:#57316d;margin:12px 0 6px!important}
+#projetos .idg-calendar-program{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+#projetos .idg-calendar-program li{padding:6px 9px;background:#fff;border:1px solid #f0e7ef;border-radius:9px;font-size:.9rem;line-height:1.4}
+#projetos .idg-calendar-closing{margin-top:12px!important;color:#6b4086;font-size:.85rem!important}
+@media(max-width:480px){#projetos .idg-calendar-item{gap:10px;padding:12px}#projetos .idg-calendar-date{flex-basis:56px;padding:10px 3px;font-size:.78rem}#projetos .idg-calendar-program li{font-size:.84rem}}
+
 /* Calendário editorial das ações comunitárias */
 #projetos .idg-calendar-grid[hidden]{display:none!important}
 #projetos .idg-calendar{margin-top:42px;padding-top:28px;border-top:1px solid #e5e8ed}
@@ -2656,7 +2669,7 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
                     </article>
                     <article class="idg-calendar-item">
                         <div class="idg-calendar-date" aria-label="31 de OUT de 2026">31 OUT</div>
-                        <div><span class="idg-calendar-status">Programada</span><h4>Outubro Rosa</h4><p>Palestra de conscientização sobre a saúde da mulher, em parceria com a Sequencial. Horário e local a divulgar.</p></div>
+                        <div class="idg-calendar-content"><span class="idg-calendar-status">Programada</span><h4>Outubro Rosa 🎀</h4><p>Um encontro dedicado à conscientização sobre o câncer de mama, ao autocuidado e à valorização feminina. 💗</p><p class="idg-calendar-program-title">Nossa programação</p><ul class="idg-calendar-program"><li>🧘‍♀️ Aula de Pilates</li><li>🎤 Empreendedorismo feminino</li><li>💗 Relatos e experiências sobre o câncer de mama</li><li>☕ Coffee break</li><li>💆‍♀️ Cuidados especiais com profissionais presentes</li></ul><p class="idg-calendar-closing">Um momento de acolhimento, informação e conexão entre mulheres. 💜</p></div>
                     </article>
                     <article class="idg-calendar-item">
                         <div class="idg-calendar-date" aria-label="28 de NOV de 2026">28 NOV</div>
