@@ -1,0 +1,31 @@
+/* IDG Partners dashboard 2026 — scoped, no admin changes */
+body.idg-partner-redesign{background:#f7f3fa}
+.idg-partner-redesign #portal .idg-partner-shell{grid-template-columns:224px minmax(0,1fr);gap:18px}
+.idg-partner-redesign #portal .idg-partner-side{background:linear-gradient(165deg,#20102e,#3d1755);border-radius:20px;position:sticky;top:16px;min-height:calc(100vh - 48px)}
+.idg-partner-redesign #portal .idg-partner-side nav a{transition:background .15s}
+.idg-partner-redesign #portal .idg-partner-side nav a:focus-visible,.idg-partner-redesign #portal .idg-partner-side nav a:hover{background:#9a328e}
+.idg-partner-redesign #portal .idg-partner-content{display:flex;flex-direction:column;gap:12px}
+.idg-partner-redesign #portal .idg-partner-content>h2{margin:18px 0 0;font-size:1.25rem}
+.idg-partner-redesign #portal .idg-partner-banner{min-height:165px;position:relative;overflow:hidden;background:linear-gradient(115deg,#fff1f8,#f6d5ec 65%,#d8b4f1)!important}
+.idg-partner-redesign #portal .idg-partner-banner:after{content:"✦  EDUCAÇÃO • PERIFERIA • FUTURO";position:absolute;right:15px;bottom:12px;color:#7b3788;font-weight:800;font-size:.68rem;letter-spacing:.08em;opacity:.8}
+.idg-partner-redesign #portal .idg-partner-content>#metrics{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px}
+.idg-partner-redesign #portal #metrics .metric{padding:20px!important;border:1px solid #eddef1!important;box-shadow:0 7px 24px #30124c0b!important;min-height:126px}
+.idg-partner-redesign #portal #metrics .metric h3{font-size:.85rem;margin:0 0 12px}
+.idg-partner-redesign #portal #metrics .metric strong{font-size:1.8rem}
+.idg-partner-redesign #portal #metrics .metric p{font-size:.76rem;margin:8px 0 0;line-height:1.45}
+.idg-partner-redesign #portal .idg-partner-dashboard-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.idg-partner-redesign #portal .idg-partner-info-panel{background:#fff;border:1px solid #eddef1;border-radius:18px;padding:22px;box-shadow:0 7px 25px #3a21500b;min-width:0}
+.idg-partner-redesign #portal .idg-partner-info-panel h3{margin:0 0 12px;color:#36234c}
+.idg-partner-redesign #portal .idg-partner-info-panel p{color:#655b72;line-height:1.55}
+.idg-partner-redesign #portal .idg-partner-info-panel ul{margin:0;padding-left:20px;line-height:1.9}
+.idg-partner-redesign #portal .idg-partner-chip{display:inline-block;background:#f7e8f6;color:#6d337b;border-radius:30px;padding:6px 10px;font-size:.78rem;margin:3px;font-weight:700}
+.idg-partner-redesign #portal #idg-visual-summary{order:0}
+.idg-partner-redesign #portal #idg-visual-summary .idg-visual-board{display:grid!important;grid-template-columns:1fr!important}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div{display:flex!important;justify-content:space-between;gap:12px}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2) span{overflow-wrap:anywhere!important}
+.idg-partner-redesign #portal #project-updates .update,.idg-partner-redesign #portal #accountability-reports .update{padding:20px}
+.idg-partner-redesign #portal .idg-partner-topbar{border-bottom:1px solid #eee5f1}
+@media(max-width:1100px){.idg-partner-redesign #portal .idg-partner-content>#metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:800px){.idg-partner-redesign #portal .idg-partner-shell{grid-template-columns:1fr}.idg-partner-redesign #portal .idg-partner-side{position:static;min-height:0;gap:10px}.idg-partner-redesign #portal .idg-partner-dashboard-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.idg-partner-redesign #portal .idg-partner-content>#metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}.idg-partner-redesign #portal #metrics .metric{padding:13px!important;min-height:110px}.idg-partner-redesign #portal #metrics .metric strong{font-size:1.4rem}.idg-partner-redesign #portal .idg-partner-info-panel{padding:16px}.idg-partner-redesign #portal .idg-partner-banner:after{display:none}}
+@media(prefers-reduced-motion:reduce){.idg-partner-redesign #portal *{scroll-behavior:auto!important;transition:none!important}}
