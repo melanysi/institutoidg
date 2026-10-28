@@ -140,3 +140,11 @@ body.idg-partner-redesign{background:#f7f3fa}
 .idg-partner-redesign #portal .idg-project-catalogue-card .idg-project-status{display:inline-flex;align-self:flex-start;border-radius:999px;background:#f4e8f6;color:#783c84;padding:6px 10px;font-size:.74rem;font-weight:800;line-height:1.25}
 .idg-partner-redesign #portal .idg-project-catalogue-card .idg-project-period{display:block;color:#796b83;font-size:.78rem;line-height:1.45}
 .idg-partner-redesign #portal .idg-project-catalogue-card h4{margin-top:2px}
+
+/* Partner directory: recognizable names, no unverified contributions */
+.idg-partner-redesign #portal .idg-partner-directory{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0}
+.idg-partner-redesign #portal .idg-partner-directory-item{display:flex;align-items:center;gap:10px;min-width:0;padding:11px 12px;border-radius:12px;background:#faf5fc;border:1px solid #f0e4f1}
+.idg-partner-redesign #portal .idg-partner-directory-mark{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:10px;background:#e8d3ed;color:#713c84;font-weight:900}
+.idg-partner-redesign #portal .idg-partner-directory-name{font-size:.85rem;font-weight:700;color:#4b345c;line-height:1.4;overflow-wrap:break-word;min-width:0}
+.idg-partner-redesign #portal .idg-partner-directory-note{font-size:.78rem!important;line-height:1.5!important;color:#776a7e!important;margin:12px 0 0!important}
+@media(max-width:620px){.idg-partner-redesign #portal .idg-partner-directory{grid-template-columns:minmax(0,1fr)}}
