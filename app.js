@@ -374,22 +374,19 @@
         const submitButton = form.querySelector('[type="submit"]');
         if (captchaWidgets.has(form)) return;
         submitButton.disabled = true;
-
         if (!config || !config.turnstileSiteKey) {
-            showFormStatus(form, "A configuração de proteção do formulário não foi carregada. Atualize a página e tente novamente.", true);
+            showFormStatus(form, "A configuração de segurança não foi carregada. Atualize a página.", true);
             return;
         }
-
         if (!window.turnstile || typeof window.turnstile.render !== "function") {
             if (attempt < 30) {
                 if (attempt === 0) showFormStatus(form, "Carregando a verificação de segurança…");
                 window.setTimeout(() => prepareCaptcha(form, attempt + 1), 500);
             } else {
-                showFormStatus(form, "Não foi possível carregar a verificação de segurança. Verifique se algum bloqueador de conteúdo está impedindo o Cloudflare e tente novamente.", true);
+                showFormStatus(form, "Não foi possível carregar o Cloudflare. Verifique bloqueadores de conteúdo e tente novamente.", true);
             }
             return;
         }
-
         try {
             const widgetId = window.turnstile.render(form.querySelector("[data-turnstile-widget]"), {
                 sitekey: config.turnstileSiteKey,
@@ -402,15 +399,17 @@
                     form.dataset.turnstileToken = "";
                     submitButton.disabled = true;
                 },
-                "error-callback": () => {
+                "error-callback": errorCode => {
                     form.dataset.turnstileToken = "";
                     submitButton.disabled = true;
-                    showFormStatus(form, "A verificação de segurança falhou. Tente novamente.", true);
+                    const code = typeof errorCode === "string" && /^[0-9]{3,8}$/.test(errorCode) ? errorCode : "não informado";
+                    showFormStatus(form, "A verificação de segurança falhou (código Cloudflare: " + code + "). Nenhum dado foi enviado. Informe este código à equipe.", true);
+                    console.warn("IDG Turnstile error code:", code);
                 }
             });
             captchaWidgets.set(form, widgetId);
         } catch (error) {
-            showFormStatus(form, "Não foi possível iniciar a verificação de segurança. Atualize a página e tente novamente.", true);
+            showFormStatus(form, "Não foi possível iniciar a verificação de segurança. Atualize a página.", true);
         }
     }
 

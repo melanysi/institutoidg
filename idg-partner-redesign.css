@@ -1,0 +1,50 @@
+/* Portal de parceiros: dashboard editorial, responsivo */
+body.idg-partner-redesign{background:#f8f1f8;color:#29233e}
+.idg-partner-redesign .wrap{max-width:1440px!important}
+.idg-partner-redesign .idg-layout{grid-template-columns:220px minmax(0,1fr);gap:22px}
+.idg-partner-redesign .idg-sidebar{background:#fff;border-radius:18px;box-shadow:0 12px 35px #563b6410}
+.idg-partner-redesign .idg-brand{background:linear-gradient(105deg,#e83b8d,#7941b8);color:#fff;border-radius:12px;padding:17px 12px;margin-bottom:16px}
+.idg-partner-redesign #portal{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+.idg-partner-redesign #portal>h2{font-size:1.45rem;margin:32px 0 8px}
+.idg-partner-redesign #portal>h2:first-of-type{margin-top:12px}
+.idg-partner-redesign #signout{float:right;margin:0 0 12px 12px}
+.idg-partner-redesign #idg-visual-summary{background:transparent!important;padding:0!important;margin:18px 0!important}
+.idg-partner-redesign #idg-visual-summary>h2{font-size:1.5rem;margin:0 0 4px}
+.idg-partner-redesign #idg-visual-summary>.muted{margin:0 0 16px}
+.idg-partner-redesign .idg-visual-board{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:18px!important}
+.idg-partner-redesign .idg-chart-panel{min-width:0!important;overflow:hidden;background:#fff!important;border:1px solid #eee3f1!important;border-radius:18px!important;padding:24px!important;box-shadow:0 8px 28px #50336a0b!important}
+.idg-partner-redesign .idg-chart-panel h3{font-size:1.18rem;margin:0 0 8px}
+.idg-partner-redesign .idg-course-chart{display:flex!important;flex-direction:column!important;gap:22px!important;align-items:center!important;max-width:650px!important;margin:24px auto!important;width:100%!important}
+.idg-partner-redesign .idg-course-chart>div:first-child{width:min(100%,270px)!important;max-width:270px!important;flex:none!important;aspect-ratio:1!important}
+.idg-partner-redesign .idg-course-chart>div:nth-child(2){display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px 22px!important;width:100%!important;min-width:0!important}
+.idg-partner-redesign .idg-course-chart>div:nth-child(2)>div{min-width:0!important;margin:0!important;gap:10px!important;align-items:center!important}
+.idg-partner-redesign .idg-course-chart>div:nth-child(2) span{overflow-wrap:normal!important;word-break:normal!important}
+.idg-partner-redesign .idg-course-total{margin:12px 0 0!important;font-size:.9rem!important}
+.idg-partner-redesign #metrics{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.idg-partner-redesign #metrics .metric,.idg-partner-redesign .idg-chart-panel .metric{background:linear-gradient(120deg,#f7e8f7,#f4edff)!important;border-radius:14px!important}
+.idg-partner-redesign #project-updates .update,.idg-partner-redesign #accountability-reports .update{background:#fff;border-radius:16px}
+.idg-partner-redesign #idg-visual-summary .idg-footnote{display:none}
+@media(max-width:900px){.idg-partner-redesign .idg-layout{grid-template-columns:minmax(0,1fr)}.idg-partner-redesign .idg-chart-panel{padding:18px!important}.idg-partner-redesign .idg-course-chart>div:nth-child(2){grid-template-columns:minmax(0,1fr)!important}.idg-partner-redesign .idg-course-chart>div:first-child{width:min(100%,250px)!important}.idg-partner-redesign #signout{float:none;display:block;margin:0 0 16px auto}}
+
+/* IDG partner dashboard: reference-inspired desktop layout */
+@media(min-width:901px){
+.idg-partner-redesign .idg-layout{grid-template-columns:205px minmax(0,1fr)!important;align-items:start}
+.idg-partner-redesign .idg-sidebar{position:sticky;top:18px;min-height:78vh}
+.idg-partner-redesign #idg-visual-summary .idg-visual-board{grid-template-columns:repeat(12,minmax(0,1fr))!important;align-items:stretch}
+.idg-partner-redesign #idg-visual-summary .idg-visual-board>.idg-chart-panel:first-child{grid-column:1/-1}
+.idg-partner-redesign #idg-visual-summary .idg-visual-board>.idg-chart-panel:nth-child(2){grid-column:1/-1}
+.idg-partner-redesign .idg-course-chart{display:grid!important;grid-template-columns:280px minmax(0,1fr)!important;max-width:850px!important;align-items:center!important}
+.idg-partner-redesign .idg-course-chart>div:nth-child(2){grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+.idg-partner-redesign .idg-brand{font-weight:800;letter-spacing:.02em}
+.idg-partner-redesign #portal>h2{color:#33254e;letter-spacing:-.025em}
+.idg-partner-redesign #metrics .metric:nth-child(4n+1){background:linear-gradient(115deg,#a544b6,#d54c9c)!important;color:white!important}
+.idg-partner-redesign #metrics .metric:nth-child(4n+2){background:linear-gradient(115deg,#6d4cc2,#9963c8)!important;color:white!important}
+.idg-partner-redesign #metrics .metric:nth-child(4n+3){background:linear-gradient(115deg,#3799bd,#61bed1)!important;color:white!important}
+.idg-partner-redesign #metrics .metric:nth-child(4n+4){background:linear-gradient(115deg,#ee9c44,#f3b866)!important;color:white!important}
+.idg-partner-redesign .idg-course-chart>div:nth-child(2)>div{padding:4px 0}
+@media(max-width:600px){
+.idg-partner-redesign .idg-chart-panel{padding:18px!important}
+.idg-partner-redesign .idg-course-chart{gap:18px!important}
+.idg-partner-redesign .idg-course-chart>div:nth-child(2){grid-template-columns:1fr!important}
+}

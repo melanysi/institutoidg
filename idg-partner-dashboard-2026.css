@@ -1,0 +1,166 @@
+/* IDG Partners dashboard 2026 — scoped, no admin changes */
+body.idg-partner-redesign{background:#f7f3fa}
+.idg-partner-redesign #portal .idg-partner-shell{grid-template-columns:224px minmax(0,1fr);gap:18px}
+.idg-partner-redesign #portal .idg-partner-side{background:linear-gradient(165deg,#20102e,#3d1755);border-radius:20px;position:sticky;top:16px;min-height:calc(100vh - 48px)}
+.idg-partner-redesign #portal .idg-partner-side nav a{transition:background .15s}
+.idg-partner-redesign #portal .idg-partner-side nav a:focus-visible,.idg-partner-redesign #portal .idg-partner-side nav a:hover{background:#9a328e}
+.idg-partner-redesign #portal .idg-partner-content{display:flex;flex-direction:column;gap:12px}
+.idg-partner-redesign #portal .idg-partner-content>h2{margin:18px 0 0;font-size:1.25rem}
+.idg-partner-redesign #portal .idg-partner-banner{min-height:165px;position:relative;overflow:hidden;background:linear-gradient(115deg,#fff1f8,#f6d5ec 65%,#d8b4f1)!important}
+.idg-partner-redesign #portal .idg-partner-banner:after{content:"✦  EDUCAÇÃO • PERIFERIA • FUTURO";position:absolute;right:15px;bottom:12px;color:#7b3788;font-weight:800;font-size:.68rem;letter-spacing:.08em;opacity:.8}
+.idg-partner-redesign #portal .idg-partner-content>#metrics{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:12px}
+.idg-partner-redesign #portal #metrics .metric{padding:20px!important;border:1px solid #eddef1!important;box-shadow:0 7px 24px #30124c0b!important;min-height:126px}
+.idg-partner-redesign #portal #metrics .metric h3{font-size:.85rem;margin:0 0 12px}
+.idg-partner-redesign #portal #metrics .metric strong{font-size:1.8rem}
+.idg-partner-redesign #portal #metrics .metric p{font-size:.76rem;margin:8px 0 0;line-height:1.45}
+.idg-partner-redesign #portal .idg-partner-dashboard-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.idg-partner-redesign #portal .idg-partner-info-panel{background:#fff;border:1px solid #eddef1;border-radius:18px;padding:22px;box-shadow:0 7px 25px #3a21500b;min-width:0}
+.idg-partner-redesign #portal .idg-partner-info-panel h3{margin:0 0 12px;color:#36234c}
+.idg-partner-redesign #portal .idg-partner-info-panel p{color:#655b72;line-height:1.55}
+.idg-partner-redesign #portal .idg-partner-info-panel ul{margin:0;padding-left:20px;line-height:1.9}
+.idg-partner-redesign #portal .idg-partner-chip{display:inline-block;background:#f7e8f6;color:#6d337b;border-radius:30px;padding:6px 10px;font-size:.78rem;margin:3px;font-weight:700}
+.idg-partner-redesign #portal #idg-visual-summary{order:0}
+.idg-partner-redesign #portal #idg-visual-summary .idg-visual-board{display:grid!important;grid-template-columns:1fr!important}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div{display:flex!important;justify-content:space-between;gap:12px}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2) span{overflow-wrap:anywhere!important}
+.idg-partner-redesign #portal #project-updates .update,.idg-partner-redesign #portal #accountability-reports .update{padding:20px}
+.idg-partner-redesign #portal .idg-partner-topbar{border-bottom:1px solid #eee5f1}
+@media(max-width:1100px){.idg-partner-redesign #portal .idg-partner-content>#metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:800px){.idg-partner-redesign #portal .idg-partner-shell{grid-template-columns:1fr}.idg-partner-redesign #portal .idg-partner-side{position:static;min-height:0;gap:10px}.idg-partner-redesign #portal .idg-partner-dashboard-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.idg-partner-redesign #portal .idg-partner-content>#metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px}.idg-partner-redesign #portal #metrics .metric{padding:13px!important;min-height:110px}.idg-partner-redesign #portal #metrics .metric strong{font-size:1.4rem}.idg-partner-redesign #portal .idg-partner-info-panel{padding:16px}.idg-partner-redesign #portal .idg-partner-banner:after{display:none}}
+@media(prefers-reduced-motion:reduce){.idg-partner-redesign #portal *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Final partner-only polish */
+.idg-partner-redesign #portal .idg-partner-content #idg-visual-summary{margin:10px 0!important}
+.idg-partner-redesign #portal #idg-partner-verified-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric{position:relative;padding:22px 18px;border-radius:18px!important;min-height:142px;background:#fff!important;border:1px solid #eadfed;box-shadow:0 8px 22px #4d236111}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric:before{content:"";display:block;width:34px;height:5px;background:#8d4bc0;border-radius:8px;margin-bottom:14px}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric:nth-child(2):before{background:#e65b9c}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric:nth-child(3):before{background:#36a6ad}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric:nth-child(4):before{background:#e9a34a}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric h3{margin:0 0 6px;font-size:.83rem;color:#5c526a}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric strong{font-size:2rem;color:#402254}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric p{font-size:.75rem;color:#72677c;margin:6px 0 0}
+.idg-partner-redesign #portal #metrics[hidden]{display:none!important}
+.idg-partner-redesign #portal .idg-partner-side nav a[aria-current="location"]{background:#a13c96;color:#fff;font-weight:800}
+.idg-partner-redesign #portal .idg-chart-panel{box-shadow:0 8px 28px #42245312!important}
+.idg-partner-redesign #portal .idg-partner-info-panel{scroll-margin-top:24px}
+.idg-partner-redesign #portal .idg-partner-info-panel .idg-partner-chip{line-height:1.5}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div strong{white-space:nowrap;font-variant-numeric:tabular-nums}
+@media(max-width:1100px){.idg-partner-redesign #portal #idg-partner-verified-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.idg-partner-redesign #portal #idg-partner-verified-cards{gap:9px}.idg-partner-redesign #portal #idg-partner-verified-cards .metric{padding:14px 11px;min-height:125px}.idg-partner-redesign #portal #idg-partner-verified-cards .metric strong{font-size:1.55rem}.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div strong{font-size:.85rem}}
+
+/* Navigation, focus and long-text safeguards */
+.idg-partner-redesign #portal .idg-partner-side nav a{display:flex;align-items:center;min-height:43px;overflow-wrap:anywhere}
+.idg-partner-redesign #portal .idg-partner-side nav a:focus-visible,.idg-partner-redesign #portal button:focus-visible,.idg-partner-redesign #portal a:focus-visible{outline:3px solid #e86db6;outline-offset:3px}
+.idg-partner-redesign #portal .idg-partner-content{overflow-wrap:break-word}
+.idg-partner-redesign #portal .idg-chart-panel,.idg-partner-redesign #portal .idg-partner-info-panel{max-width:100%;min-width:0}
+.idg-partner-redesign #portal .idg-partner-side nav{scrollbar-color:#d7a4e5 transparent}
+.idg-partner-redesign #portal #partner-projects,.idg-partner-redesign #portal #partner-reports,.idg-partner-redesign #portal #idg-visual-summary{scroll-margin-top:20px}
+@media(max-width:800px){.idg-partner-redesign #portal .idg-partner-side nav{display:flex;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:3px 2px 9px}.idg-partner-redesign #portal .idg-partner-side nav a{flex:0 0 auto;scroll-snap-align:start;white-space:nowrap}.idg-partner-redesign #portal .idg-partner-topbar{flex-wrap:wrap}}
+@media(max-width:420px){.idg-partner-redesign #portal .idg-partner-shell{gap:12px}.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div{align-items:flex-start}.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div strong{white-space:normal;text-align:right;min-width:75px}}
+
+/* Donut centre, legend and accessible compact layout */
+.idg-partner-redesign #portal .idg-course-center{width:62%;height:62%;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 2px 10px #371a4c16;color:#44225e;line-height:1.25;text-align:center}
+.idg-partner-redesign #portal .idg-course-center strong{font-size:clamp(1.5rem,3vw,2.2rem);font-variant-numeric:tabular-nums}
+.idg-partner-redesign #portal .idg-course-center small{font-size:.82rem;color:#74667e}
+.idg-partner-redesign #portal .idg-course-chart{max-width:520px!important}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2){padding:0 2px}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div{margin:0!important;padding:10px 2px;border-bottom:1px solid #f0e8f2}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div:last-child{border-bottom:0}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div span:first-child{line-height:1.4}
+@media(max-width:520px){.idg-partner-redesign #portal .idg-course-chart{gap:12px!important}.idg-partner-redesign #portal .idg-course-center strong{font-size:1.65rem}}
+
+/* Tablet hotfix: override legacy desktop two-column chart at >=901px */
+@media(min-width:801px) and (max-width:1199px){
+.idg-partner-redesign #portal .idg-partner-shell{grid-template-columns:minmax(0,1fr)!important}
+.idg-partner-redesign #portal .idg-partner-side{position:static!important;min-height:0!important;padding:14px 18px!important;gap:8px!important}
+.idg-partner-redesign #portal .idg-partner-side nav{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;gap:6px!important;padding:5px 0 10px}
+.idg-partner-redesign #portal .idg-partner-side nav a{white-space:nowrap;flex:0 0 auto}
+.idg-partner-redesign #portal .idg-partner-side>p{display:none}
+}
+.idg-partner-redesign #portal .idg-course-chart{display:flex!important;flex-direction:column!important;align-items:center!important;width:100%!important;max-width:680px!important;min-width:0!important;margin:20px auto!important;gap:20px!important}
+.idg-partner-redesign #portal .idg-course-chart>div:first-child{width:min(100%,300px)!important;max-width:300px!important;flex:none!important}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2){display:grid!important;grid-template-columns:minmax(0,1fr)!important;width:100%!important;max-width:620px!important;gap:0!important;min-width:0!important}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:16px!important;align-items:center!important;width:100%!important;min-width:0!important}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div span:first-child{min-width:0!important;overflow-wrap:break-word!important;word-break:normal!important;white-space:normal!important}
+.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div strong{white-space:nowrap!important;text-align:right!important;min-width:90px}
+@media(max-width:520px){.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div{gap:8px!important}.idg-partner-redesign #portal .idg-course-chart>div:nth-child(2)>div strong{min-width:76px;font-size:.82rem!important}}
+
+/* Project updates and accountability — readable, verified editorial cards */
+.idg-partner-redesign #portal .idg-section-intro{border-left:4px solid #a64eac;background:#fbf5fd;padding:12px 16px;border-radius:0 12px 12px 0;margin:2px 0 12px}
+.idg-partner-redesign #portal .idg-section-intro p{margin:5px 0 0;color:#655a72;font-size:.9rem;line-height:1.55}
+.idg-partner-redesign #portal .idg-section-kicker{font-size:.72rem;font-weight:800;letter-spacing:.1em;color:#8d397f}
+.idg-partner-redesign #portal #project-updates,.idg-partner-redesign #portal #accountability-reports{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:14px;min-width:0}
+.idg-partner-redesign #portal #project-updates .update,.idg-partner-redesign #portal #accountability-reports .update{border:1px solid #ebdfee;border-radius:18px;box-shadow:0 7px 22px #39224b0c;background:#fff;min-width:0;overflow-wrap:break-word;display:flex;flex-direction:column;gap:8px}
+.idg-partner-redesign #portal #project-updates .update h3,.idg-partner-redesign #portal #accountability-reports .update h3{font-size:1.06rem;color:#37254a;margin:0;line-height:1.4}
+.idg-partner-redesign #portal #project-updates .update p,.idg-partner-redesign #portal #accountability-reports .update p{margin:0;color:#5f556b;line-height:1.6}
+.idg-partner-redesign #portal #project-updates .update small,.idg-partner-redesign #portal #accountability-reports .update small{color:#7a6884}
+.idg-partner-redesign #portal #accountability-reports .update strong{color:#683d82;margin-top:7px;font-size:.9rem}
+@media(max-width:700px){.idg-partner-redesign #portal #project-updates,.idg-partner-redesign #portal #accountability-reports{grid-template-columns:minmax(0,1fr)}}
+
+/* Tablet section polish: sticky navigation, standalone network and empty states */
+@media(min-width:801px){
+.idg-partner-redesign #portal .idg-partner-shell{align-items:start!important}
+.idg-partner-redesign #portal .idg-partner-side{align-self:start!important;height:auto!important;min-height:0!important}
+}
+@media(min-width:1200px){
+.idg-partner-redesign #portal .idg-partner-side{position:sticky!important;top:16px!important}
+}
+.idg-partner-redesign #portal #partner-network{margin:28px 0 2px!important}
+.idg-partner-redesign #portal #partner-projects{margin-top:28px!important}
+.idg-partner-redesign #portal #project-updates:not(:has(.update)),.idg-partner-redesign #portal #accountability-reports:not(:has(.update)){background:#fff;border:1px dashed #d9c7e2;border-radius:16px;padding:22px;color:#6c5b78;line-height:1.55}
+.idg-partner-redesign #portal #project-updates:not(:has(.update))::before,.idg-partner-redesign #portal #accountability-reports:not(:has(.update))::before{content:"";display:block;width:30px;height:4px;background:#a858b5;border-radius:6px;margin-bottom:12px}
+@media(max-width:800px){.idg-partner-redesign #portal .idg-partner-side{min-height:0!important;height:auto!important}}
+
+/* Institutional social projects: distinct from verified impact reports */
+.idg-partner-redesign #portal .idg-project-catalogue{margin:4px 0 18px;min-width:0}
+.idg-partner-redesign #portal .idg-project-catalogue>h3{font-size:1.13rem;color:#3d2851;margin:0 0 6px}
+.idg-partner-redesign #portal .idg-project-catalogue>p{margin:0 0 16px;line-height:1.55}
+.idg-partner-redesign #portal .idg-project-catalogue-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.idg-partner-redesign #portal .idg-project-catalogue-card{min-width:0;background:#fff;border:1px solid #e9ddeb;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 7px 22px #39224b0a}
+.idg-partner-redesign #portal .idg-project-category{font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#91459c}
+.idg-partner-redesign #portal .idg-project-catalogue-card h4{margin:0;font-size:1.03rem;line-height:1.35;color:#39264e}
+.idg-partner-redesign #portal .idg-project-catalogue-card p{margin:0;color:#665b70;line-height:1.55;flex:1;font-size:.9rem}
+.idg-partner-redesign #portal .idg-project-catalogue-card small{font-weight:700;color:#764189}
+@media(max-width:1150px){.idg-partner-redesign #portal .idg-project-catalogue-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.idg-partner-redesign #portal .idg-project-catalogue-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Accountability guide: explanatory, never a substitute for published evidence */
+.idg-partner-redesign #portal .idg-accountability-guide{background:linear-gradient(135deg,#fff 0%,#fcf8fe 100%);border:1px solid #eaddec;border-radius:18px;padding:22px;margin:14px 0 18px;box-shadow:0 8px 24px #3b204a0b}
+.idg-partner-redesign #portal .idg-accountability-guide h3{margin:0 0 16px;font-size:1.1rem;color:#3e2852}
+.idg-partner-redesign #portal .idg-accountability-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.idg-partner-redesign #portal .idg-accountability-steps>div{border-left:3px solid #ae66ba;padding:4px 12px;min-width:0}
+.idg-partner-redesign #portal .idg-accountability-steps strong{font-size:.91rem;color:#75408a}
+.idg-partner-redesign #portal .idg-accountability-steps p{font-size:.87rem;line-height:1.55;color:#665c70;margin:7px 0 0}
+.idg-partner-redesign #portal .idg-accountability-guide>.muted{font-size:.82rem;line-height:1.5;margin:16px 0 0}
+@media(max-width:750px){.idg-partner-redesign #portal .idg-accountability-steps{grid-template-columns:minmax(0,1fr)}.idg-partner-redesign #portal .idg-accountability-guide{padding:17px}}
+
+/* Institutional catalogue: type and date context, not completion claims */
+.idg-partner-redesign #portal .idg-project-catalogue-card .idg-project-status{display:inline-flex;align-self:flex-start;border-radius:999px;background:#f4e8f6;color:#783c84;padding:6px 10px;font-size:.74rem;font-weight:800;line-height:1.25}
+.idg-partner-redesign #portal .idg-project-catalogue-card .idg-project-period{display:block;color:#796b83;font-size:.78rem;line-height:1.45}
+.idg-partner-redesign #portal .idg-project-catalogue-card h4{margin-top:2px}
+
+/* Partner directory: recognizable names, no unverified contributions */
+.idg-partner-redesign #portal .idg-partner-directory{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0}
+.idg-partner-redesign #portal .idg-partner-directory-item{display:flex;align-items:center;gap:10px;min-width:0;padding:11px 12px;border-radius:12px;background:#faf5fc;border:1px solid #f0e4f1}
+.idg-partner-redesign #portal .idg-partner-directory-mark{display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;border-radius:10px;background:#e8d3ed;color:#713c84;font-weight:900}
+.idg-partner-redesign #portal .idg-partner-directory-name{font-size:.85rem;font-weight:700;color:#4b345c;line-height:1.4;overflow-wrap:break-word;min-width:0}
+.idg-partner-redesign #portal .idg-partner-directory-note{font-size:.78rem!important;line-height:1.5!important;color:#776a7e!important;margin:12px 0 0!important}
+@media(max-width:620px){.idg-partner-redesign #portal .idg-partner-directory{grid-template-columns:minmax(0,1fr)}}
+
+/* Clear, responsive agenda */
+.idg-partner-redesign #portal .idg-agenda-entry{display:flex;align-items:flex-start;gap:16px;padding:16px;border:1px solid #ead9ef;border-radius:15px;background:#fcf8fd;margin:15px 0}
+.idg-partner-redesign #portal .idg-agenda-date{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:0 0 80px;min-height:84px;border-radius:12px;background:#6f3989;color:#fff}
+.idg-partner-redesign #portal .idg-agenda-date strong{font-size:1.9rem;line-height:1.1}
+.idg-partner-redesign #portal .idg-agenda-date span{font-size:.69rem;font-weight:700}
+.idg-partner-redesign #portal .idg-agenda-detail{min-width:0}
+.idg-partner-redesign #portal .idg-agenda-tag{display:inline-block;border-radius:999px;background:#f0e2f5;color:#6f3989;font-size:.72rem;font-weight:800;padding:4px 9px}
+.idg-partner-redesign #portal .idg-agenda-detail h3{margin:9px 0 5px;font-size:1rem}
+.idg-partner-redesign #portal .idg-agenda-detail p{margin:0 0 7px}
+.idg-partner-redesign #portal .idg-agenda-detail small,.idg-partner-redesign #portal .idg-agenda-footnote{font-size:.8rem;line-height:1.5;color:#76677c}
+@media(max-width:480px){.idg-partner-redesign #portal .idg-agenda-entry{gap:10px;padding:12px}.idg-partner-redesign #portal .idg-agenda-date{flex-basis:64px;min-height:74px}.idg-partner-redesign #portal .idg-agenda-date strong{font-size:1.6rem}}
+
+/* Final mobile polish for agenda date */
+.idg-partner-redesign #portal .idg-agenda-date{gap:2px;padding:8px 4px;box-sizing:border-box}
+.idg-partner-redesign #portal .idg-agenda-date span{display:block;white-space:nowrap;text-align:center;line-height:1.2;letter-spacing:.02em}
