@@ -135,3 +135,8 @@ body.idg-partner-redesign{background:#f7f3fa}
 .idg-partner-redesign #portal .idg-accountability-steps p{font-size:.87rem;line-height:1.55;color:#665c70;margin:7px 0 0}
 .idg-partner-redesign #portal .idg-accountability-guide>.muted{font-size:.82rem;line-height:1.5;margin:16px 0 0}
 @media(max-width:750px){.idg-partner-redesign #portal .idg-accountability-steps{grid-template-columns:minmax(0,1fr)}.idg-partner-redesign #portal .idg-accountability-guide{padding:17px}}
+
+/* Institutional catalogue: type and date context, not completion claims */
+.idg-partner-redesign #portal .idg-project-catalogue-card .idg-project-status{display:inline-flex;align-self:flex-start;border-radius:999px;background:#f4e8f6;color:#783c84;padding:6px 10px;font-size:.74rem;font-weight:800;line-height:1.25}
+.idg-partner-redesign #portal .idg-project-catalogue-card .idg-project-period{display:block;color:#796b83;font-size:.78rem;line-height:1.45}
+.idg-partner-redesign #portal .idg-project-catalogue-card h4{margin-top:2px}
