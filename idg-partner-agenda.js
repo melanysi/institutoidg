@@ -27,9 +27,10 @@ async function load(){
   const info=add("div","idg-agenda-detail");
   const status=escStatus[ev.status]||"Informação publicada";
   info.append(add("span","idg-agenda-tag",status),add("h3",null,ev.title),add("p",null,fmt.format(date)+(ev.location_name?" · "+ev.location_name:"")));
-  if(ev.description)info.append(add("small",null,ev.description));
+  const isPink=date.toLocaleDateString("en-CA",{timeZone:"America/Sao_Paulo"})==="2026-10-31"&&/outubro rosa/i.test(ev.title||"");
+  if(isPink){item.classList.add("idg-agenda-pink");const intro=add("p","idg-agenda-pink-intro","🎀 Um encontro de conscientização, acolhimento e valorização da mulher.");const heading=add("strong","idg-agenda-pink-heading","Nossa programação");const list=add("ul","idg-agenda-pink-program");for(const activity of ["🧘‍♀️ Pilates relaxante","🎤 Empreendedorismo feminino","💗 Relatos sobre o câncer de mama","☕ Coffee break","💆‍♀️ Autocuidado e atendimentos durante o evento"]){list.append(add("li",null,activity))}info.append(intro,heading,list)}else if(ev.description)info.append(add("small",null,ev.description));
   item.append(box,info);entries.append(item);
  }
 }
-load().catch(()=>{});
+const style=document.createElement("style");style.textContent='.idg-agenda-entry .idg-agenda-detail{min-width:0;overflow-wrap:anywhere}.idg-agenda-pink{border-color:#e6c9df!important;background:#fff8fc!important}.idg-agenda-pink-intro{line-height:1.5;margin:10px 0!important}.idg-agenda-pink-heading{display:block;margin:12px 0 8px;color:#633a7a}.idg-agenda-pink-program{list-style:none;padding:0;margin:0;display:grid;gap:7px}.idg-agenda-pink-program li{padding:9px 10px;background:white;border:1px solid #f0ddec;border-radius:10px;line-height:1.4;font-size:.92rem}@media(max-width:520px){.idg-agenda-pink{gap:10px!important}.idg-agenda-pink .idg-agenda-date{min-width:0!important}.idg-agenda-pink-program li{font-size:.85rem}}';document.head.append(style);load().catch(()=>{});
 })();
