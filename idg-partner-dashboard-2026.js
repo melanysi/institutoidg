@@ -5,6 +5,29 @@ const overview=mk("div","idg-partner-dashboard-grid");overview.id="partner-commu
 const partners=mk("section","idg-partner-info-panel");partners.id="partner-organizations";partners.append(mk("h3",null,"Organizações parceiras"),mk("p",null,"Rede de colaboração e apoio às iniciativas do Instituto."));const names=["Coterleste","Company Academia","Motoclube das Loucas","Padaria Romano","PJC Mecânica","Unio Medical","Casa Rosada","CPS — Centro Paula Souza"];for(const name of names)partners.append(mk("span","idg-partner-chip",name));
 const schedule=mk("section","idg-partner-info-panel");schedule.id="partner-activities";schedule.append(mk("h3",null,"Agenda e atividades"));const startDate=new Date("2026-11-03T19:30:00-03:00");const upcoming=Date.now()<startDate.getTime();schedule.append(mk("p",null,upcoming?"Curso de Trancista — início previsto para 03/11/2026, às 19h30. Consulte o Instituto para confirmar eventuais alterações.":"Curso de Trancista — início previsto para 03/11/2026, às 19h30. A data prevista já passou; consulte o Instituto para confirmar a situação atual."),mk("p",null,"Outras atividades serão exibidas após publicação e confirmação pela equipe."));
 partners.setAttribute("aria-label","Organizações parceiras do Instituto");schedule.setAttribute("aria-label","Agenda e atividades previstas");overview.append(partners,schedule);const projectsTitle=document.getElementById("partner-projects");const reportsTitle=document.getElementById("partner-reports");if(projectsTitle){projectsTitle.before(overview);const sectionHeading=mk("h2",null,"Rede de apoio e agenda");sectionHeading.id="partner-network";overview.before(sectionHeading)}else document.getElementById("project-updates")?.before(overview);
+// Institutional descriptions only: these are not measured outcomes or published reports.
+const projectsRoot=document.getElementById("project-updates");
+if(projectsRoot){
+ const catalogue=mk("section","idg-project-catalogue");
+ catalogue.id="idg-project-catalogue";
+ catalogue.append(mk("h3",null,"Conheça nossas frentes de atuação"),mk("p","muted","Apresentação institucional das iniciativas do IDG. Resultados, números e evidências aparecem separadamente, quando publicados pela equipe."));
+ const projects=[
+  ["Educação e qualificação profissional","Cursos profissionalizantes gratuitos","Formações em áreas como Trancista, Manicure, Cuidador de Idosos, Cuidador Infantil, Recepção e Atendimento, Portaria e Controle de Acesso e Panificação.","Formação e oportunidades"],
+  ["Ações comunitárias","Criança Feliz","Iniciativa social voltada à infância, desenvolvida em parceria com a Coterleste.","Ação social"],
+  ["Solidariedade","Natal Solidário","Mobilização comunitária de solidariedade no período natalino.","Campanha"],
+  ["Solidariedade","Páscoa","Ações comunitárias relacionadas à celebração da Páscoa.","Campanha"],
+  ["Cultura e convivência","Festa Caipira","Atividade de convivência e valorização das tradições culturais.","Convivência"],
+  ["Conscientização","Setembro Amarelo e Outubro Rosa","Iniciativas de informação, acolhimento e conscientização sobre saúde e bem-estar.","Conscientização"]
+ ];
+ const grid=mk("div","idg-project-catalogue-grid");
+ for(const [category,title,description,tag] of projects){
+  const card=mk("article","idg-project-catalogue-card");
+  card.append(mk("span","idg-project-category",category),mk("h4",null,title),mk("p",null,description),mk("small",null,tag));
+  grid.append(card);
+ }
+ catalogue.append(grid);
+ projectsRoot.before(catalogue);
+}
 const nav=portal.querySelector(".idg-partner-side nav");if(nav){for(const [href,label] of [["#partner-network","♧ Parceiros e agenda"]]){const a=mk("a",null,label);a.href=href;nav.insertBefore(a,nav.lastElementChild)}const anchors=[...nav.querySelectorAll('a[href^="#"]')];function active(){const hash=location.hash||"#partner-overview";for(const a of anchors){if(a.getAttribute("href")===hash)a.setAttribute("aria-current","location");else a.removeAttribute("aria-current")}}window.addEventListener("hashchange",active);active()}
 const cfg=window.IDG_SUPABASE_CONFIG;const db=cfg?.url&&cfg?.publishableKey&&window.supabase?window.supabase.createClient(cfg.url,cfg.publishableKey):null;
 let request=0;async function load(){const id=++request;if(!db||portal.classList.contains("hidden"))return;const {data:{user},error:authError}=await db.auth.getUser();if(authError||!user)return;const {data:access,error:accessError}=await db.from("partner_portal_access").select("is_active,applications!inner(status)").eq("user_id",user.id).maybeSingle();if(accessError||!access?.is_active||access.applications?.status!=="approved")return;
