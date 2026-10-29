@@ -29,11 +29,24 @@ if(projectsRoot&&!document.getElementById("idg-project-catalogue")){
  projectsRoot.before(catalogue);
 }
 const nav=portal.querySelector(".idg-partner-side nav");if(nav){for(const [href,label] of [["#partner-network","♧ Parceiros e agenda"]]){const a=mk("a",null,label);a.href=href;nav.insertBefore(a,nav.lastElementChild)}const anchors=[...nav.querySelectorAll('a[href^="#"]')];function active(){const hash=location.hash||"#partner-overview";for(const a of anchors){if(a.getAttribute("href")===hash)a.setAttribute("aria-current","location");else a.removeAttribute("aria-current")}}window.addEventListener("hashchange",active);active()}
+
+/* Visual-reference controls: accessible search and dashboard quick navigation. */
+const topbar=portal.querySelector(".idg-partner-topbar");
+if(topbar&&!topbar.querySelector(".idg-partner-search")){
+ const search=document.createElement("input");search.className="idg-partner-search";search.type="search";search.placeholder="Buscar seções do portal...";search.setAttribute("aria-label","Buscar seções do portal");
+ const links=[...portal.querySelectorAll(".idg-partner-side nav a[href^='#']")];
+ search.addEventListener("input",()=>{const q=search.value.trim().toLocaleLowerCase("pt-BR");for(const a of links)a.hidden=!!q&&!a.textContent.toLocaleLowerCase("pt-BR").includes(q)});
+ search.addEventListener("keydown",e=>{if(e.key==="Enter"){const target=links.find(a=>!a.hidden);if(target){location.hash=target.getAttribute("href");search.blur()}}});
+ topbar.insertBefore(search,topbar.querySelector("#signout"));
+}
+const banner=portal.querySelector(".idg-partner-banner");
+if(banner&&!banner.querySelector(".idg-partner-banner-quote")){const quote=document.createElement("span");quote.className="idg-partner-banner-quote";quote.textContent="“Gente da periferia é potência.”";banner.querySelector("div")?.append(quote)}
+
 const cfg=window.IDG_SUPABASE_CONFIG;const db=cfg?.url&&cfg?.publishableKey&&window.supabase?window.supabase.createClient(cfg.url,cfg.publishableKey):null;
 let request=0;async function load(){const id=++request;if(!db||portal.classList.contains("hidden"))return;const {data:{user},error:authError}=await db.auth.getUser();if(authError||!user)return;const {data:access,error:accessError}=await db.from("partner_portal_access").select("is_active,applications!inner(status)").eq("user_id",user.id).maybeSingle();if(accessError||!access?.is_active||access.applications?.status!=="approved")return;
 const {data,error}=await db.rpc("idg_partner_course_counts");if(id!==request||portal.classList.contains("hidden"))return;
 const old=document.getElementById("idg-partner-verified-cards");if(old)old.remove();const cards=mk("div","metrics");cards.id="idg-partner-verified-cards";cards.style.cssText="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px";
-const valid=!error&&Array.isArray(data)&&data.every(r=>Number.isFinite(Number(r.registrations))&&Number(r.registrations)>=0);const total=valid?data.reduce((n,r)=>n+Number(r.registrations),0):null;const items=[["Inscrições recebidas",total===null?"—":total.toLocaleString("pt-BR"),total===null?"Dados indisponíveis":"Não equivalem a matrículas"],["Vagas oferecidas","140","20 vagas por curso"],["Cursos disponíveis","7","Modalidades oferecidas"],["Matrículas confirmadas","—","Sem total verificado publicado"]];
+const valid=!error&&Array.isArray(data)&&data.every(r=>Number.isFinite(Number(r.registrations))&&Number(r.registrations)>=0);const total=valid?data.reduce((n,r)=>n+Number(r.registrations),0):null;const items=[["Inscrições recebidas",total===null?"—":total.toLocaleString("pt-BR"),total===null?"Dados indisponíveis":"Não equivalem a matrículas"],["Vagas oferecidas","—","Total ainda não publicado"],["Cursos disponíveis","7","Modalidades oferecidas"],["Matrículas confirmadas","—","Sem total verificado publicado"]];
 for(const [label,value,detail] of items){const card=mk("article","metric");card.append(mk("h3",null,label),mk("strong",null,value),mk("p",null,detail));cards.append(card)}
 metrics.before(cards);intro.textContent="Panorama dos cursos • dados agregados para parceiros autorizados. Inscrições não são vagas preenchidas.";metrics.hidden=true;
 }
