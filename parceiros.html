@@ -39,4 +39,25 @@ function fix(){for(const item of agenda.querySelectorAll(".idg-agenda-entry")){c
 const style=document.createElement("style");style.textContent="#idg-static-agenda .idg-agenda-detail{min-width:0;overflow-wrap:anywhere}#idg-static-agenda .idg-agenda-pink{border-color:#e6c9df;background:#fff8fc}#idg-static-agenda .idg-agenda-pink-intro{line-height:1.5;margin:10px 0}#idg-static-agenda .idg-agenda-pink-heading{display:block;color:#633a7a;margin:12px 0 8px}#idg-static-agenda .idg-agenda-pink-program{list-style:none;padding:0;margin:0;display:grid;gap:7px}#idg-static-agenda .idg-agenda-pink-program li{background:#fff;border:1px solid #f0ddec;border-radius:10px;padding:9px 10px;font-size:.9rem;line-height:1.45}";document.head.append(style);
 const observer=new MutationObserver(fix);observer.observe(agenda,{childList:true,subtree:true});fix();
 })();
-</script><script src="idg-natal-solidario-demo.js?v=20261029-7"></script><script src="idg-natal-navigation-fix.js?v=20261029-7"></script></body></html>
+</script><script src="idg-natal-solidario-demo.js?v=20261029-7"></script><script src="idg-natal-navigation-fix.js?v=20261029-7"></script><script id="idg-natal-image-override">
+(()=>{"use strict";
+const names=["Homem-aranha.png","Hulk-natal.png","Elsa-natal.png"];
+const paths=names.map(n=>new URL("images/"+n,document.baseURI).href);
+function apply(){
+document.querySelectorAll(".idg-natal-grid,.idg-christmas-grid").forEach(grid=>{
+grid.querySelectorAll(".idg-natal-card,.idg-christmas-card").forEach((card,i)=>{
+if(i>2)return;
+const holder=card.querySelector(".idg-natal-character,.idg-christmas-art");
+if(!holder)return;
+let img=holder.querySelector("img[data-idg-official-image]");
+if(!img){holder.replaceChildren();img=document.createElement("img");img.dataset.idgOfficialImage="true";img.alt=["Homem-Aranha","Hulk","Elsa"][i]+" natalino";img.style.cssText="display:block;width:100%;height:190px;object-fit:contain";holder.append(img)}
+if(img.src!==paths[i])img.src=paths[i];
+});
+});
+}
+let pending=false;
+const observer=new MutationObserver(()=>{if(pending)return;pending=true;requestAnimationFrame(()=>{pending=false;apply()})});
+observer.observe(document.documentElement,{childList:true,subtree:true});
+apply();
+})();
+</script></body></html>
