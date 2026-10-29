@@ -5,3 +5,28 @@
 #idg-christmas-page-v2 .idg-christmas-art{height:300px;overflow:hidden;background:#20152c}
 #idg-christmas-page-v2 .idg-christmas-art img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;opacity:1!important;mix-blend-mode:normal!important;filter:contrast(1.12) saturate(1.18)!important;transform:none!important;max-width:none!important;max-height:none!important}
 @media(max-width:540px){#idg-christmas-page-v2 .idg-christmas-art{height:330px}}
+
+/* Natal Solidario: identidade leve, festiva e acessivel. */
+#idg-christmas-page-v2{background:radial-gradient(circle at 9% 12%,#fbe9e3 0,transparent 31%),radial-gradient(circle at 90% 25%,#e5f2e5 0,transparent 34%),linear-gradient(155deg,#fffdf6,#fff4ed 55%,#f4f9ee);color:#324a39}
+#idg-christmas-page-v2 .idg-christmas-banner{background:radial-gradient(circle at 90% 10%,#fff4c7 0,transparent 38%),linear-gradient(120deg,#f6fff1,#fff5e7 55%,#ffe7e8);border:2px solid #e6d3ac;box-shadow:0 15px 35px #715b3220}
+#idg-christmas-page-v2 .idg-christmas-banner h1{color:#a52c37}
+#idg-christmas-page-v2 .idg-christmas-banner h1 em{color:#34744e}
+#idg-christmas-page-v2 .idg-christmas-banner h2{color:#38734c}
+#idg-christmas-page-v2 .idg-christmas-banner>p:first-of-type{color:#a24d43}
+#idg-christmas-page-v2 .idg-christmas-banner>p:last-child{color:#65584b}
+#idg-christmas-page-v2 .idg-christmas-stars{color:#c99a40}
+#idg-christmas-page-v2 .idg-christmas-nav span{color:#6d5442}
+#idg-christmas-page-v2 .idg-christmas-nav button{background:#fff;border:1px solid #d7bdaf;color:#844c4d}
+#idg-christmas-page-v2 .idg-christmas-info>h2{color:#315e41}
+#idg-christmas-page-v2 .idg-christmas-info>p{color:#685e55}
+#idg-christmas-page-v2 .idg-christmas-card{border:2px solid #e8d7bd;box-shadow:0 12px 28px #7b60401c;transition:transform .25s ease,box-shadow .25s ease}
+#idg-christmas-page-v2 .idg-christmas-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px #7b604033}
+#idg-christmas-page-v2 .idg-christmas-cardbody>small{color:#9b4c56}
+#idg-christmas-page-v2 .idg-christmas-cardbody h3{color:#315e41}
+#idg-christmas-page-v2 .idg-christmas-sizes div{background:#f4f8ef}
+#idg-christmas-page-v2 .idg-christmas-cardbody button{background:#b04d59}
+#idg-christmas-page-v2 .idg-christmas-disclaimer{color:#685e55}
+#idg-christmas-page-v2 .idg-christmas-art{background:#f6f1e8}
+#idg-christmas-page-v2 .idg-christmas-art.spider{background:#251d28}
+#idg-christmas-page-v2 .idg-christmas-wrap:before{content:"✦ ❄ ✧ 🎄 ✧ ❄ ✦";display:block;text-align:center;letter-spacing:.7em;color:#ae7259;font-size:1.05rem;padding:4px 0 14px}
+@media(prefers-reduced-motion:reduce){#idg-christmas-page-v2 .idg-christmas-card{transition:none}#idg-christmas-page-v2 .idg-christmas-card:hover{transform:none}}
