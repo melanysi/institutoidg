@@ -13,7 +13,7 @@ async function load(){
  const {data,error}=await client.from("idg_events").select("title,description,starts_at,location_name,status").eq("is_published",true).order("starts_at",{ascending:true}).limit(50);
  if(error){console.warn("Agenda IDG indisponível; mantendo informações provisórias.");return}
  const events=(data||[]).filter(ev=>ev.title&&ev.starts_at&&["planned","confirmed","completed","cancelled"].includes(ev.status)).sort((a,b)=>{const now=Date.now(),ta=new Date(a.starts_at).getTime(),tb=new Date(b.starts_at).getTime();const group=t=>t>=now?0:1;return group(ta)-group(tb)||(group(ta)===0?ta-tb:tb-ta)}).slice(0,12);
- if(!events.length)return;
+ if(!events.length){if(initial)initial.hidden=true;const note=root.querySelector(".idg-agenda-footnote");if(note)note.textContent="Ainda não há atividades publicadas pela equipe.";return;}
  initial?.remove();root.querySelector(".idg-agenda-footnote")?.remove();
  const intro=root.querySelector(".muted");if(intro)intro.textContent="Atividades publicadas pela equipe do Instituto.";
  entries.replaceChildren();
