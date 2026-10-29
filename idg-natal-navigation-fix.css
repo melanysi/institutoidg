@@ -4,3 +4,8 @@
 .idg-christmas-art{height:300px;overflow:hidden}
 .idg-christmas-art img{width:100%!important;height:100%!important;max-width:none;max-height:none;object-fit:contain!important;mix-blend-mode:screen}
 @media(max-width:540px){.idg-christmas-art{height:330px}}
+
+/* Enquadramento exclusivo do Homem-Aranha, sem alterar Hulk e Elsa. */
+.idg-christmas-art.spider{height:330px;background:#131020;overflow:hidden}
+.idg-christmas-art.spider img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center;mix-blend-mode:normal;transform:scale(1.04);transform-origin:center}
+@media(max-width:540px){.idg-christmas-art.spider{height:360px}}
