@@ -10,3 +10,5 @@
 #portal .idg-natal-specs{display:flex;flex-wrap:wrap;gap:7px}#portal .idg-natal-specs span{background:#f7f1fa;border-radius:9px;padding:7px 9px;font-size:.84rem;color:#463050}
 #portal .idg-natal-toy{font-size:.87rem;color:#51375b;margin:12px 0}#portal .idg-natal-demo-status{display:inline-block;background:#f2e5ff;color:#66338a;border-radius:20px;padding:5px 10px;font-size:.75rem;font-weight:700}
 #portal .idg-natal-foot{font-size:.8rem;color:#6c5973;margin:15px 0 0}@media(max-width:850px){#portal .idg-natal-grid{grid-template-columns:1fr}}@media(max-width:520px){#portal #idg-natal-demo{padding:14px}}
+
+#portal .idg-natal-character{height:auto;min-height:160px;overflow:hidden;padding:0}#portal .idg-natal-avatar{display:block;width:100%;height:auto;aspect-ratio:280/190;max-height:220px;border-radius:13px}#portal .idg-natal-card .idg-natal-code{display:block;margin-top:6px}
