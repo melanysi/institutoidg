@@ -2,18 +2,18 @@
 const root=document.getElementById("idg-static-agenda");
 if(!root)return;
 const cfg=window.IDG_SUPABASE_CONFIG;
-if(!cfg?.url||!cfg?.publishableKey||!window.supabase)return;
+if(!cfg?.url||!cfg?.publishableKey||!window.supabase){const initial=root.querySelector(".idg-agenda-entry");if(initial)initial.hidden=true;const note=root.querySelector(".idg-agenda-footnote");if(note)note.textContent="Agenda indisponível no momento. Consulte o Instituto.";return;}
 const client=window.supabase.createClient(cfg.url,cfg.publishableKey);
 const fmt=new Intl.DateTimeFormat("pt-BR",{timeZone:"America/Sao_Paulo",day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});
 const escStatus={planned:"Planejada",confirmed:"Confirmada",completed:"Realizada",cancelled:"Cancelada",draft:"Rascunho"};
 const entries=document.createElement("div");entries.id="idg-agenda-live";entries.setAttribute("aria-live","polite");
-const initial=root.querySelector(".idg-agenda-entry");initial?.after(entries);
+const initial=root.querySelector(".idg-agenda-entry");if(initial)initial.hidden=true;initial?.after(entries);
 const add=(tag,cls,value)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(value!=null)el.textContent=value;return el};
 async function load(){
  const {data,error}=await client.from("idg_events").select("title,description,starts_at,location_name,status").eq("is_published",true).order("starts_at",{ascending:true}).limit(50);
- if(error){if(initial)initial.hidden=true;const note=root.querySelector(".idg-agenda-footnote");if(note)note.textContent="Agenda temporariamente indisponível. Consulte o Instituto.";return}
+ if(error){const note=root.querySelector(".idg-agenda-footnote");if(note)note.textContent="Agenda temporariamente indisponível. Consulte o Instituto.";return}
  const events=(data||[]).filter(ev=>ev.title&&ev.starts_at&&["planned","confirmed","completed","cancelled"].includes(ev.status)).sort((a,b)=>{const now=Date.now(),ta=new Date(a.starts_at).getTime(),tb=new Date(b.starts_at).getTime();const group=t=>t>=now?0:1;return group(ta)-group(tb)||(group(ta)===0?ta-tb:tb-ta)}).slice(0,12);
- if(!events.length){if(initial)initial.hidden=true;const note=root.querySelector(".idg-agenda-footnote");if(note)note.textContent="Ainda não há atividades publicadas pela equipe.";return;}
+ if(!events.length){const note=root.querySelector(".idg-agenda-footnote");if(note)note.textContent="Ainda não há atividades publicadas pela equipe.";return;}
  initial?.remove();root.querySelector(".idg-agenda-footnote")?.remove();
  const intro=root.querySelector(".muted");if(intro)intro.textContent="Atividades publicadas pela equipe do Instituto.";
  entries.replaceChildren();
@@ -31,5 +31,5 @@ async function load(){
   item.append(box,info);entries.append(item);
  }
 }
-load().catch(()=>{});
+load().catch(()=>{const note=root.querySelector(".idg-agenda-footnote");if(note)note.textContent="Não foi possível consultar a agenda agora. Tente novamente mais tarde.";});
 })();
