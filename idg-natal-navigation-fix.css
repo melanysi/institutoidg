@@ -9,3 +9,8 @@
 .idg-christmas-art.spider{height:330px;background:#131020;overflow:hidden}
 .idg-christmas-art.spider img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center;mix-blend-mode:normal;transform:scale(1.04);transform-origin:center}
 @media(max-width:540px){.idg-christmas-art.spider{height:360px}}
+
+/* Natal Solidario: todas as imagens preenchem 100% da area do card. */
+#idg-christmas-page-v2 .idg-christmas-art{height:300px;overflow:hidden}
+#idg-christmas-page-v2 .idg-christmas-art img{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center center!important;mix-blend-mode:normal!important;opacity:1!important;filter:none!important;transform:none!important;max-width:none!important;max-height:none!important}
+@media(max-width:540px){#idg-christmas-page-v2 .idg-christmas-art{height:330px}}
