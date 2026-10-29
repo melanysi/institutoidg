@@ -45,3 +45,18 @@
  .idg-partner-redesign #portal .idg-partner-side{border-radius:16px!important;min-height:0!important}
  .idg-partner-redesign #portal .idg-partner-content{padding:8px 0!important}
 }
+
+
+/* Reference finish: header search, graphic surfaces, clear hierarchy */
+.idg-partner-redesign #portal .idg-partner-topbar{display:flex!important;align-items:center;gap:16px!important}
+.idg-partner-redesign #portal .idg-partner-search{width:min(100%,490px)!important;flex:1 1 240px;min-width:0;margin:0!important;border:1px solid #e7e0eb!important;border-radius:10px!important;background:#fbfafc!important;padding:12px 16px!important;font:inherit}
+.idg-partner-redesign #portal .idg-partner-topbar #signout{margin-left:auto!important;background:#53246e!important}
+.idg-partner-redesign #portal .idg-partner-banner-quote{display:inline-block;background:#f8cfe0;color:#65264b;border-radius:7px;padding:9px 14px;margin-top:15px;font-size:.84rem;font-weight:750}
+.idg-partner-redesign #portal .idg-chart-panel{background:#fff!important;border:1px solid #eee7f0!important;border-radius:15px!important;box-shadow:0 5px 20px #32143d0c!important}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric{background:linear-gradient(120deg,#fbe0ed,#fff0f7)!important;border:0!important}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric:nth-child(2){background:linear-gradient(120deg,#e8ddff,#f5edff)!important}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric:nth-child(3){background:linear-gradient(120deg,#ffe2d1,#fff1e7)!important}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric:nth-child(4){background:linear-gradient(120deg,#dcf3e6,#effaf2)!important}
+.idg-partner-redesign #portal #idg-partner-verified-cards .metric strong{color:#211631!important}
+.idg-partner-redesign #portal .idg-partner-side nav a[hidden]{display:none!important}
+@media(max-width:650px){.idg-partner-redesign #portal .idg-partner-topbar{flex-wrap:wrap}.idg-partner-redesign #portal .idg-partner-search{order:3;flex-basis:100%}.idg-partner-redesign #portal .idg-partner-banner{padding:20px!important}}
