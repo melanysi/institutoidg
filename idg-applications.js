@@ -44,7 +44,7 @@ function render(){
   const notes=document.createElement("textarea");notes.maxLength=3000;notes.value=a.internal_notes||"";notes.rows=3;
   const notesButton=element("button","Salvar anotação","secondary");notesButton.type="button";
   notesButton.addEventListener("click",()=>save(a,{internal_notes:notes.value},notesButton));
-  controls.append(select,statusButton);
+  const deleteButton=element("button","Excluir cadastro","danger");deleteButton.type="button";deleteButton.addEventListener("click",async()=>{if(!await authorized()){notify("Acesso não autorizado.",true);return}const confirmText=prompt("Excluir definitivamente a inscrição de "+a.full_name+"? Digite EXCLUIR para confirmar.");if(confirmText!=="EXCLUIR")return;deleteButton.disabled=true;try{const {data,error}=await client.functions.invoke("admin-delete-application",{body:{application_id:a.id}});if(error)throw error;if(data?.success!==true)throw Error(data?.message||"Exclusão não confirmada.");entries=entries.filter(item=>item.id!==a.id);render();notify("Cadastro excluído com sucesso.")}catch(e){notify("Não foi possível excluir: "+(e.message||"função administrativa indisponível."),true)}finally{deleteButton.disabled=false}});controls.append(select,statusButton,deleteButton);
   article.append(head,details,controls,notesLabel,notes,notesButton);
   head.append(info);
   root.append(article);
