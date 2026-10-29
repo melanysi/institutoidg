@@ -30,3 +30,19 @@
 #idg-christmas-page-v2 .idg-christmas-art.spider{background:#251d28}
 #idg-christmas-page-v2 .idg-christmas-wrap:before{content:"✦ ❄ ✧ 🎄 ✧ ❄ ✦";display:block;text-align:center;letter-spacing:.7em;color:#ae7259;font-size:1.05rem;padding:4px 0 14px}
 @media(prefers-reduced-motion:reduce){#idg-christmas-page-v2 .idg-christmas-card{transition:none}#idg-christmas-page-v2 .idg-christmas-card:hover{transform:none}}
+
+/* Introducao com globo de neve: exclusiva da pagina Natal Solidario. */
+#idg-christmas-page-v2 .idg-snow-intro{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;background:radial-gradient(circle at 50% 40%,#fff9e9,#e8f5e8 65%,#fce9e5);text-align:center;color:#37533d;animation:idgSnowEnter .5s ease both}
+#idg-christmas-page-v2 .idg-snow-intro.idg-snow-out{animation:idgSnowLeave .4s ease forwards;pointer-events:none}
+#idg-christmas-page-v2 .idg-snow-intro h2{font-size:clamp(1.5rem,4vw,2.3rem);color:#a62d40;margin:4px 0}
+#idg-christmas-page-v2 .idg-snow-intro p{margin:0;color:#48644e}
+#idg-christmas-page-v2 .idg-snow-skip{margin-top:12px;padding:11px 22px;border-radius:30px;background:#fff;border:1px solid #b59a82;color:#694a40;font-weight:700;cursor:pointer}
+#idg-christmas-page-v2 .idg-snow-globe{width:min(65vw,245px);height:280px;position:relative;filter:drop-shadow(0 15px 14px #466b4a33);animation:idgGlobeRock 3.2s ease-in-out infinite}
+#idg-christmas-page-v2 .idg-snow-sky{position:absolute;inset:4px 5px 42px;border:6px solid #fff;overflow:hidden;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#bde1e9 58%,#93c6c8);box-shadow:inset -13px -12px 20px #ffffff99,0 0 0 2px #c7b997}
+#idg-christmas-page-v2 .idg-snow-sky:after{content:"";position:absolute;bottom:-13px;left:-5%;width:110%;height:60px;border-radius:50%;background:#fff}
+#idg-christmas-page-v2 .idg-snow-tree{position:absolute;top:62px;left:50%;transform:translateX(-50%);font-size:85px;z-index:2}
+#idg-christmas-page-v2 .idg-snow-gifts{position:absolute;top:137px;left:57%;font-size:37px;z-index:3}
+#idg-christmas-page-v2 .idg-snow-flakes{position:absolute;inset:-25px 5px auto;color:white;font-size:26px;letter-spacing:12px;line-height:2.2;z-index:4;animation:idgSnowFall 2.2s linear infinite;text-shadow:0 0 5px #fff}
+#idg-christmas-page-v2 .idg-snow-base{position:absolute;bottom:10px;left:20%;width:60%;height:49px;border-radius:10px 10px 24px 24px;background:linear-gradient(100deg,#b74d57,#e19d73,#b74d57);border:3px solid #f6e4bc;display:grid;place-items:center;color:#fff;font-weight:800;letter-spacing:.08em;z-index:5}
+@keyframes idgSnowEnter{from{opacity:0}to{opacity:1}}@keyframes idgSnowLeave{to{opacity:0}}@keyframes idgSnowFall{from{transform:translateY(-55px)}to{transform:translateY(190px)}}@keyframes idgGlobeRock{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+@media(prefers-reduced-motion:reduce){#idg-christmas-page-v2 .idg-snow-intro{display:none}}
