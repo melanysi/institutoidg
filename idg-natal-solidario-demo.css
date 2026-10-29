@@ -1,0 +1,12 @@
+/* Natal Solidário: vitrine de demonstração, somente dentro do portal autenticado */
+#portal #idg-natal-demo{margin:26px 0;padding:22px;border:1px solid #eadcf0;border-radius:20px;background:linear-gradient(140deg,#fff8fc,#f7f1ff)}
+#portal #idg-natal-demo h2{margin:0 0 8px;color:#432052}#portal #idg-natal-demo .idg-natal-intro{color:#694c75;margin:0 0 18px}
+#portal .idg-natal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+#portal .idg-natal-card{background:#fff;border:1px solid #e9dce9;border-radius:17px;padding:16px;box-shadow:0 7px 20px #3e18420e;min-width:0}
+#portal .idg-natal-character{position:relative;display:flex;align-items:center;justify-content:center;height:126px;border-radius:13px;background:linear-gradient(135deg,#d8e7ff,#f0f5ff);margin-bottom:12px}
+#portal .idg-natal-card.gold .idg-natal-character{background:linear-gradient(135deg,#ffebc0,#fff8e5)}#portal .idg-natal-card.pink .idg-natal-character{background:linear-gradient(135deg,#ffd9ed,#fff0f8)}
+#portal .idg-natal-symbol{font-size:65px}#portal .idg-natal-hat{position:absolute;right:13px;top:8px;font-size:28px;transform:rotate(16deg)}
+#portal .idg-natal-code{color:#785784;font-size:.72rem;letter-spacing:.035em;font-weight:700}#portal .idg-natal-card h3{margin:8px 0 13px;color:#34203d;font-size:1.13rem}
+#portal .idg-natal-specs{display:flex;flex-wrap:wrap;gap:7px}#portal .idg-natal-specs span{background:#f7f1fa;border-radius:9px;padding:7px 9px;font-size:.84rem;color:#463050}
+#portal .idg-natal-toy{font-size:.87rem;color:#51375b;margin:12px 0}#portal .idg-natal-demo-status{display:inline-block;background:#f2e5ff;color:#66338a;border-radius:20px;padding:5px 10px;font-size:.75rem;font-weight:700}
+#portal .idg-natal-foot{font-size:.8rem;color:#6c5973;margin:15px 0 0}@media(max-width:850px){#portal .idg-natal-grid{grid-template-columns:1fr}}@media(max-width:520px){#portal #idg-natal-demo{padding:14px}}
