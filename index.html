@@ -2447,7 +2447,18 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
 .footer-bottom{justify-content:center!important;text-align:center!important;padding-top:16px!important}
 .footer-bottom p{margin:0 auto!important}
 @media(max-width:700px){.idg-team-access-area{display:grid;gap:14px;padding:20px;margin-top:30px}.idg-team-access-area .team-access-link{width:100%;justify-content:center}.footer-bottom{padding-top:16px!important}}
-</style><style id="idg-community-footer">.idg-community-access-area{max-width:1200px;margin:24px auto 0;padding:22px;border:1px solid #ffffff35;border-radius:16px;background:#ffffff0d;display:flex;justify-content:space-between;align-items:center;gap:20px}.idg-community-access-area strong{color:white}.idg-community-access-area p{color:#c4c7ce;font-size:.9rem;margin:8px 0 0}.idg-community-access-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 18px;border-radius:12px;background:#e9d5ff;color:#392259!important;font-weight:750;text-decoration:none;flex-shrink:0}@media(max-width:700px){.idg-community-access-area{display:grid}.idg-community-access-link{width:100%;text-align:center}}</style></head>
+</style><style id="idg-community-footer">.idg-community-access-area{max-width:1200px;margin:24px auto 0;padding:22px;border:1px solid #ffffff35;border-radius:16px;background:#ffffff0d;display:flex;justify-content:space-between;align-items:center;gap:20px}.idg-community-access-area strong{color:white}.idg-community-access-area p{color:#c4c7ce;font-size:.9rem;margin:8px 0 0}.idg-community-access-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:13px 18px;border-radius:12px;background:#e9d5ff;color:#392259!important;font-weight:750;text-decoration:none;flex-shrink:0}@media(max-width:700px){.idg-community-access-area{display:grid}.idg-community-access-link{width:100%;text-align:center}}</style><style id="idg-volunteer-entry-2026">
+.idg-volunteer-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:28px 0}
+.idg-volunteer-choice{padding:clamp(24px,4vw,36px);border:1px solid #e5d8f0;border-radius:22px;background:linear-gradient(145deg,#fff,#faf7fe);box-shadow:0 12px 35px #45235f0d;display:flex;flex-direction:column;align-items:flex-start}
+.idg-volunteer-choice:nth-child(2){background:#f4ecfb}
+.idg-volunteer-choice-label{font-size:.72rem;font-weight:800;letter-spacing:.14em;color:#7541b8}
+.idg-volunteer-choice h3{font-size:clamp(1.35rem,2.4vw,1.75rem);letter-spacing:-.03em;color:#35214e;margin:16px 0 8px}
+.idg-volunteer-choice p{color:#62576d;line-height:1.65;flex:1;margin:0 0 23px}
+.idg-volunteer-choice .btn-header{margin-top:auto;text-align:center;text-decoration:none}
+.idg-volunteer-secondary{background:#fff!important;border:1px solid #7541b8!important;color:#63369b!important}
+.idg-volunteer-secondary:hover{background:#e8dbf5!important}
+@media(max-width:700px){.idg-volunteer-choices{grid-template-columns:1fr;gap:14px}.idg-volunteer-choice{padding:25px}.idg-volunteer-choice .btn-header{width:100%}}
+</style></head>
 <body>
     <a class="idg-skip" href="#inicio">Pular para o conteúdo</a>
     <header class="site-header">
@@ -2749,8 +2760,19 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
                         <li>Atividades com crianças e adolescentes podem exigir verificações adicionais posteriormente.</li>
                     </ul>
                 </div>
-                <div class="journey-cta">
-                    <a class="btn-header btn-primary" href="#form-voluntariado">Quero me inscrever como voluntário</a>
+                <div class="idg-volunteer-choices" aria-label="Como participar do voluntariado">
+                    <div class="idg-volunteer-choice">
+                        <span class="idg-volunteer-choice-label">NOVOS VOLUNTÁRIOS</span>
+                        <h3>Quero ser voluntário</h3>
+                        <p>Conte um pouco sobre você e como gostaria de contribuir. Nossa equipe avaliará sua manifestação de interesse.</p>
+                        <a class="btn-header btn-primary" href="voluntariado.html">Quero me cadastrar</a>
+                    </div>
+                    <div class="idg-volunteer-choice">
+                        <span class="idg-volunteer-choice-label">QUEM JÁ FAZ PARTE</span>
+                        <h3>Já sou voluntário</h3>
+                        <p>Acesse sua conta do Instituto para acompanhar comunicados e oportunidades. Não é preciso criar outro cadastro.</p>
+                        <a class="btn-header idg-volunteer-secondary" href="comunidade.html">Acessar minha conta</a>
+                    </div>
                 </div>
                 <div class="journey-form-panel" id="form-voluntariado" data-journey-form hidden>
                 <h3>Manifestação de interesse no voluntariado</h3>
