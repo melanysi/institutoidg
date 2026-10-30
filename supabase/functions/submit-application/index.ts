@@ -1,7 +1,11 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
+// Browser submissions are accepted only from the IDG website.
+// The public API key is not an authorization secret; Turnstile and server-side
+// validation remain mandatory for every submission.
+const allowedOrigin = Deno.env.get("IDG_ALLOWED_ORIGIN") ?? "https://melanysi.github.io";
 const corsHeaders = {
-    "Access-Control-Allow-Origin": Deno.env.get("IDG_ALLOWED_ORIGIN") ?? "*",
+    "Access-Control-Allow-Origin": allowedOrigin,
     "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Vary": "Origin",
@@ -86,6 +90,10 @@ function isAdult(dateOfBirth: unknown) {
 }
 
 Deno.serve(async (request) => {
+    const origin = request.headers.get("origin");
+    if (origin && origin !== allowedOrigin) {
+        return jsonResponse(403, { error: "Origem não autorizada." });
+    }
     if (request.method === "OPTIONS") {
         return new Response("ok", { headers: corsHeaders });
     }
