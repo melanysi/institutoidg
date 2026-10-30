@@ -29,10 +29,10 @@ async function refresh(){
    $("media-event").add(new Option(ev.title,ev.id));
    const item=document.createElement("div");item.className="item";
    const text=document.createElement("div");const title=document.createElement("strong");title.textContent=ev.title;
-   const meta=document.createElement("div");meta.className="muted";meta.textContent=new Date(ev.starts_at).toLocaleString("pt-BR")+" · "+ev.status+(ev.is_published?" · Público":" · Não publicado");
+   const meta=document.createElement("div");meta.className="muted";meta.textContent=new Date(ev.starts_at).toLocaleString("pt-BR")+" · "+ev.status+(ev.is_published?" · Público":" · Não publicado")+(ev.capacity===null||ev.capacity===undefined?" · Sem limite de vagas":" · "+ev.capacity+" vaga(s)");
    text.append(title,meta);
    const edit=document.createElement("button");edit.type="button";edit.className="secondary";edit.textContent="Editar";
-   edit.addEventListener("click",()=>{editing=ev.id;$("title").value=ev.title;$("starts").value=localValue(ev.starts_at);$("ends").value=localValue(ev.ends_at);$("place").value=ev.location_name||"";$("partners").value=(ev.partner_names||[]).join(", ");$("status").value=ev.status;$("description").value=ev.description||"";$("published").checked=ev.is_published;$("form-heading").textContent="Editar ação";$("save").textContent="Atualizar ação";$("event-form").scrollIntoView({behavior:"smooth"})});
+   edit.addEventListener("click",()=>{editing=ev.id;$("title").value=ev.title;$("starts").value=localValue(ev.starts_at);$("ends").value=localValue(ev.ends_at);$("place").value=ev.location_name||"";$("partners").value=(ev.partner_names||[]).join(", ");$("capacity").value=ev.capacity??"";$("status").value=ev.status;$("description").value=ev.description||"";$("published").checked=ev.is_published;$("form-heading").textContent="Editar ação";$("save").textContent="Atualizar ação";$("event-form").scrollIntoView({behavior:"smooth"})});
    const remove=document.createElement("button");remove.type="button";remove.className="danger";remove.textContent="Excluir";remove.addEventListener("click",async()=>{if(!confirm("Excluir definitivamente a ação '"+ev.title+"'? As fotos vinculadas ficarão sem ação."))return;remove.disabled=true;try{if(!await isAdmin())throw new Error("Sessão sem autorização.");const {data:deleted,error}=await client.from("idg_events").delete().eq("id",ev.id).select("id");if(error)throw error;if(!deleted?.some(row=>row.id===ev.id))throw new Error("A ação não foi excluída. Verifique as permissões e tente novamente.");await refresh();message("Ação excluída.");}catch(err){reportError(err)}finally{remove.disabled=false}});const controls=document.createElement("div");controls.className="actions";controls.append(edit,remove);item.append(text,controls);$("events").append(item);
  }
  if(!records.length)$("events").textContent="Nenhuma ação cadastrada ainda.";
@@ -73,7 +73,8 @@ $("event-form").addEventListener("submit",async e=>{
  if(!await isAdmin())throw new Error("Sessão sem autorização.");
  const start=new Date($("starts").value),end=$("ends").value?new Date($("ends").value):null;
  if(!Number.isFinite(start.getTime())||(end&&end<start))throw new Error("Confira as datas da ação.");
- const payload={title:$("title").value.trim(),description:$("description").value.trim(),starts_at:start.toISOString(),ends_at:end?.toISOString()||null,location_name:$("place").value.trim(),partner_names:$("partners").value.split(",").map(s=>s.trim()).filter(Boolean),status:$("status").value,is_published:$("published").checked,updated_at:new Date().toISOString()};
+ const capacityInput=$("capacity").value.trim();const capacity=capacityInput===""?null:Number(capacityInput);if(capacity!==null&&(!Number.isSafeInteger(capacity)||capacity<0))throw new Error("Informe um número inteiro de vagas igual ou superior a zero.");
+ const payload={capacity,title:$("title").value.trim(),description:$("description").value.trim(),starts_at:start.toISOString(),ends_at:end?.toISOString()||null,location_name:$("place").value.trim(),partner_names:$("partners").value.split(",").map(s=>s.trim()).filter(Boolean),status:$("status").value,is_published:$("published").checked,updated_at:new Date().toISOString()};
  const query=editing?client.from("idg_events").update(payload).eq("id",editing):client.from("idg_events").insert(payload);
  const {error}=await query;if(error)throw error;
  reset();await refresh();message("Ação salva com sucesso.");
