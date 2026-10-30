@@ -2459,16 +2459,37 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
 .idg-volunteer-secondary:hover{background:#e8dbf5!important}
 @media(max-width:700px){.idg-volunteer-choices{grid-template-columns:1fr;gap:14px}.idg-volunteer-choice{padding:25px}.idg-volunteer-choice .btn-header{width:100%}}
 </style>
-<style id="idg-about-mobile-refresh-20261030">
-#sobre .idg-about-refresh{max-width:1100px;margin-inline:auto}
-#sobre .idg-about-intro{max-width:780px;margin:0 auto 32px;text-align:center;line-height:1.75}
-#sobre .idg-about-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
-#sobre .idg-about-card{background:#fff;border:1px solid #e8e6ed;border-radius:22px;padding:28px 24px;box-shadow:0 10px 32px rgba(30,25,48,.055);text-align:left}
-#sobre .idg-about-card-icon{display:inline-flex;align-items:center;justify-content:center;background:#f4eef8;width:48px;height:48px;border-radius:15px;font-size:23px;margin-bottom:14px}
-#sobre .idg-about-card h3{font-size:clamp(1.15rem,2vw,1.4rem);margin:0 0 12px;line-height:1.3;color:#252630}
-#sobre .idg-about-card p{margin:0;font-size:1rem;line-height:1.7;color:#5e6470;text-align:left}
-#sobre .idg-about-refresh .brand-signature{margin:40px auto 0;text-align:center}
-@media(max-width:800px){#sobre .idg-about-grid{grid-template-columns:1fr;gap:16px}#sobre .idg-about-intro{font-size:1rem;line-height:1.75;margin:0 auto 26px;text-align:left;padding:0 4px}#sobre .idg-about-card{padding:22px 20px;border-radius:18px}#sobre .idg-about-card p{font-size:.97rem;line-height:1.65}#sobre .idg-about-refresh .brand-signature{margin-top:32px;font-size:clamp(1.55rem,6vw,2.4rem)}}
+
+<style id="idg-about-editorial-20261030">
+#sobre.idg-about-editorial{padding:clamp(44px,7vw,100px) clamp(18px,5vw,64px)!important;background:#f6f4f8;overflow:hidden}
+#sobre .idg-about-head,#sobre .idg-about-stories,#sobre .idg-about-closing{max-width:1120px;margin-inline:auto}
+#sobre .idg-about-head{text-align:left;padding:0 0 34px}
+#sobre .idg-about-kicker{display:inline-flex;gap:12px;align-items:center;font-size:.78rem;letter-spacing:.16em;font-weight:850;color:#8b448b}
+#sobre .idg-about-kicker span{color:#e98e40}
+#sobre .idg-about-head h2{font-size:clamp(2.5rem,6vw,5.2rem);line-height:1.06;letter-spacing:-.065em;color:#20202b;margin:18px 0 20px;font-weight:900}
+#sobre .idg-about-head h2 em{font-style:normal;background:linear-gradient(95deg,#477dc4,#bc4caa,#ef8645,#62a56d);background-clip:text;-webkit-background-clip:text;color:transparent}
+#sobre .idg-about-head>p{font-size:clamp(1rem,2vw,1.25rem);max-width:670px;color:#5f6170;line-height:1.7;margin:0 0 22px;text-align:left}
+#sobre .idg-about-tags{display:flex;gap:9px;flex-wrap:wrap}
+#sobre .idg-about-tags span{border:1px solid #d9d1df;border-radius:100px;padding:7px 12px;color:#674d70;font-size:.68rem;font-weight:850;letter-spacing:.06em;background:#fff}
+#sobre .idg-about-stories{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#sobre .idg-about-story{position:relative;overflow:hidden;min-height:330px;border-radius:20px;padding:clamp(24px,3vw,36px);text-align:left;display:flex;flex-direction:column;align-items:flex-start}
+#sobre .idg-story-number{font-size:.75rem;letter-spacing:.14em;font-weight:900;opacity:.85}
+#sobre .idg-about-story h3{font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.13;letter-spacing:-.045em;margin:35px 0 15px;font-weight:900;position:relative;z-index:1}
+#sobre .idg-about-story h3 em{font-style:normal}
+#sobre .idg-about-story p{font-size:1rem;line-height:1.65;margin:0;max-width:440px;position:relative;z-index:1;text-align:left}
+#sobre .idg-about-story-purple{background:#41245c;color:#fff}
+#sobre .idg-about-story-purple h3 em{color:#f8b2d9}
+#sobre .idg-about-story-light{background:#e6eaf6;color:#27243b}
+#sobre .idg-about-story-light h3 em{color:#8061b9}
+#sobre .idg-about-story-orange{background:#f5a456;color:#302033}
+#sobre .idg-about-story-orange h3 em{color:#713a67}
+#sobre .idg-story-deco{position:absolute;right:-16px;bottom:-78px;font-size:200px;line-height:1;opacity:.12;pointer-events:none}
+#sobre .idg-story-underline{width:76px;height:5px;border-radius:9px;background:linear-gradient(90deg,#538dc8,#c759ad,#efa052);margin-top:auto}
+#sobre .idg-about-closing{text-align:center;padding:55px 10px 8px}
+#sobre .idg-about-closing>span{font-size:.73rem;font-weight:850;letter-spacing:.17em;color:#82728a}
+#sobre .idg-about-closing p{font-size:clamp(2rem,5vw,4rem);line-height:1.15;letter-spacing:-.055em;color:#242330;font-weight:900;margin:16px 0 0}
+#sobre .idg-about-closing strong{background:linear-gradient(90deg,#5187cb,#bb4ca8,#f09243,#58a56a);background-clip:text;-webkit-background-clip:text;color:transparent}
+@media(max-width:850px){#sobre .idg-about-stories{grid-template-columns:1fr}#sobre .idg-about-story{min-height:0;padding:26px 24px 30px;border-radius:19px}#sobre .idg-about-story h3{font-size:clamp(2rem,7vw,2.7rem);margin:27px 0 13px}#sobre .idg-about-story p{font-size:1rem;line-height:1.6}#sobre .idg-about-head h2{font-size:clamp(2.5rem,9vw,4.1rem)}#sobre .idg-about-closing{padding-top:43px}}
 </style>
 </head>
 <body>
@@ -2516,33 +2537,34 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
         
         
         
-        <section class="section" id="sobre">
-            <div class="section-header">
-                <h2>Quem Somos</h2>
-                <p>Oportunidades para transformar vidas e fortalecer comunidades.</p>
-                <div class="divider" aria-hidden="true"></div>
+        <section class="section idg-about-editorial" id="sobre" aria-labelledby="idg-about-title">
+            <div class="idg-about-head">
+                <span class="idg-about-kicker">DA ZONA LESTE PARA O FUTURO <span aria-hidden="true">✦</span></span>
+                <h2 id="idg-about-title">Não somos apenas um instituto.<br><em>Somos movimento.</em></h2>
+                <p>Somos o <strong>Instituto Desafiando Gigantes</strong>. Acreditamos na força da periferia e no poder das oportunidades para transformar histórias.</p>
+                <div class="idg-about-tags" aria-label="Áreas de atuação"><span>EDUCAÇÃO</span><span>ESPORTE</span><span>CULTURA</span><span>OPORTUNIDADE</span></div>
             </div>
-            <div class="about-copy idg-about-refresh">
-                <p class="idg-about-intro">Somos uma organização social da Zona Leste de São Paulo que transforma oportunidades em caminhos para a comunidade. Por meio da educação, do esporte, da capacitação profissional e de ações sociais, apoiamos crianças, jovens, adultos e famílias.</p>
-                <div class="idg-about-grid">
-                    <article class="idg-about-card">
-                        <span class="idg-about-card-icon" aria-hidden="true">💜</span>
-                        <h3>Nossa missão</h3>
-                        <p>Promover inclusão, desenvolvimento e autonomia, criando oportunidades para o crescimento pessoal, educacional e profissional da comunidade.</p>
-                    </article>
-                    <article class="idg-about-card">
-                        <span class="idg-about-card-icon" aria-hidden="true">🤝</span>
-                        <h3>O que fazemos</h3>
-                        <p>Realizamos projetos sociais, atividades esportivas, ações educativas e cursos profissionalizantes gratuitos. Também construímos parcerias para ampliar nosso impacto.</p>
-                    </article>
-                    <article class="idg-about-card">
-                        <span class="idg-about-card-icon" aria-hidden="true">✨</span>
-                        <h3>Nosso propósito</h3>
-                        <p>Acreditamos que o lugar onde alguém nasce ou vive não deve limitar seu futuro. Queremos uma periferia com mais educação, cultura, oportunidades e transformação social.</p>
-                    </article>
-                </div>
-                <blockquote class="brand-signature">Desafiando limites.<br /><span>Transformando futuros.</span></blockquote>
+            <div class="idg-about-stories">
+                <article class="idg-about-story idg-about-story-purple">
+                    <span class="idg-story-number">01 / NOSSA MISSÃO</span>
+                    <h3>Oportunidade <em>muda tudo.</em></h3>
+                    <p>Promovemos inclusão, desenvolvimento e autonomia para que crianças, jovens, adultos e famílias tenham mais caminhos para crescer.</p>
+                    <span class="idg-story-deco" aria-hidden="true">✳</span>
+                </article>
+                <article class="idg-about-story idg-about-story-light">
+                    <span class="idg-story-number">02 / O QUE FAZEMOS</span>
+                    <h3>Da ideia à <em>ação.</em></h3>
+                    <p>Conectamos a comunidade a projetos sociais, atividades esportivas, educação, cursos profissionalizantes gratuitos e parcerias que geram impacto.</p>
+                    <div class="idg-story-underline" aria-hidden="true"></div>
+                </article>
+                <article class="idg-about-story idg-about-story-orange">
+                    <span class="idg-story-number">03 / NOSSO PROPÓSITO</span>
+                    <h3>O CEP não define <em>o destino.</em></h3>
+                    <p>Queremos uma periferia onde o lugar em que alguém nasce não limite seus sonhos, suas escolhas ou as oportunidades de futuro.</p>
+                    <span class="idg-story-deco" aria-hidden="true">↗</span>
+                </article>
             </div>
+            <div class="idg-about-closing"><span>ESSA É A NOSSA ESSÊNCIA</span><p>Desafiando limites.<br><strong>Transformando futuros.</strong></p></div>
         </section>
 
         <section class="section" id="atuacao">
