@@ -101,7 +101,18 @@ Deno.serve(async (request) => {
         return jsonResponse(405, { error: "Método não permitido." });
     }
 
-    const expectedKey = Deno.env.get("IDG_PUBLIC_KEY");
+    // Accept an explicit public key or the Supabase-managed publishable key.
+    // A public key identifies the project; Turnstile provides submission protection.
+    const configuredKeys = Deno.env.get("SUPABASE_PUBLISHABLE_KEYS");
+    let expectedKey = Deno.env.get("IDG_PUBLIC_KEY") ?? "";
+    if (!expectedKey && configuredKeys) {
+        try {
+            const keys = JSON.parse(configuredKeys);
+            expectedKey = typeof keys.default === "string" ? keys.default : "";
+        } catch {
+            // Invalid configuration must fail closed.
+        }
+    }
     if (!expectedKey || request.headers.get("apikey") !== expectedKey) {
         return jsonResponse(401, { error: "Não foi possível validar o envio." });
     }
