@@ -60,3 +60,33 @@
 .idg-partner-redesign #portal #idg-partner-verified-cards .metric strong{color:#211631!important}
 .idg-partner-redesign #portal .idg-partner-side nav a[hidden]{display:none!important}
 @media(max-width:650px){.idg-partner-redesign #portal .idg-partner-topbar{flex-wrap:wrap}.idg-partner-redesign #portal .idg-partner-search{order:3;flex-basis:100%}.idg-partner-redesign #portal .idg-partner-banner{padding:20px!important}}
+
+/* Mobile portal navigation: compact IDG header and accessible dropdown */
+.idg-partner-redesign #portal .idg-partner-menu-toggle{display:none}
+@media(max-width:800px){
+ body.idg-partner-redesign:has(#portal:not(.hidden)) .wrap{padding:12px 14px 40px!important;max-width:100%!important}
+ body.idg-partner-redesign:has(#portal:not(.hidden)) .wrap>h1,
+ body.idg-partner-redesign:has(#portal:not(.hidden)) .wrap>.muted,
+ body.idg-partner-redesign:has(#portal:not(.hidden)) .wrap>a:first-child{display:none!important}
+ .idg-partner-redesign #portal{margin:0!important;border:0!important;background:transparent!important;box-shadow:none!important;max-width:100%!important}
+ .idg-partner-redesign #portal .idg-partner-shell{display:block!important;min-width:0!important}
+ .idg-partner-redesign #portal .idg-partner-side{position:relative!important;display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;align-items:center!important;gap:10px!important;padding:12px 14px!important;min-height:0!important;border-radius:16px!important;background:linear-gradient(120deg,#24102f,#4a1d5f)!important}
+ .idg-partner-redesign #portal .idg-partner-logo{display:flex!important;align-items:center!important;gap:9px!important;text-align:left!important;padding:0!important;min-width:0!important}
+ .idg-partner-redesign #portal .idg-partner-logo strong{font-size:1.55rem!important;white-space:nowrap!important;text-shadow:none!important}
+ .idg-partner-redesign #portal .idg-partner-logo small{font-size:.56rem!important;letter-spacing:.07em!important;line-height:1.3!important;max-width:130px!important;margin:0!important}
+ .idg-partner-redesign #portal .idg-partner-menu-toggle{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;background:#ffffff1b!important;color:#fff!important;border:1px solid #ffffff55!important;border-radius:11px!important;padding:10px 12px!important;margin:0!important;font-size:.9rem!important;font-weight:700!important;cursor:pointer!important}
+ .idg-partner-redesign #portal .idg-partner-menu-toggle:focus-visible{outline:3px solid #f6b5e3;outline-offset:2px}
+ .idg-partner-redesign #portal .idg-partner-side nav{display:none!important;grid-column:1/-1!important;overflow:visible!important;flex-direction:column!important;gap:4px!important;padding-top:10px!important;border-top:1px solid #ffffff30!important}
+ .idg-partner-redesign #portal .idg-partner-side nav.idg-mobile-open{display:flex!important}
+ .idg-partner-redesign #portal .idg-partner-side nav a{display:block!important;white-space:normal!important;padding:12px 14px!important;line-height:1.35!important}
+ .idg-partner-redesign #portal .idg-partner-content{min-width:0!important;padding:12px 0!important}
+ .idg-partner-redesign #portal .idg-partner-topbar{padding:13px!important;gap:10px!important;border-radius:12px!important}
+ .idg-partner-redesign #portal .idg-partner-topbar>span{font-size:.82rem!important;min-width:0!important}
+ .idg-partner-redesign #portal .idg-partner-banner{min-height:0!important;padding:20px!important}
+ .idg-partner-redesign #portal .idg-partner-banner h2{font-size:clamp(1.4rem,6vw,1.9rem)!important}
+ .idg-partner-redesign #portal .idg-partner-banner p{font-size:.94rem!important;line-height:1.5!important}
+ .idg-partner-redesign #portal .idg-partner-banner-quote{font-size:.76rem!important}
+ .idg-partner-redesign #portal .idg-partner-crown{display:none!important}
+ .idg-partner-redesign #portal .idg-partner-content>*{max-width:100%}
+ .idg-partner-redesign #portal .metrics{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))!important}
+}
