@@ -42,3 +42,7 @@
 .idg-overview-heading{margin:18px 0 6px;font-weight:800;color:#2f2544;letter-spacing:-.025em}
 #idg-visual-summary{background:transparent!important}
 #idg-visual-summary>h2{margin-top:10px}
+
+/* Accessible mobile menu dismiss layer */
+.idg-sidebar-backdrop{display:none!important}
+@media(max-width:900px){.idg-layout.idg-menu-open .idg-sidebar-backdrop{display:block!important;position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;border:0!important;border-radius:0!important;padding:0!important;margin:0!important;background:#160d2880!important;box-shadow:none!important;z-index:125!important;cursor:default!important}.idg-layout.idg-menu-open .idg-sidebar{box-shadow:0 12px 35px #5b386612!important}.idg-layout:not(.idg-menu-open) .idg-sidebar{pointer-events:none}}
