@@ -49,3 +49,52 @@
 
 /* Gestão: leitura confortável e controles recolhíveis */
 #dashboard{display:grid;gap:18px}#dashboard>.card{margin:0!important;padding:24px!important}#dashboard .idg-admin-card-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;text-align:left;gap:12px;background:transparent!important;box-shadow:none!important;color:#32234f!important;border:0;padding:2px 0!important;font-size:1.15rem;font-weight:750;line-height:1.4}#dashboard .idg-admin-card-toggle:after{content:"⌄";font-size:1.5rem;color:#765c94;transition:transform .2s}#dashboard .idg-admin-card-open>.idg-admin-card-toggle:after{transform:rotate(180deg)}#dashboard .idg-admin-card-body{display:none;padding-top:20px}#dashboard .idg-admin-card-open>.idg-admin-card-body{display:block}#dashboard .idg-admin-card-body form{display:grid;gap:11px}#dashboard .idg-admin-card-body label{margin-top:6px}#dashboard .idg-admin-card-body .actions{margin-top:16px}#dashboard .idg-admin-card-body textarea{min-height:100px;resize:vertical}#dashboard .idg-admin-card-body .grid{gap:16px}#dashboard .idg-admin-card-body p{line-height:1.65}#dashboard .idg-admin-card-body .list{margin-top:16px}@media(max-width:600px){#dashboard{gap:13px}#dashboard>.card{padding:18px!important}#dashboard .idg-admin-card-toggle{font-size:1.05rem}#dashboard .idg-admin-card-body{padding-top:15px}#dashboard .idg-admin-card-body button{max-width:100%}}
+
+/* IDG Administração — dashboard editorial amarelo manteiga, inspirado em UI de educação */
+body.idg-admin-modern{--idg-ink:#332f2a;--idg-purple:#9a7a35;--idg-pink:#d5a951;--idg-blue:#c79e4a;--idg-bg:#faf9f5;--idg-border:#ede7d9;background:#faf9f5!important;color:#332f2a!important}
+body.idg-admin-modern .shell{max-width:1480px!important;padding:22px clamp(14px,3vw,38px) 70px!important}
+body.idg-admin-modern .idg-layout{gap:24px}
+body.idg-admin-modern .idg-sidebar{background:#fffdf9!important;border:1px solid #eee8dc!important;border-radius:23px;padding:23px 13px;box-shadow:0 10px 30px #665d4210}
+body.idg-admin-modern .idg-brand{color:#876826;font-weight:850;letter-spacing:-.03em;padding:9px 15px 21px}
+body.idg-admin-modern .idg-nav a{color:#625b50;border-radius:13px;margin:2px 0}
+body.idg-admin-modern .idg-nav a:hover,body.idg-admin-modern .idg-nav a.active{background:#f7efdb!important;color:#654e20!important;box-shadow:none!important}
+body.idg-admin-modern .idg-nav a.active{box-shadow:inset 3px 0 #d7ad51!important}
+body.idg-admin-modern header{background:#fffdf9!important;border:1px solid #ece7df!important;border-radius:22px;box-shadow:0 8px 24px #5645280a!important;padding:21px 25px!important}
+body.idg-admin-modern header h1{color:#363029;font-size:clamp(1.45rem,2.4vw,2rem)}
+body.idg-admin-modern header .muted,body.idg-admin-modern .muted{color:#76716a!important}
+body.idg-admin-modern .idg-sidebar-toggle{border:1px solid #e9ddc5!important;background:#fffcf5!important;color:#795b26!important;box-shadow:none!important;margin:18px 0!important}
+body.idg-admin-modern .idg-overview-heading{font-size:1.03rem;color:#726b5f;margin:9px 0 0}
+body.idg-admin-modern #dashboard{gap:17px}
+body.idg-admin-modern #dashboard>.card{background:#fff!important;border:1px solid #eae7df!important;border-radius:21px!important;padding:24px!important;box-shadow:0 7px 23px #463b2209!important}
+body.idg-admin-modern #dashboard .idg-admin-card-toggle{color:#3c352d!important;font-size:1.08rem!important}
+body.idg-admin-modern #dashboard .idg-admin-card-toggle:after{color:#a38a58}
+body.idg-admin-modern #dashboard .idg-admin-card-body{border-top:1px solid #f1ede4;margin-top:16px;padding-top:19px}
+body.idg-admin-modern .card h2,body.idg-admin-modern .idg-chart-panel h3{color:#41382d!important}
+body.idg-admin-modern .card,body.idg-admin-modern .item,body.idg-admin-modern .application-card{border-color:#ece8de!important}
+body.idg-admin-modern .secondary{background:#f4efe3!important;color:#62502d!important}
+body.idg-admin-modern button:not(.secondary):not(.danger):not(.idg-sidebar-backdrop):not(.idg-admin-card-toggle){background:#b48b3e!important;color:#fff!important;box-shadow:none!important}
+body.idg-admin-modern input,body.idg-admin-modern select,body.idg-admin-modern textarea{border:1px solid #dcd7c9!important;background:#fff!important;color:#332f2a!important}
+body.idg-admin-modern input:focus,body.idg-admin-modern select:focus,body.idg-admin-modern textarea:focus{border-color:#af8b48!important;outline:2px solid #f0dcae!important}
+body.idg-admin-modern .idg-stat,body.idg-admin-modern .idg-color-card{background:#f0e4c7!important;color:#51422c!important}
+body.idg-admin-modern .idg-stat:nth-child(2),body.idg-admin-modern .idg-color-card:nth-child(2){background:#e6eadd!important}
+body.idg-admin-modern .idg-stat:nth-child(3),body.idg-admin-modern .idg-color-card:nth-child(3){background:#e3e9e9!important}
+body.idg-admin-modern .idg-stat:nth-child(4),body.idg-admin-modern .idg-color-card:nth-child(4){background:#f4e9e1!important}
+body.idg-admin-modern .idg-chart-panel{border-color:#ece6da!important;box-shadow:0 6px 20px #463b2209}
+body.idg-admin-modern .idg-admin-welcome{background:linear-gradient(115deg,#fffbf2,#f5edda 85%)!important;border:1px solid #eae0c8;border-radius:24px;padding:clamp(22px,3vw,36px);box-shadow:0 10px 32px #63502910}
+body.idg-admin-modern .idg-welcome-eyebrow{font-size:.71rem;letter-spacing:.12em;font-weight:850;color:#927137}
+body.idg-admin-modern .idg-admin-welcome h2{font-size:clamp(1.6rem,3vw,2.35rem);letter-spacing:-.04em;margin:11px 0 6px;color:#393126}
+body.idg-admin-modern .idg-admin-welcome p{font-size:.96rem;color:#756c5f;margin:0 0 23px;line-height:1.6}
+body.idg-admin-modern .idg-admin-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+body.idg-admin-modern .idg-shortcut{display:flex;align-items:center;gap:13px;padding:16px 14px;border:1px solid #eee5d5;border-radius:16px;background:#fffefb;text-decoration:none;color:#39332b;min-width:0;transition:background .16s,transform .16s}
+body.idg-admin-modern .idg-shortcut:hover{background:#fff8e7;transform:translateY(-2px)}
+body.idg-admin-modern .idg-shortcut-num{display:grid;place-items:center;width:38px;height:38px;flex:none;background:#f5e9ce;color:#80632d;border-radius:12px;font-weight:800;font-size:.79rem}
+body.idg-admin-modern .idg-shortcut strong,body.idg-admin-modern .idg-shortcut small{display:block}
+body.idg-admin-modern .idg-shortcut strong{font-size:.92rem}
+body.idg-admin-modern .idg-shortcut small{color:#898072;font-size:.77rem;margin-top:3px;line-height:1.35}
+body.idg-admin-modern .idg-shortcut-arrow{margin-left:auto;color:#ae8d4e;font-weight:800}
+body.idg-admin-modern #idg-visual-summary{padding:0!important}
+body.idg-admin-modern #idg-visual-summary>h2{font-size:1.12rem!important;margin:0 0 6px}
+@media(min-width:901px){body.idg-admin-modern .idg-layout{grid-template-columns:235px minmax(0,1fr)}body.idg-admin-modern .idg-sidebar{top:22px}}
+@media(max-width:900px){body.idg-admin-modern .idg-layout.idg-menu-open .idg-sidebar{border-radius:0 22px 22px 0!important;box-shadow:0 12px 35px #544a3018!important}}
+@media(max-width:600px){body.idg-admin-modern .shell{padding:14px 13px 64px!important}body.idg-admin-modern header{padding:17px!important}body.idg-admin-modern #dashboard>.card{padding:18px!important}body.idg-admin-modern .idg-admin-welcome{padding:22px 17px}body.idg-admin-modern .idg-admin-shortcuts{grid-template-columns:1fr;gap:9px}body.idg-admin-modern .idg-shortcut{padding:12px}body.idg-admin-modern .idg-shortcut-num{width:35px;height:35px}body.idg-admin-modern .idg-shortcut small{font-size:.73rem}}
+@media(prefers-reduced-motion:reduce){body.idg-admin-modern .idg-shortcut{transition:none}}
