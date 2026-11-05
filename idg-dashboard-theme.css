@@ -98,3 +98,15 @@ body.idg-admin-modern #idg-visual-summary>h2{font-size:1.12rem!important;margin:
 @media(max-width:900px){body.idg-admin-modern .idg-layout.idg-menu-open .idg-sidebar{border-radius:0 22px 22px 0!important;box-shadow:0 12px 35px #544a3018!important}}
 @media(max-width:600px){body.idg-admin-modern .shell{padding:14px 13px 64px!important}body.idg-admin-modern header{padding:17px!important}body.idg-admin-modern #dashboard>.card{padding:18px!important}body.idg-admin-modern .idg-admin-welcome{padding:22px 17px}body.idg-admin-modern .idg-admin-shortcuts{grid-template-columns:1fr;gap:9px}body.idg-admin-modern .idg-shortcut{padding:12px}body.idg-admin-modern .idg-shortcut-num{width:35px;height:35px}body.idg-admin-modern .idg-shortcut small{font-size:.73rem}}
 @media(prefers-reduced-motion:reduce){body.idg-admin-modern .idg-shortcut{transition:none}}
+
+/* Gestão: visão geral clara, sem indicadores comprimidos */
+body.idg-admin-modern #idg-visual-summary{background:#fff!important;border:1px solid #eae7df!important;border-radius:22px!important;padding:clamp(18px,3vw,28px)!important;box-shadow:0 7px 23px #463b2209!important;margin:0!important}
+body.idg-admin-modern #idg-visual-summary>.muted{margin:0 0 16px;line-height:1.55}
+body.idg-admin-modern #idg-visual-summary .idg-visual-board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:15px 0}
+body.idg-admin-modern #idg-visual-summary .idg-chart-panel{min-width:0;padding:20px;border:1px solid #eee7db!important;border-radius:17px;box-shadow:none;background:#fffefa}
+body.idg-admin-modern #idg-visual-summary .idg-chart-panel .idg-empty{background:#f8f5ec;border:1px dashed #e5d9bb;border-radius:12px;padding:16px;line-height:1.55}
+body.idg-admin-modern .metric{min-width:0!important;background:#fcf8ef!important;border:1px solid #ece4d1!important;border-radius:14px!important;padding:16px!important;display:flex!important;flex-direction:column!important;gap:8px!important}
+body.idg-admin-modern .metric small{display:block;line-height:1.35;color:#6e6659}
+body.idg-admin-modern .metric strong{display:block;line-height:1.1;color:#775d2e;font-size:1.6rem}
+@media(max-width:850px){body.idg-admin-modern #idg-visual-summary .idg-visual-board{grid-template-columns:1fr}}
+@media(max-width:600px){body.idg-admin-modern #idg-visual-summary{padding:18px!important}body.idg-admin-modern #idg-visual-summary .idg-visual-board{gap:12px}body.idg-admin-modern #idg-visual-summary .idg-chart-panel{padding:16px}body.idg-admin-modern .metric{padding:13px!important}}
