@@ -65,3 +65,8 @@
 #idg-christmas-page-v2 .idg-natal-catalog-item img{display:block;width:100%;height:158px;object-fit:contain;background:#fcf8f1}
 #idg-christmas-page-v2 .idg-natal-catalog-item figcaption{padding:9px 7px;color:#315e41;font-size:.82rem;font-weight:650;overflow-wrap:anywhere}
 #idg-christmas-page-v2 .idg-natal-image-error:before{content:'Imagem indisponível';display:block;padding:35px 8px;color:#8f4a4a}
+
+/* Natal 2026: enquadramento sem corte, preservando rostos e personagens. */
+#idg-christmas-page-v2 .idg-christmas-art{height:300px!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;background:#fff9f3!important;padding:8px!important}
+#idg-christmas-page-v2 .idg-christmas-art img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important;transform:none!important;filter:none!important;mix-blend-mode:normal!important;opacity:1!important;max-width:100%!important;max-height:100%!important}
+@media(max-width:540px){#idg-christmas-page-v2 .idg-christmas-art{height:310px!important}}
