@@ -70,3 +70,12 @@
 #idg-christmas-page-v2 .idg-christmas-art{height:300px!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;background:#fff9f3!important;padding:8px!important}
 #idg-christmas-page-v2 .idg-christmas-art img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center center!important;transform:none!important;filter:none!important;mix-blend-mode:normal!important;opacity:1!important;max-width:100%!important;max-height:100%!important}
 @media(max-width:540px){#idg-christmas-page-v2 .idg-christmas-art{height:310px!important}}
+
+/* Controles de apadrinhamento ativos, com estados acessíveis. */
+#idg-christmas-page-v2 .idg-natal-availability-summary{grid-column:1/-1;text-align:center;font-weight:750;color:#396e4a;background:#e8f6e8;padding:12px;border-radius:12px;margin:0 0 14px}
+#idg-christmas-page-v2 .idg-natal-sponsor-action{opacity:1!important;cursor:pointer!important;background:#a33448!important;color:#fff!important;margin-top:8px}
+#idg-christmas-page-v2 .idg-natal-sponsor-action:hover:not(:disabled){background:#81283b!important}
+#idg-christmas-page-v2 .idg-natal-sponsor-action:disabled{opacity:.58!important;cursor:not-allowed!important}
+#idg-christmas-page-v2 .idg-natal-sponsor-action:focus-visible{outline:3px solid #26764d;outline-offset:3px}
+#idg-christmas-page-v2 .idg-natal-card-status{font-weight:750;color:#376749}
+#idg-christmas-page-v2 .idg-natal-card-feedback{min-height:1.2em;font-size:.85rem;color:#9d3030}
