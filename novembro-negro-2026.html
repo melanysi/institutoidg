@@ -69,13 +69,51 @@ h2{font-family:Impact,"Arial Black",system-ui,sans-serif;text-transform:uppercas
 footer{background:#171b20;border-top:7px solid #ffbf47}
 @media(max-width:750px){.hero:before{width:85vw;right:-47vw;opacity:.35}.hero h1{font-size:clamp(3.6rem,13vw,6rem);max-width:580px}.hero p{background:#171b20b0}.panel,.voice{margin:0 8px 8px 0}.culture-grid{gap:16px}}
 @media(prefers-reduced-motion:reduce){.btn{transition:none}}
+
+/* Lousa de vozes: textos legíveis, movimentação suave e prévia imediata */
+.mural{background:#171b20;color:#fff;padding:clamp(24px,5vw,46px);border:5px solid #ffbf47;box-shadow:9px 9px 0 #ed6c30;border-radius:8px}
+.mural .section-label{background:#ffbf47;color:#171b20}.mural h2{color:#fff}.mural p{color:#ece9df}
+.mural-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:24px;align-items:start}
+.mural-form{background:#f8f3e8;color:#171b20;border-radius:8px;padding:20px}
+.mural-form label{display:block;font-weight:800;margin:12px 0 6px}
+.mural-form input,.mural-form textarea{display:block;width:100%;border:2px solid #171b20;border-radius:4px;padding:12px;background:#fff;color:#171b20;font:inherit}
+.mural-form textarea{min-height:130px;resize:vertical}.mural-form small{display:block;color:#555f65;margin-top:7px}
+.mural-form button{padding:12px 16px;border:0;border-radius:4px;background:#ed6c30;color:#171b20;font:inherit;font-weight:900;cursor:pointer;margin-top:13px}
+.mural-form button:disabled{opacity:.55;cursor:wait}
+.mural-board{background:#232b2b;border:5px solid #775c3b;border-radius:5px;padding:20px;min-height:335px;box-shadow:inset 0 0 24px #0006;position:relative;overflow:hidden}
+.mural-board:before{content:"NOSSA VOZ";position:absolute;inset:auto 0 6px;text-align:center;letter-spacing:.2em;color:#ffffff12;font-size:clamp(2.5rem,7vw,5rem);font-weight:900;pointer-events:none}
+.mural-note{position:relative;background:#fff0b5;color:#202120;box-shadow:4px 5px 0 #0005;padding:15px;max-width:100%;overflow-wrap:anywhere;white-space:pre-wrap;animation:muralAppear .5s ease both;transform:rotate(-1deg)}
+.mural-note:nth-child(2n){background:#c7e7e9;transform:rotate(1deg)}.mural-note:nth-child(3n){background:#ffd4ca;transform:rotate(-.5deg)}
+.mural-note p{color:#1d292a;margin:0 0 8px!important}.mural-note strong{font-size:.8rem}
+.mural-messages{position:relative;z-index:1;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.mural-preview{margin-top:15px;border-top:1px solid #aab2b5;padding-top:15px}.mural-preview .mural-note{background:#fff0b5}.mural-status{color:#202120!important;font-weight:700;min-height:20px}
+.mural-empty{color:#eee!important;position:relative;z-index:1}.mural-note.pending{outline:2px dashed #b56a36}
+@keyframes muralAppear{from{opacity:0;translate:0 9px}to{opacity:1;translate:0 0}}
+@media(max-width:800px){.mural-grid{grid-template-columns:1fr}.mural-messages{grid-template-columns:1fr 1fr}}
+@media(max-width:490px){.mural-messages{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.mural-note{animation:none}}
 </style></head>
 <body><header><div class="wrap"><a href="idg-daily.html">← Voltar ao IDG Daily</a><a class="brand" href="index.html">INSTITUTO <span>IDG</span></a></div></header>
-<div class="hero"><div class="wrap"><div class="eyebrow">IDG Daily apresenta · Especial Novembro Negro 2026</div><h1>Nossa história <em>tem voz.</em></h1><p>Histórias, identidades e conquistas de pessoas negras que vivem e transformam a nossa comunidade. Porque a memória também se constrói aqui.</p><div class="actions"><a class="btn" href="#entenda">Conheça o especial</a><a class="btn alt" href="#vozes">Vozes da comunidade</a><a class="btn alt" href="#cultura">Livros e filmes</a></div></div></div>
+<div class="hero"><div class="wrap"><div class="eyebrow">IDG Daily apresenta · Especial Novembro Negro 2026</div><h1>Nossa história <em>tem voz.</em></h1><p>Histórias, identidades e conquistas de pessoas negras que vivem e transformam a nossa comunidade. Porque a memória também se constrói aqui.</p><div class="actions"><a class="btn" href="#entenda">Conheça o especial</a><a class="btn alt" href="#vozes">Vozes da comunidade</a><a class="btn alt" href="#cultura">Livros e filmes</a><a class="btn alt" href="#mural">Deixe sua mensagem</a></div></div></div>
 <main class="wrap">
 <section id="entenda"><div class="section-label">Consciência e memória</div><h2>Por que falar de Novembro Negro?</h2><p class="lead">Novembro é um convite para conhecer trajetórias, reconhecer contribuições e refletir sobre o enfrentamento ao racismo. No Brasil, 20 de novembro é o Dia Nacional de Zumbi e da Consciência Negra, uma data de memória e reflexão.</p><div class="info-grid"><article class="panel"><div class="number">01</div><h3>História</h3><p>A presença negra no Brasil é feita de conhecimentos, culturas, lutas, criações e transformações que vão muito além da escravidão.</p></article><article class="panel"><div class="number">02</div><h3>Identidade</h3><p>Ouvir experiências e valorizar referências negras fortalece o reconhecimento da diversidade de histórias e vivências.</p></article><article class="panel"><div class="number">03</div><h3>Futuro</h3><p>Educação, respeito e oportunidades fazem parte da construção de uma comunidade mais justa.</p></article></div></section>
 <section id="vozes"><div class="section-label">Projeto especial · IDG Daily</div><h2>Vozes da nossa comunidade</h2><p class="lead">Aqui vamos reunir entrevistas e relatos de moradores negros da região, respeitando a forma como cada pessoa deseja contar sua história.</p><div class="voices"><article class="voice"><small>Histórias em preparação</small><div><h3>Uma voz, uma trajetória</h3><p>Este espaço receberá a primeira entrevista autorizada.</p></div></article><article class="voice"><small>Histórias em preparação</small><div><h3>Conquistas que inspiram</h3><p>Em breve, mais histórias de pessoas da nossa comunidade.</p></div></article><article class="voice"><small>Histórias em preparação</small><div><h3>Nossa região tem voz</h3><p>Os relatos serão adicionados conforme forem recebidos e aprovados.</p></div></article></div><p class="fine">Nenhum depoimento é fictício. Fotos, nomes, vídeos e falas só serão publicados com autorização.</p></section>
-<section class="callout" id="participar"><div class="section-label" style="color:#ffe8b5">Participe da campanha</div><h2>O que a Consciência Negra representa para você?</h2><p>Quer compartilhar uma reflexão ou contar sua história? Escreva ao Instituto. Nossa equipe avaliará os envios e entrará em contato antes de qualquer publicação.</p><a class="btn" href="mailto:despertando.idg@gmail.com?subject=Novembro%20Negro%20%E2%80%94%20Quero%20participar">Enviar minha mensagem por e-mail</a><p style="font-size:.9rem">Não envie documentos, informações sensíveis ou fotos de terceiros. O envio não significa publicação automática.</p></section>
+<section id="mural" class="mural" aria-labelledby="mural-title">
+<div class="section-label">A comunidade também escreve</div><h2 id="mural-title">Lousa de Vozes 🖤</h2>
+<p>O que a Consciência Negra representa para você? Escreva sua reflexão e veja as palavras ganharem forma na lousa. Depois de aprovada pela equipe do Instituto, a mensagem poderá aparecer para toda a comunidade.</p>
+<div class="mural-grid">
+<form id="mural-form" class="mural-form">
+<label for="mural-nome">Como quer assinar?</label><input id="mural-nome" maxlength="60" placeholder="Seu primeiro nome ou Anônimo" autocomplete="nickname">
+<label for="mural-texto">Sua mensagem</label><textarea id="mural-texto" maxlength="280" minlength="3" required placeholder="Para mim, a Consciência Negra representa..."></textarea>
+<small><span id="mural-counter">0</span>/280 caracteres · Não inclua telefone, endereço ou dados sensíveis.</small>
+<div class="mural-preview"><strong>Assim sua mensagem ficará na lousa:</strong><div class="mural-note" style="margin-top:10px"><p id="mural-preview-text">Suas palavras aparecerão aqui enquanto você escreve...</p><strong id="mural-preview-nome">Anônimo</strong></div></div>
+<label style="font-size:.88rem;font-weight:500"><input type="checkbox" id="mural-consent" required style="display:inline;width:auto;vertical-align:middle;margin-right:5px"> Autorizo o IDG a exibir esta mensagem e meu nome escolhido no mural público, após moderação. Sei que posso pedir a retirada pelo e-mail despertando.idg@gmail.com.</label>
+<input type="text" id="mural-site" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px" aria-label="Deixe este campo vazio">
+<button id="mural-send" type="submit">Enviar para a lousa →</button><p id="mural-status" class="mural-status" role="status" aria-live="polite"></p>
+</form>
+<div class="mural-board" aria-label="Mensagens aprovadas da comunidade"><div class="mural-messages" id="mural-messages"></div><p class="mural-empty" id="mural-empty">As mensagens aprovadas pela equipe aparecerão aqui. Seja uma das primeiras vozes!</p><div class="mural-messages" id="mural-local" style="margin-top:14px"></div></div>
+</div>
+</section><section class="callout" id="participar"><div class="section-label" style="color:#ffe8b5">Participe da campanha</div><h2>O que a Consciência Negra representa para você?</h2><p>Quer compartilhar uma reflexão ou contar sua história? Escreva ao Instituto. Nossa equipe avaliará os envios e entrará em contato antes de qualquer publicação.</p><a class="btn" href="mailto:despertando.idg@gmail.com?subject=Novembro%20Negro%20%E2%80%94%20Quero%20participar">Enviar minha mensagem por e-mail</a><p style="font-size:.9rem">Não envie documentos, informações sensíveis ou fotos de terceiros. O envio não significa publicação automática.</p></section>
 <section><div class="section-label">Para conversar e refletir</div><h2>Três perguntas, muitas histórias</h2><ol class="questions"><li>O que significa ser uma pessoa negra para você?</li><li>Qual conquista, memória ou experiência marcou sua trajetória?</li><li>Que mensagem deixaria para as próximas gerações negras da comunidade?</li></ol><p class="fine">Cada participante pode escolher quais perguntas responder. Ninguém precisa compartilhar experiências dolorosas para participar.</p></section>
 <section id="cultura" class="culture" aria-labelledby="culture-title">
 <div class="section-label">Curadoria cultural · Novembro Negro</div><h2 id="culture-title">Entre páginas e telas: histórias que transformam</h2>
@@ -111,5 +149,21 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
  const panels=[document.getElementById('painel-livros'),document.getElementById('painel-filmes')];
  function show(index,focus){tabs.forEach((tab,i)=>{const selected=i===index;tab.setAttribute('aria-selected',String(selected));tab.tabIndex=selected?0:-1;panels[i].hidden=!selected});if(focus)tabs[index].focus()}
  tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>show(i,false));tab.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'||e.key==='Home'||e.key==='End'){e.preventDefault();let next=e.key==='Home'?0:e.key==='End'?tabs.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;show(next,true)}})})
+})();
+</script><script src="supabase-config.js" defer></script>
+<script defer>
+(function(){
+ const form=document.getElementById('mural-form'),field=document.getElementById('mural-texto'),name=document.getElementById('mural-nome'),status=document.getElementById('mural-status'),preview=document.getElementById('mural-preview-text'),previewName=document.getElementById('mural-preview-nome'),counter=document.getElementById('mural-counter'),board=document.getElementById('mural-messages'),local=document.getElementById('mural-local'),empty=document.getElementById('mural-empty'),send=document.getElementById('mural-send');
+ if(!form)return;
+ function note(text,author,pending){const el=document.createElement('div');el.className='mural-note'+(pending?' pending':'');const p=document.createElement('p');p.textContent=text;const small=document.createElement('strong');small.textContent=author+(pending?' · aguardando aprovação':'');el.append(p,small);return el}
+ function config(){const c=window.IDG_SUPABASE_CONFIG;return c&&/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(c.url)&&c.publishableKey?c:null}
+ function update(){preview.textContent=field.value||'Suas palavras aparecerão aqui enquanto você escreve...';previewName.textContent=name.value.trim()||'Anônimo';counter.textContent=String(field.value.length)}
+ field.addEventListener('input',update);name.addEventListener('input',update);
+ async function load(){const c=config();if(!c){status.textContent='O mural está indisponível no momento.';return}try{const res=await fetch(c.url+'/rest/v1/idg_novembro_negro_mural?select=id,nome,mensagem,criado_em&order=criado_em.desc&limit=30',{headers:{apikey:c.publishableKey}});if(!res.ok)throw Error('load '+res.status);const rows=await res.json();board.replaceChildren();rows.forEach(x=>board.append(note(x.mensagem,x.nome,false)));empty.hidden=rows.length>0}catch(e){status.textContent='Não foi possível carregar as mensagens agora.'}}
+ window.addEventListener('load',load);
+ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity())return;if(document.getElementById('mural-site').value)return;const c=config();if(!c){status.textContent='Não foi possível conectar ao mural.';return}const mensagem=field.value.trim(),nome=name.value.trim()||'Anônimo';if(mensagem.length<3||mensagem.length>280||nome.length>60){status.textContent='Confira o tamanho da mensagem.';return}
+ send.disabled=true;status.textContent='Enviando para análise...';
+ try{const res=await fetch(c.url+'/rest/v1/idg_novembro_negro_mural',{method:'POST',headers:{apikey:c.publishableKey,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify({nome,mensagem})});if(!res.ok)throw Error('submit '+res.status);local.prepend(note(mensagem,nome,true));status.textContent='Mensagem recebida! Ela aparece acima apenas para você e ficará pública após aprovação.';form.reset();update()}catch(e){status.textContent='Não conseguimos enviar agora. Tente novamente mais tarde.'}finally{send.disabled=false}
+ });
 })();
 </script></body></html>
