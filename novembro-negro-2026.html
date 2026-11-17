@@ -18,6 +18,57 @@ footer{background:#211b1b;color:#f4ebe1;padding:25px 0}footer a{color:#f2c884}
 .culture{margin:0 0 65px}.library-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.library-tabs button{padding:12px 18px;border-radius:10px;border:2px solid #a94d30;background:transparent;color:#572e23;font:inherit;font-weight:800;cursor:pointer}.library-tabs button[aria-selected=true]{background:#a94d30;color:white}.library-tabs button:focus-visible{outline:3px solid #211c1b;outline-offset:3px}
 .culture-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.work{border:1px solid #e1d1c1;border-radius:16px;overflow:hidden;background:#fffefa;min-width:0}.work-art{min-height:185px;padding:22px;background:linear-gradient(145deg,var(--cover),#201b1b);color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:18px}.work-art span{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#fff8;font-weight:750}.work-art strong{font-size:clamp(1.45rem,2.2vw,2rem);line-height:1.05;letter-spacing:-.035em;overflow-wrap:anywhere}.work-copy{padding:22px}.work-copy h3{font-size:1.27rem;line-height:1.22;margin:8px 0}.work-copy p{margin:8px 0}.work-tag{font-size:.73rem;color:#8d3e29;font-weight:800;text-transform:uppercase;letter-spacing:.03em}.creator{font-size:.9rem;color:#655b55}.work details{border-top:1px solid #ebdfd3;margin-top:18px;padding-top:12px}.work summary{cursor:pointer;font-weight:800;color:#813a2a}.work details p{font-size:.94rem}.reflection-q{border-left:3px solid #b96d3e;padding-left:12px;font-weight:650}
 @media(max-width:950px){.culture-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:620px){.culture-grid{grid-template-columns:1fr}.work-art{min-height:135px}.library-tabs button{flex:1 1 100%}}
+
+/* Identidade 2026: editorial urbano, colagem e cultura periférica */
+:root{--ink:#171b20;--clay:#ed6c30;--gold:#ffbf47;--paper:#f6f3eb;--electric:#236b82}
+body{background:var(--paper);color:#1b2025;font-family:"Arial",system-ui,-apple-system,sans-serif}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.15;background-image:radial-gradient(#2c2926 0.55px,transparent .55px);background-size:11px 11px}
+header{background:#161b20;border-bottom:5px solid #ffbf47}
+header .wrap{min-height:56px}
+header a{letter-spacing:.01em}.brand{background:#ffbf47;color:#15191b!important;padding:8px 12px;transform:rotate(-2deg);box-shadow:4px 4px 0 #ed6c30}.brand span{color:#15191b}
+.hero{background:#171b20;color:#fff;padding:clamp(50px,8vw,105px) 0 clamp(58px,9vw,110px);isolation:isolate;overflow:hidden}
+.hero:before{content:"";position:absolute;right:-7%;top:9%;width:min(47vw,510px);height:115%;background:linear-gradient(148deg,#ffbf47 0 24%,#ed6c30 24% 40%,#236b82 40% 60%,#e44886 60% 68%,#ffbf47 68% 100%);transform:rotate(15deg);clip-path:polygon(12% 0,100% 0,75% 100%,0 86%);opacity:.9;z-index:0}
+.hero:after{content:"NOSSA VOZ";font-size:clamp(80px,16vw,220px);right:-18px;bottom:-42px;opacity:.075;font-family:Impact,"Arial Black",sans-serif;font-weight:900;letter-spacing:-.06em;transform:rotate(-5deg)}
+.hero .wrap{z-index:1}.hero .eyebrow{display:inline-block;background:#ffbf47;color:#161b20;padding:8px 12px;transform:rotate(-1.5deg);font-weight:900;letter-spacing:.08em;box-shadow:5px 5px 0 #ed6c30}
+.hero h1{font-family:Impact,"Arial Black",system-ui,sans-serif;font-size:clamp(3.8rem,9.5vw,8rem);max-width:780px;line-height:.94;letter-spacing:-.035em;text-transform:uppercase;text-shadow:5px 6px 0 #0005;margin:35px 0 25px}
+.hero h1 em{color:#ffbf47;display:inline-block;transform:rotate(-2deg);text-decoration:underline;text-decoration-color:#ed6c30;text-decoration-thickness:8px;text-underline-offset:9px}
+.hero p{max-width:580px;font-weight:540;color:#fff;background:#171b20bd;padding:8px 0}
+.btn{border-radius:4px;background:#ffbf47;color:#171b20;text-transform:uppercase;letter-spacing:.025em;box-shadow:4px 4px 0 #e75f31;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #e75f31}.btn.alt{background:#fff;color:#171b20;border:2px solid #171b20}
+main{padding-top:58px}
+section{margin-bottom:75px}
+.section-label{display:inline-block;background:#ffbf47;color:#171b20;padding:5px 10px;font-weight:900;letter-spacing:.08em;transform:rotate(-1deg)}
+h2{font-family:Impact,"Arial Black",system-ui,sans-serif;text-transform:uppercase;letter-spacing:0;font-weight:850}
+.lead{font-size:1.12rem;color:#30393e;line-height:1.75}
+.info-grid,.voices{gap:16px}
+.panel{border:2px solid #171b20;border-radius:4px;box-shadow:6px 6px 0 #ffbf47;background:#fff;padding:24px}
+.panel:nth-child(2){box-shadow:6px 6px 0 #ed6c30}.panel:nth-child(3){box-shadow:6px 6px 0 #236b82}
+.panel h3{font-size:1.25rem}.number{color:#e25826;font-family:Impact,"Arial Black",sans-serif;font-size:2rem}
+.voice{background:#171b20;border:2px solid #171b20;border-radius:5px;box-shadow:7px 7px 0 #ed6c30;min-height:230px}
+.voice:nth-child(2){box-shadow:7px 7px 0 #ffbf47}.voice:nth-child(3){box-shadow:7px 7px 0 #236b82}
+.voice small{display:inline-block;background:#ffbf47;color:#161b20;padding:5px 8px;letter-spacing:.04em}
+.voice h3{font-family:Impact,"Arial Black",sans-serif;text-transform:uppercase;letter-spacing:.02em;font-size:1.75rem}
+.callout{background:#236b82;border-radius:6px;border:3px solid #171b20;box-shadow:10px 10px 0 #ffbf47}
+.callout .section-label{color:#171b20!important}
+.callout .btn{color:#171b20;background:#ffbf47}
+.library-tabs{gap:12px;margin:27px 0}
+.library-tabs button{border:2px solid #171b20;color:#171b20;background:#fff;border-radius:5px;box-shadow:4px 4px 0 #171b20;text-transform:uppercase;font-size:.91rem}
+.library-tabs button[aria-selected=true]{background:#ffbf47;color:#171b20;box-shadow:4px 4px 0 #ed6c30}
+.culture-grid{gap:22px}
+.work{border:2px solid #171b20;background:#fff;border-radius:5px;box-shadow:5px 5px 0 #20252a}
+.work-art{min-height:160px;background:linear-gradient(135deg,#171b20 0 72%,#ed6c30 72% 77%,#ffbf47 77% 100%);position:relative;overflow:hidden;padding:24px}
+.work-art:after{content:"";position:absolute;top:5px;right:-20px;width:92px;height:110px;border:8px solid #ffffff17;transform:rotate(25deg);pointer-events:none}
+.work-art span{color:#ffbf47;letter-spacing:.12em;font-size:.72rem}
+.work-art strong{font-family:Impact,"Arial Black",sans-serif;font-size:clamp(1.7rem,2.6vw,2.25rem);max-width:95%;position:relative;z-index:1}
+.work-copy{padding:23px}.work-copy h3{font-size:1.35rem;letter-spacing:-.02em}
+.work-tag{color:#a23e1e;font-weight:900}
+.work summary{color:#171b20;background:#f6e8ce;padding:10px 12px;border-left:5px solid #ed6c30;list-style-position:inside}
+.work summary:hover{background:#ffe1a2}
+.reflection-q{background:#fff5d7;border-left:5px solid #ed6c30;padding:12px;font-weight:650}
+.resources{border-top:6px solid #171b20;padding-top:25px}
+footer{background:#171b20;border-top:7px solid #ffbf47}
+@media(max-width:750px){.hero:before{width:85vw;right:-47vw;opacity:.35}.hero h1{font-size:clamp(3.6rem,13vw,6rem);max-width:580px}.hero p{background:#171b20b0}.panel,.voice{margin:0 8px 8px 0}.culture-grid{gap:16px}}
+@media(prefers-reduced-motion:reduce){.btn{transition:none}}
 </style></head>
 <body><header><div class="wrap"><a href="idg-daily.html">← Voltar ao IDG Daily</a><a class="brand" href="index.html">INSTITUTO <span>IDG</span></a></div></header>
 <div class="hero"><div class="wrap"><div class="eyebrow">IDG Daily apresenta · Especial Novembro Negro 2026</div><h1>Nossa história <em>tem voz.</em></h1><p>Histórias, identidades e conquistas de pessoas negras que vivem e transformam a nossa comunidade. Porque a memória também se constrói aqui.</p><div class="actions"><a class="btn" href="#entenda">Conheça o especial</a><a class="btn alt" href="#vozes">Vozes da comunidade</a><a class="btn alt" href="#cultura">Livros e filmes</a></div></div></div>
