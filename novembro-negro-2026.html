@@ -174,4 +174,4 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
  try{const res=await fetch(c.url+'/rest/v1/idg_novembro_negro_mural',{method:'POST',headers:{apikey:c.publishableKey,'Content-Type':'application/json',Prefer:'return=minimal'},body:JSON.stringify({nome,mensagem})});if(!res.ok)throw Error('submit '+res.status);local.prepend(note(mensagem,nome,true));status.textContent='Mensagem recebida! Ela aparece acima apenas para você e ficará pública após aprovação.';form.reset();update()}catch(e){status.textContent='Não conseguimos enviar agora. Tente novamente mais tarde.'}finally{send.disabled=false}
  });
 })();
-</script></body></html>
+</script><footer class="idg-copyright" aria-label="Direitos autorais">© 2026 Melany Kauane Souza Inacio. Todos os direitos reservados.</footer><style id="idg-copyright-style">.idg-copyright{position:relative;z-index:1;clear:both;box-sizing:border-box;width:100%;padding:20px 16px;text-align:center;font:400 12px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#647067;background:#f6f3eb}.idg-copyright a{color:inherit}</style></body></html>
