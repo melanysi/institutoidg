@@ -134,6 +134,12 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
 .idg-memory-grid .idg-memory-card.matched{background:#e2efdf;border-color:#4b8258;color:#25462c}
 .idg-memory-instructions{font-size:.88rem;color:#6c4c35;margin:8px 0}
 @media(max-width:520px){.idg-memory-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.idg-memory-grid .idg-memory-card{min-height:0;aspect-ratio:4/5;padding:4px}.idg-memory-front-label{font-size:.84rem}.idg-memory-person-label{font-size:.63rem}.idg-memory-concept-label{font-size:.72rem}}
+
+/* Fotografias nas duas cartas de cada par e nome de Abdias em duas linhas */
+.idg-memory-grid .idg-memory-open img{height:61%;max-height:61%;width:100%;object-fit:contain;flex-shrink:1}
+.idg-memory-grid .idg-memory-open .idg-memory-person-label{white-space:pre-line;line-height:1.12}
+.idg-memory-grid .idg-memory-open .idg-memory-concept-label{font-size:clamp(.6rem,1.7vw,.8rem);line-height:1.12;overflow-wrap:anywhere;hyphens:auto}
+@media(max-width:520px){.idg-memory-grid .idg-memory-open img{height:57%;max-height:57%}.idg-memory-grid .idg-memory-open .idg-memory-concept-label{font-size:.62rem}}
 </style></head>
 <body><header><div class="wrap"><a href="idg-daily.html">← Voltar ao IDG Daily</a><a class="brand" href="index.html">INSTITUTO <span>IDG</span></a></div></header>
 <div class="hero"><div class="wrap"><div class="eyebrow">IDG Daily apresenta · Especial Novembro Negro 2026</div><h1>Nossa história <em>tem voz.</em></h1><p>Histórias, identidades e conquistas de pessoas negras que vivem e transformam a nossa comunidade. Porque a memória também se constrói aqui.</p><div class="actions"><a class="btn" href="#entenda">Conheça o especial</a><a class="btn alt" href="#vozes">Vozes da comunidade</a><a class="btn alt" href="#desafios">Jogos educativos</a><a class="btn alt" href="#cultura">Livros e filmes</a><a class="btn alt" href="#mural">Deixe sua mensagem</a></div></div></div>
@@ -242,7 +248,7 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
  if(memoryTimeout!==null){clearTimeout(memoryTimeout);memoryTimeout=null}
  const items=pairs.flatMap((p,i)=>[
  {pair:i,kind:'person',label:p.name,image:p.image},
- {pair:i,kind:'concept',label:p.contribution}
+ {pair:i,kind:'concept',label:p.contribution,image:p.image,person:p.name}
  ]);
  for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]]}
  deck=items.map((it,i)=>({...it,i,shown:false,matched:false}));first=null;locked=false;matched=0;tries=0;drawMemory()
@@ -255,7 +261,7 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
  stage.append(node('p','', 'Parabéns! Você encontrou todos os pares e conheceu referências importantes da história negra. As cartas apresentam fotografias históricas das personalidades.'));
  actions().append(button('Embaralhar e jogar novamente',startMemory));return
  }
- const explain=node('p','idg-memory-instructions','Encontre a fotografia de uma personalidade negra e a carta com sua contribuição. Se errar, as cartas viram sozinhas.');
+ const explain=node('p','idg-memory-instructions','Encontre os pares: cada personalidade aparece em duas cartas, uma com seu nome e outra com sua contribuição. Se errar, as cartas viram sozinhas.');
  stage.append(explain);
  const grid=node('div','idg-memory-grid');stage.append(grid);
  deck.forEach((card,i)=>{
@@ -266,11 +272,10 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
  b.setAttribute('aria-label',visible?card.label:'Carta '+(i+1)+', virar');
  if(!visible){
    b.append(node('span','idg-memory-front-symbol','✦'),node('span','idg-memory-front-label','Virar'));
- }else if(card.kind==='person'){
-   const img=document.createElement('img');img.src=card.image;img.alt='Fotografia de '+card.label;img.loading='lazy';img.decoding='async';
-   b.append(img,node('span','idg-memory-person-label',card.label));
  }else{
-   b.append(node('span','idg-memory-concept-label',card.label));
+   const img=document.createElement('img');img.src=card.image;img.alt='Fotografia de '+(card.person||card.label);img.loading='lazy';img.decoding='async';
+   const caption=card.kind==='person'&&card.label==='Abdias Nascimento'?'Abdias\nNascimento':card.label;
+   b.append(img,node('span',card.kind==='person'?'idg-memory-person-label':'idg-memory-concept-label',caption));
  }
  grid.append(b)
  });
