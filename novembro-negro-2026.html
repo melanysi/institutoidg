@@ -144,6 +144,8 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
 /* Nomes longos de todas as personalidades: linhas separadas, sem cortar */
 .idg-memory-grid .idg-memory-open .idg-memory-person-label{white-space:pre-line;overflow-wrap:normal;word-break:normal;hyphens:none;font-size:clamp(.59rem,1.7vw,.78rem);line-height:1.08}
 @media(max-width:520px){.idg-memory-grid .idg-memory-open .idg-memory-person-label{font-size:clamp(.58rem,2.1vw,.7rem)}}
+
+.idg-memory-discovery{background:#f5e5ce;border-left:4px solid #99613e;border-radius:9px;padding:12px 15px;margin:14px 0;color:#322228}.idg-memory-discovery strong{display:block;font-size:.98rem}.idg-memory-discovery p{margin:6px 0 0;font-size:.88rem;line-height:1.5}
 </style></head>
 <body><header><div class="wrap"><a href="idg-daily.html">← Voltar ao IDG Daily</a><a class="brand" href="index.html">INSTITUTO <span>IDG</span></a></div></header>
 <div class="hero"><div class="wrap"><div class="eyebrow">IDG Daily apresenta · Especial Novembro Negro 2026</div><h1>Nossa história <em>tem voz.</em></h1><p>Histórias, identidades e conquistas de pessoas negras que vivem e transformam a nossa comunidade. Porque a memória também se constrói aqui.</p><div class="actions"><a class="btn" href="#entenda">Conheça o especial</a><a class="btn alt" href="#vozes">Vozes da comunidade</a><a class="btn alt" href="#desafios">Jogos educativos</a><a class="btn alt" href="#cultura">Livros e filmes</a><a class="btn alt" href="#mural">Deixe sua mensagem</a></div></div></div>
@@ -237,9 +239,9 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
  const stage=document.getElementById('idg-game-stage');
  const tabs=[...document.querySelectorAll('[data-idg-game]')];if(!stage||!tabs.length)return;
  const quiz=[{"q":"Qual autora escreveu o livro Quarto de Despejo?","a":["Carolina Maria de Jesus","Conceição Evaristo","Maria Firmina dos Reis","Lélia Gonzalez"],"c":0,"why":"Carolina Maria de Jesus publicou Quarto de Despejo em 1960, com relatos de sua vida na favela do Canindé, em São Paulo."},{"q":"Qual escritora brasileira criou o conceito literário de 'escrevivência'?","a":["Antonieta de Barros","Conceição Evaristo","Ruth de Souza","Chiquinha Gonzaga"],"c":1,"why":"Conceição Evaristo desenvolveu a ideia de escrevivência para pensar a escrita a partir de vivências, memórias e experiências."},{"q":"Quem foi a primeira mulher negra a assumir um mandato parlamentar no Brasil?","a":["Lélia Gonzalez","Dandara dos Palmares","Antonieta de Barros","Carolina Maria de Jesus"],"c":2,"why":"Antonieta de Barros foi eleita deputada estadual em Santa Catarina em 1934 e é reconhecida como a primeira parlamentar negra do Brasil."},{"q":"Em que data é celebrado o Dia Nacional de Zumbi e da Consciência Negra?","a":["13 de maio","20 de novembro","7 de setembro","21 de março"],"c":1,"why":"O dia 20 de novembro relembra Zumbi dos Palmares e é uma data nacional de reflexão, memória e combate ao racismo."},{"q":"Quem foi um importante geógrafo brasileiro, autor de Por uma Outra Globalização?","a":["Milton Santos","Abdias Nascimento","Machado de Assis","Aleijadinho"],"c":0,"why":"Milton Santos foi um geógrafo brasileiro de destaque internacional e analisou criticamente a globalização."},{"q":"Qual iniciativa é ligada à valorização da cultura e ao protagonismo negro no teatro brasileiro?","a":["Teatro Experimental do Negro","Semana de Arte Moderna","Missão Artística Francesa","Academia Brasileira de Letras"],"c":0,"why":"O Teatro Experimental do Negro, criado em 1944 por Abdias Nascimento, teve atuação marcante na valorização de artistas negros."}];
- const pairs=[{"name":"Malcolm X","contribution":"Direitos civis e autodeterminação negra","image":"images/IMG_8213.jpeg"},{"name":"Carolina Maria de Jesus","contribution":"Quarto de Despejo","image":"images/IMG_8214.jpeg"},{"name":"Lélia Gonzalez","contribution":"Pensamento negro e feminista","image":"images/IMG_8215.jpeg"},{"name":"Abdias Nascimento","contribution":"Teatro Experimental do Negro","image":"images/IMG_8216.jpeg"},{"name":"Antonieta de Barros","contribution":"Educação e política","image":"images/IMG_8217.jpeg"},{"name":"Conceição Evaristo","contribution":"Escrevivência","image":"images/IMG_8218.jpeg"}];
+ const pairs=[{"name":"Malcolm X","contribution":"Direitos civis e autodeterminação negra","image":"images/IMG_8213.jpeg","bio":"Malcolm X foi um ativista norte-americano que defendeu os direitos da população negra, a dignidade e a autodeterminação."},{"name":"Carolina Maria de Jesus","contribution":"Quarto de Despejo","image":"images/IMG_8214.jpeg","bio":"Carolina Maria de Jesus foi uma escritora brasileira. Em Quarto de Despejo, registrou a vida na favela do Canindé, em São Paulo."},{"name":"Lélia Gonzalez","contribution":"Pensamento negro e feminista","image":"images/IMG_8215.jpeg","bio":"Lélia Gonzalez foi uma intelectual e ativista brasileira fundamental para o feminismo negro e o debate sobre racismo e cultura."},{"name":"Abdias Nascimento","contribution":"Teatro Experimental do Negro","image":"images/IMG_8216.jpeg","bio":"Abdias Nascimento foi artista, escritor e ativista. Fundou o Teatro Experimental do Negro, valorizando artistas e a cultura negra."},{"name":"Antonieta de Barros","contribution":"Educação e política","image":"images/IMG_8217.jpeg","bio":"Antonieta de Barros foi professora, jornalista e uma das primeiras mulheres negras eleitas para um parlamento no Brasil."},{"name":"Conceição Evaristo","contribution":"Escrevivência","image":"images/IMG_8218.jpeg","bio":"Conceição Evaristo é escritora brasileira e desenvolveu a ideia de escrevivência, que aproxima literatura, memória e experiências vividas."}];
  const missions=[{"title":"Missão 1 — Memória","text":"Carolina Maria de Jesus registrou experiências de vida na favela do Canindé. Sua obra mostra a importância de ouvir vozes que muitas vezes foram afastadas do espaço editorial.","q":"Que livro ficou conhecido pelos relatos de Carolina?","a":["Quarto de Despejo","Memórias Póstumas","O Cortiço"],"c":0,"why":"Quarto de Despejo, publicado em 1960, tornou-se uma referência da literatura brasileira."},{"title":"Missão 2 — Educação","text":"Antonieta de Barros foi professora, jornalista e parlamentar. Sua trajetória une educação, participação política e enfrentamento de desigualdades.","q":"Qual campo esteve presente na atuação de Antonieta?","a":["Educação","Astronomia espacial","Navegação"],"c":0,"why":"Antonieta trabalhou como professora e defendeu a educação como instrumento de transformação social."},{"title":"Missão 3 — Cultura","text":"Abdias Nascimento criou o Teatro Experimental do Negro. A iniciativa contestou a exclusão de artistas negros e valorizou sua presença no teatro.","q":"Qual expressão artística está no centro desse projeto?","a":["Teatro","Arquitetura","Cinema de animação"],"c":0,"why":"O Teatro Experimental do Negro contribuiu para ampliar espaços de atuação e debate no teatro brasileiro."},{"title":"Missão 4 — Pertencimento","text":"Nas entrevistas do próprio IDG, o Quilombo Oxê aparece na trajetória de Ingrid como um espaço de acolhimento e participação coletiva na Faculdade de Direito da USP.","q":"Qual entrevistada contou sua relação com o Quilombo Oxê?","a":["Ingrid","Ana Vilana","Emilly Nayane"],"c":0,"why":"A reportagem de Ingrid trata de educação, Direito, pertencimento e participação no Quilombo Oxê."}];
- let game='quiz',step=0,score=0,answered=false,deck=[],first=null,locked=false,matched=0,tries=0,missAnswers=[],memoryTimeout=null;
+ let game='quiz',step=0,score=0,answered=false,deck=[],first=null,locked=false,matched=0,tries=0,missAnswers=[],memoryTimeout=null,lastMatch=null;
  function node(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!==undefined)e.textContent=txt;return e}
  function button(label,handler,cls){const b=node('button',cls,label);b.type='button';b.addEventListener('click',handler);return b}
  function feedback(text){const p=node('p','idg-game-feedback',text);p.setAttribute('role','status');stage.append(p)}
@@ -252,21 +254,22 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
  if(memoryTimeout!==null){clearTimeout(memoryTimeout);memoryTimeout=null}
  const items=pairs.flatMap((p,i)=>[
  {pair:i,kind:'person',label:p.name,image:p.image},
- {pair:i,kind:'concept',label:p.contribution,image:p.image,person:p.name}
+ {pair:i,kind:'person',label:p.name,image:p.image}
  ]);
  for(let i=items.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[items[i],items[j]]=[items[j],items[i]]}
- deck=items.map((it,i)=>({...it,i,shown:false,matched:false}));first=null;locked=false;matched=0;tries=0;drawMemory()
+ deck=items.map((it,i)=>({...it,i,shown:false,matched:false}));first=null;locked=false;matched=0;tries=0;lastMatch=null;drawMemory()
  }
  function drawMemory(){
  stage.replaceChildren();
  stage.append(node('h3','',matched===pairs.length?'Todas as conexões encontradas!':'Jogo da Memória — Personalidades Negras'));
  stage.append(node('p','idg-game-meter','Pares: '+matched+'/'+pairs.length+' · Tentativas: '+tries));
  if(matched===pairs.length){
- stage.append(node('p','', 'Parabéns! Você encontrou todos os pares e conheceu referências importantes da história negra. As cartas apresentam fotografias históricas das personalidades.'));
+ stage.append(node('p','', 'Parabéns! Você encontrou todos os pares e conheceu referências importantes da história negra.'));
  actions().append(button('Embaralhar e jogar novamente',startMemory));return
  }
- const explain=node('p','idg-memory-instructions','Encontre os pares: cada personalidade aparece em duas cartas, uma com seu nome e outra com sua contribuição. Se errar, as cartas viram sozinhas.');
+ const explain=node('p','idg-memory-instructions','Encontre duas cartas com a mesma personalidade. Ao acertar, conheça um pouco de sua história. Se errar, as cartas viram sozinhas.');
  stage.append(explain);
+ if(lastMatch!==null){const info=node('aside','idg-memory-discovery');info.setAttribute('role','status');info.append(node('strong','', '✦ Par encontrado: '+pairs[lastMatch].name),node('p','',pairs[lastMatch].bio));stage.append(info)}
  const grid=node('div','idg-memory-grid');stage.append(grid);
  deck.forEach((card,i)=>{
  const visible=card.shown||card.matched;
@@ -278,14 +281,14 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
    b.append(node('span','idg-memory-front-symbol','✦'),node('span','idg-memory-front-label','Virar'));
  }else{
    const img=document.createElement('img');img.src=card.image;img.alt='Fotografia de '+(card.person||card.label);img.loading='lazy';img.decoding='async';
-   const caption=card.kind==='person'?card.label.trim().split(/\\s+/).join('\n'):card.label;
-   b.append(img,node('span',card.kind==='person'?'idg-memory-person-label':'idg-memory-concept-label',caption));
+   const caption=card.label.trim().split(/\\s+/).join('\n');
+   b.append(img,node('span','idg-memory-person-label',caption));
  }
  grid.append(b)
  });
  actions().append(button('Recomeçar',startMemory))
  }
- function flip(i){if(locked||deck[i].matched||deck[i].shown)return;deck[i].shown=true;if(first===null){first=i;drawMemory();return}tries++;const previous=first;first=null;if(deck[previous].pair===deck[i].pair){deck[previous].matched=true;deck[i].matched=true;matched++;drawMemory();return}
+ function flip(i){if(locked||deck[i].matched||deck[i].shown)return;deck[i].shown=true;if(first===null){first=i;drawMemory();return}tries++;const previous=first;first=null;if(deck[previous].pair===deck[i].pair){deck[previous].matched=true;deck[i].matched=true;matched++;lastMatch=deck[i].pair;drawMemory();return}
  locked=true;drawMemory();const activeDeck=deck;const activeGame=game;
  const notice=node('p','idg-game-feedback','Não é um par. As cartas vão virar automaticamente para você continuar tentando.');notice.setAttribute('role','status');stage.append(notice);
  memoryTimeout=setTimeout(()=>{memoryTimeout=null;if(game!==activeGame||deck!==activeDeck)return;deck[previous].shown=false;deck[i].shown=false;locked=false;drawMemory()},1300)}
