@@ -140,6 +140,10 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
 .idg-memory-grid .idg-memory-open .idg-memory-person-label{white-space:pre-line;line-height:1.12}
 .idg-memory-grid .idg-memory-open .idg-memory-concept-label{font-size:clamp(.6rem,1.7vw,.8rem);line-height:1.12;overflow-wrap:anywhere;hyphens:auto}
 @media(max-width:520px){.idg-memory-grid .idg-memory-open img{height:57%;max-height:57%}.idg-memory-grid .idg-memory-open .idg-memory-concept-label{font-size:.62rem}}
+
+/* Nomes longos de todas as personalidades: linhas separadas, sem cortar */
+.idg-memory-grid .idg-memory-open .idg-memory-person-label{white-space:pre-line;overflow-wrap:normal;word-break:normal;hyphens:none;font-size:clamp(.59rem,1.7vw,.78rem);line-height:1.08}
+@media(max-width:520px){.idg-memory-grid .idg-memory-open .idg-memory-person-label{font-size:clamp(.58rem,2.1vw,.7rem)}}
 </style></head>
 <body><header><div class="wrap"><a href="idg-daily.html">← Voltar ao IDG Daily</a><a class="brand" href="index.html">INSTITUTO <span>IDG</span></a></div></header>
 <div class="hero"><div class="wrap"><div class="eyebrow">IDG Daily apresenta · Especial Novembro Negro 2026</div><h1>Nossa história <em>tem voz.</em></h1><p>Histórias, identidades e conquistas de pessoas negras que vivem e transformam a nossa comunidade. Porque a memória também se constrói aqui.</p><div class="actions"><a class="btn" href="#entenda">Conheça o especial</a><a class="btn alt" href="#vozes">Vozes da comunidade</a><a class="btn alt" href="#desafios">Jogos educativos</a><a class="btn alt" href="#cultura">Livros e filmes</a><a class="btn alt" href="#mural">Deixe sua mensagem</a></div></div></div>
@@ -274,7 +278,7 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
    b.append(node('span','idg-memory-front-symbol','✦'),node('span','idg-memory-front-label','Virar'));
  }else{
    const img=document.createElement('img');img.src=card.image;img.alt='Fotografia de '+(card.person||card.label);img.loading='lazy';img.decoding='async';
-   const caption=card.kind==='person'&&card.label==='Abdias Nascimento'?'Abdias\nNascimento':card.label;
+   const caption=card.kind==='person'?card.label.trim().split(/\\s+/).join('\n'):card.label;
    b.append(img,node('span',card.kind==='person'?'idg-memory-person-label':'idg-memory-concept-label',caption));
  }
  grid.append(b)
