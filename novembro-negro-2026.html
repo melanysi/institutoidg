@@ -149,10 +149,10 @@ footer{background:#171b20;border-top:7px solid #ffbf47}
 
 /* Padrao unico das seis capas: arte integral + fundo preenchido sem recortes */
 .idg-character-art{position:relative;isolation:isolate;aspect-ratio:4/3!important;background:#241b29;overflow:hidden}
-.idg-character-art::before{content:"";position:absolute;inset:-18px;background-image:var(--art-image);background-position:center;background-size:cover;filter:blur(18px) brightness(.45) saturate(.9);transform:scale(1.04);z-index:-1}
-.idg-character-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#19131b45,transparent 25%,transparent 75%,#19131b45);pointer-events:none;z-index:-1}
-.idg-character-art img{position:relative;display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:transparent}
-.idg-character-symbol,.idg-character-number{z-index:1}
+.idg-character-art::before{content:"";position:absolute;inset:-20px;background-image:var(--art-image);background-position:center;background-size:cover;filter:blur(15px) brightness(.65) saturate(1.12);transform:scale(1.06);z-index:0;pointer-events:none}
+.idg-character-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#17101d44,transparent 27%,transparent 73%,#17101d44);pointer-events:none;z-index:1}
+.idg-character-art img{position:relative;z-index:2;display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:transparent}
+.idg-character-symbol,.idg-character-number{z-index:3}
 @media(max-width:520px){.idg-character-art{aspect-ratio:4/3!important}}
 </style></head>
 <body><header><div class="wrap"><a href="idg-daily.html">← Voltar ao IDG Daily</a><a class="brand" href="index.html">INSTITUTO <span>IDG</span></a></div></header>
