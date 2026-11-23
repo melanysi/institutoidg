@@ -2610,7 +2610,7 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
                 <p>Registros de encontros, atividades e momentos compartilhados com a comunidade.</p>
                 <div class="divider" aria-hidden="true"></div>
             </div>
-            <div class="gallery-grid">
+            <div class="gallery-grid" id="home-gallery-grid">
                 <figure class="gallery-item">
                     <img src="images/festa-comunitaria.jpg" alt="Famílias reunidas em um encontro comunitário decorado para uma festa" width="855" height="854" loading="lazy" decoding="async" />
                     <figcaption>Convivência em festa comunitária</figcaption>
@@ -2644,6 +2644,8 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
                     <figcaption>Ação comunitária</figcaption>
                 </figure>
             </div>
+            <button type="button" id="home-gallery-more" class="btn-header btn-outline-navy" style="margin-top:16px" hidden>Ver mais fotos</button>
+            <p id="home-gallery-status" role="status" hidden></p>
         </section>
 
         <section class="section" id="projetos" data-journey-page="projetos" hidden>
@@ -3512,6 +3514,7 @@ main>.footer-partners .partner-card img{max-width:100%;object-fit:contain}
     <script src="supabase-config.js?v=20261023-5"></script>
     <script src="assistant-knowledge.js"></script>
     <script src="app.js?v=20261023-4"></script>
+    <script src="idg-home-gallery.js?v=20261123" defer></script>
     <script src="idg-calendar.js?v=20261028-96748a2" defer></script>
 <script id="idg-mobile-nav-script">
 (function(){const button=document.querySelector(".idg-mobile-menu"),nav=document.getElementById("idg-main-nav");if(!button||!nav)return;function setOpen(open){nav.classList.toggle("idg-nav-open",open);button.setAttribute("aria-expanded",String(open));button.setAttribute("aria-label",open?"Fechar menu de navegação":"Abrir menu de navegação");button.querySelector("span:first-child").textContent=open?"✕":"☰"}button.addEventListener("click",()=>setOpen(button.getAttribute("aria-expanded")!=="true"));nav.addEventListener("click",event=>{if(event.target.closest("a"))setOpen(false)});document.addEventListener("keydown",event=>{if(event.key==="Escape")setOpen(false)});window.addEventListener("resize",()=>{if(innerWidth>760)setOpen(false)})})();

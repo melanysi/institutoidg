@@ -38,20 +38,95 @@ async function refresh(){
  if(!records.length)$("events").textContent="Nenhuma ação cadastrada ainda.";
  await refreshMedia();
 }
-async function refreshMedia(){
- const {data,error}=await client.from("idg_media").select("id,alt_text,caption,storage_path,event_id,created_at").order("created_at",{ascending:false}).limit(100);
- if(error)throw error;
- $("media-list").replaceChildren();
- for(const media of data||[]){
-  const item=document.createElement("div");item.className="item";
-  const details=document.createElement("div");const title=document.createElement("strong");title.textContent=media.alt_text;
-  const meta=document.createElement("div");meta.className="muted";meta.textContent=media.caption||media.storage_path;
-  details.append(title,meta);
-  const preview=document.createElement("button");preview.type="button";preview.className="secondary";preview.textContent="Visualizar";
-  preview.addEventListener("click",async()=>{const {data,error}=await client.storage.from("idg-media").createSignedUrl(media.storage_path,60);if(error)return reportError(error);window.open(data.signedUrl,"_blank","noopener,noreferrer")});
-  const remove=document.createElement("button");remove.type="button";remove.className="danger";remove.textContent="Excluir";remove.addEventListener("click",async()=>{if(!confirm("Excluir definitivamente esta fotografia?"))return;remove.disabled=true;try{if(!await isAdmin())throw new Error("Sessão sem autorização.");const {error:storageError}=await client.storage.from("idg-media").remove([media.storage_path]);if(storageError)throw storageError;const {data:deleted,error}=await client.from("idg_media").delete().eq("id",media.id).select("id");if(error)throw error;if(!deleted?.some(row=>row.id===media.id))throw new Error("O registro da fotografia não foi excluído. Verifique as permissões.");await refreshMedia();message("Fotografia excluída.");}catch(err){reportError(err)}finally{remove.disabled=false}});const controls=document.createElement("div");controls.className="actions";controls.append(preview,remove);item.append(details,controls);$("media-list").append(item);
+let mediaRefresh = 0;
+
+async function refreshMedia() {
+ const request = ++mediaRefresh;
+ const photos = [];
+ const pageSize = 200;
+ for (let start = 0; ; start += pageSize) {
+  const { data, error } = await client.from("idg_media")
+   .select("id,alt_text,caption,storage_path,event_id,is_published")
+   .order("created_at", { ascending: false }).order("id")
+   .range(start, start + pageSize - 1);
+  if (error) throw error;
+  if (request !== mediaRefresh) return;
+  photos.push(...data);
+  if (data.length < pageSize) break;
  }
- if(!data?.length)$("media-list").textContent="Nenhuma fotografia enviada.";
+
+ const items = document.createDocumentFragment();
+ for (const photo of photos) items.append(mediaItem(photo));
+ $("media-list").replaceChildren(photos.length ? items : "Nenhuma fotografia enviada.");
+}
+
+function mediaItem(photo) {
+ const item = document.createElement("div");
+ item.className = "item";
+ const details = document.createElement("div");
+ const title = document.createElement("strong");
+ title.textContent = photo.alt_text;
+ details.append(title);
+ if (photo.caption) {
+  const caption = document.createElement("div");
+  caption.textContent = photo.caption;
+  details.append(caption);
+ }
+ const state = document.createElement("div");
+ state.className = "muted";
+ state.textContent = photo.is_published ? "Publicada na página inicial" : "Rascunho privado";
+ const action = records.find(event => event.id === photo.event_id);
+ if (action) state.textContent += " · " + action.title;
+ details.append(state);
+
+ const controls = document.createElement("div");
+ controls.className = "actions";
+ const preview = mediaButton("Visualizar", async () => {
+  const { data, error } = await client.storage.from("idg-media").createSignedUrl(photo.storage_path, 60);
+  if (error) throw error;
+  window.open(data.signedUrl, "_blank", "noopener,noreferrer");
+ }, "secondary");
+ const toggle = mediaButton(photo.is_published ? "Retirar da página inicial" : "Publicar na página inicial", async () => {
+  const nextState = !photo.is_published;
+  const { data, error } = await client.from("idg_media").update({ is_published: nextState })
+   .eq("id", photo.id).select("id").maybeSingle();
+  if (error) throw error;
+  if (!data) throw Error("A fotografia não está disponível. Atualize o painel.");
+  await refreshMedia();
+  message(nextState ? "Fotografia publicada em Nossa comunidade em ação." : "Fotografia retirada da página inicial e mantida no ADM.");
+ });
+ const remove = mediaButton("Excluir", async () => {
+  const { data, error } = await client.from("idg_media").delete().eq("id", photo.id).select("id").maybeSingle();
+  if (error) throw error;
+  if (!data) throw Error("A fotografia não está disponível. Atualize o painel.");
+  const { error: storageError } = await client.storage.from("idg-media").remove([photo.storage_path]);
+  await refreshMedia();
+  if (storageError) throw Error("O registro foi excluído. O arquivo privado não pôde ser removido.");
+  message("Fotografia excluída.");
+ }, "danger", () => confirm("Excluir definitivamente esta fotografia?"));
+ controls.append(preview, toggle, remove);
+ item.append(details, controls);
+ return item;
+}
+
+function mediaButton(label, action, style = "", shouldRun = () => true) {
+ const button = document.createElement("button");
+ button.type = "button";
+ button.className = style;
+ button.textContent = label;
+ button.addEventListener("click", async () => {
+  if (!shouldRun()) return;
+  button.disabled = true;
+  try {
+   if (!await isAdmin()) throw Error("Sessão sem autorização.");
+   await action();
+  } catch (error) {
+   reportError(error);
+  } finally {
+   button.disabled = false;
+  }
+ });
+ return button;
 }
 async function initialize(){
  if(!client){message("Configuração do Supabase não encontrada.",true);return}
@@ -86,14 +161,17 @@ $("media-form").addEventListener("submit",async e=>{
  if(!await isAdmin())throw new Error("Sessão sem autorização.");
  const file=$("file").files[0];if(!file)throw new Error("Selecione uma imagem.");
  if(!["image/jpeg","image/png","image/webp"].includes(file.type)||file.size>10*1024*1024)throw new Error("Use JPG, PNG ou WebP com até 10 MB.");
- const {data:{user}}=await client.auth.getUser();
+ const altText = $("alt").value.trim();
+ if (!altText) throw Error("Informe uma descrição acessível da imagem.");
+ const {data:{user},error:userError}=await client.auth.getUser();
+ if (userError || !user) throw Error("Sessão sem autorização.");
  const ext={"image/jpeg":"jpg","image/png":"png","image/webp":"webp"}[file.type];
- const path=user.id+"/"+crypto.randomUUID()+"."+ext;
- const {error:uploadError}=await client.storage.from("idg-media").upload(path,file,{contentType:file.type,upsert:false});
+ const path="photos/"+crypto.randomUUID()+"."+ext;
+ const {error:uploadError}=await client.storage.from("idg-media").upload(path,file,{contentType:file.type,cacheControl:"0",upsert:false});
  if(uploadError)throw uploadError;
- const {error}=await client.from("idg_media").insert({storage_path:path,event_id:$("media-event").value||null,alt_text:$("alt").value.trim(),caption:$("caption").value.trim(),uploaded_by:user.id});
+ const {error}=await client.from("idg_media").insert({storage_path:path,event_id:$("media-event").value||null,alt_text:altText,caption:$("caption").value.trim(),uploaded_by:user.id,is_published:false});
  if(error){await client.storage.from("idg-media").remove([path]);throw error}
- e.target.reset();await refreshMedia();message("Imagem armazenada de forma privada.");
+ e.target.reset();await refreshMedia();message("Fotografia salva como rascunho privado.");
  }catch(err){reportError(err)}finally{button.disabled=false}
 });
 
