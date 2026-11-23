@@ -3,13 +3,11 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 // Browser submissions are accepted only from the IDG website.
 // The public API key is not an authorization secret; Turnstile and server-side
 // validation remain mandatory for every submission.
-const allowedOrigin = Deno.env.get("IDG_ALLOWED_ORIGIN") ?? "https://melanysi.github.io";
-const corsHeaders = {
-    "Access-Control-Allow-Origin": allowedOrigin,
-    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Vary": "Origin",
-};
+const allowedOrigins = new Set([
+    "https://idgoficial.netlify.app",
+    "https://melanysi.github.io",
+    Deno.env.get("IDG_ALLOWED_ORIGIN"),
+]);
 
 const applicationTypes = new Set([
     "volunteer",
@@ -65,13 +63,6 @@ const detailRules: Record<string, Record<string, { required: boolean; max: numbe
     },
 };
 
-function jsonResponse(status: number, body: Record<string, unknown>) {
-    return new Response(JSON.stringify(body), {
-        status,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-}
-
 function isAdult(dateOfBirth: unknown) {
     if (typeof dateOfBirth !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(dateOfBirth)) {
         return false;
@@ -91,7 +82,21 @@ function isAdult(dateOfBirth: unknown) {
 
 Deno.serve(async (request) => {
     const origin = request.headers.get("origin");
-    if (origin && origin !== allowedOrigin) {
+    const corsHeaders: Record<string, string> = {
+        "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+        "Access-Control-Allow-Methods": "POST, OPTIONS",
+        "Vary": "Origin",
+    };
+    if (origin && allowedOrigins.has(origin)) corsHeaders["Access-Control-Allow-Origin"] = origin;
+
+    function jsonResponse(status: number, body: Record<string, unknown>) {
+        return new Response(JSON.stringify(body), {
+            status,
+            headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+    }
+
+    if (origin && !allowedOrigins.has(origin)) {
         return jsonResponse(403, { error: "Origem não autorizada." });
     }
     if (request.method === "OPTIONS") {
@@ -289,6 +294,9 @@ Deno.serve(async (request) => {
         privacy_consent: true,
     });
     if (insertError) {
+        if (type === "course" && insertError.code === "PT409") {
+            return jsonResponse(409, { error: "As inscrições para este curso estão encerradas." });
+        }
         console.error("Could not save application:", insertError.message);
         return jsonResponse(500, { error: "Não foi possível salvar o formulário. Tente novamente mais tarde." });
     }

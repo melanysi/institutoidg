@@ -12,6 +12,64 @@
         ? window.supabase.createClient(config.url, config.publishableKey)
         : null;
     const captchaWidgets = new Map();
+    const courseForm = document.querySelector("#form-inscricao");
+    const courseSelect = document.querySelector("#course-choice");
+    const courseLinks = [...document.querySelectorAll("[data-course-choice]")];
+    let coursesOpen;
+    let courseAvailabilityRequest;
+
+    function showCourseAvailability(availability) {
+        coursesOpen = availability;
+        const selection = courseSelect.value;
+        const openCourses = courseLinks.map(link => {
+            const name = link.dataset.courseChoice;
+            const status = link.closest(".course-card").querySelector(".course-status");
+            const open = availability?.has(name) === true;
+            link.hidden = !open;
+            status.dataset.open = String(open);
+            status.textContent = availability
+                ? (open ? "Inscrições abertas" : "Aguarde novas turmas")
+                : "Disponibilidade indisponível";
+            return name;
+        }).filter(name => availability?.has(name));
+
+        courseSelect.replaceChildren(new Option("Selecione um curso", ""),
+            ...openCourses.map(name => new Option(name, name)));
+        if (openCourses.includes(selection)) courseSelect.value = selection;
+        const hasOpenCourses = openCourses.length > 0;
+        courseForm.hidden = !hasOpenCourses;
+        document.getElementById("open-course-form").hidden = !hasOpenCourses;
+        const status = document.getElementById("course-form-status");
+        status.hidden = hasOpenCourses;
+        status.textContent = availability
+            ? "Aguarde novas turmas. As inscrições serão anunciadas aqui."
+            : "Não foi possível consultar as inscrições. Recarregue a página para tentar novamente.";
+
+        if (hasOpenCourses && !courseForm.closest("[data-journey-form]").hidden) {
+            prepareCaptcha(courseForm);
+        }
+    }
+
+    async function refreshCourseAvailability() {
+        if (!courseForm || !courseSelect) return;
+        if (courseAvailabilityRequest) return courseAvailabilityRequest;
+        courseAvailabilityRequest = (async () => {
+            try {
+                if (!client) throw new Error("Serviço indisponível.");
+                const { data, error } = await client.from("idg_course_availability")
+                    .select("course_name,is_open");
+                if (error) throw error;
+                showCourseAvailability(new Set(data.filter(row => row.is_open).map(row => row.course_name)));
+            } catch {
+                showCourseAvailability(null);
+            }
+        })();
+        try {
+            await courseAvailabilityRequest;
+        } finally {
+            courseAvailabilityRequest = null;
+        }
+    }
     let passwordRecoveryInProgress = false;
 
     const labels = {
@@ -45,6 +103,7 @@
             page.hidden = page !== selectedPage;
         }
         landing.hidden = selectedPage !== landing;
+        if (selectedPage?.id === "cursos") void refreshCourseAvailability();
 
         for (const panel of document.querySelectorAll("[data-journey-form]")) {
             panel.hidden = true;
@@ -413,12 +472,19 @@
         }
     }
 
+    document.addEventListener("visibilitychange", () => {
+        if (!document.hidden && document.getElementById("cursos")?.hidden === false) {
+            void refreshCourseAvailability();
+        }
+    });
+    void refreshCourseAvailability();
+
     window.addEventListener("idg:form-visible", event => {
         const form = event.detail.querySelector("[data-application-form]");
-        if (form) prepareCaptcha(form);
+        if (form && !form.hidden) prepareCaptcha(form);
     });
 
-    document.querySelectorAll("[data-course-choice]").forEach(link => {
+    courseLinks.forEach(link => {
         link.addEventListener("click", () => {
             const select = document.querySelector("#course-choice");
             if (select) select.value = link.dataset.courseChoice;
@@ -595,6 +661,15 @@
     }
 
     function answerForCourse(course) {
+        if (!coursesOpen?.has(course)) {
+            pendingAssistantOffer = null;
+            return {
+                text: coursesOpen
+                    ? `${course}: aguarde novas turmas.`
+                    : `${course}: consulte a disponibilidade na página de cursos.`,
+                link: { label: "Ver cursos", href: "#cursos" }
+            };
+        }
         pendingAssistantOffer = {
             type: "course",
             course,
