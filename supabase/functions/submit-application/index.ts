@@ -165,9 +165,12 @@ Deno.serve(async (request) => {
     }
 
     const turnstileSecret = Deno.env.get("TURNSTILE_SECRET_KEY");
-    const allowedHostname = Deno.env.get("IDG_ALLOWED_HOSTNAME")?.trim().toLowerCase();
+    const allowedHostnames = new Set([
+        "idgoficial.netlify.app",
+        Deno.env.get("IDG_ALLOWED_HOSTNAME")?.trim().toLowerCase(),
+    ]);
     if (
-        !turnstileSecret || !allowedHostname ||
+        !turnstileSecret ||
         typeof body.turnstileToken !== "string" || !body.turnstileToken
     ) {
         return jsonResponse(503, { error: "A proteção antispam ainda não está configurada. Nenhum dado foi enviado." });
@@ -186,13 +189,13 @@ Deno.serve(async (request) => {
         const captchaResult = await captchaResponse.json();
         captchaValid = captchaResponse.ok &&
             captchaResult.success === true &&
-            captchaResult.hostname === allowedHostname;
+            typeof captchaResult.hostname === "string" && allowedHostnames.has(captchaResult.hostname);
         if (!captchaValid) {
             const knownCodes = ["invalid-input-secret", "missing-input-secret", "invalid-input-response", "missing-input-response", "timeout-or-duplicate", "bad-request", "internal-error"];
             const codes = Array.isArray(captchaResult["error-codes"])
                 ? captchaResult["error-codes"].filter((code: string) => knownCodes.includes(code))
                 : [];
-            const hostnameMatches = captchaResult.hostname === allowedHostname;
+            const hostnameMatches = typeof captchaResult.hostname === "string" && allowedHostnames.has(captchaResult.hostname);
             console.warn("Turnstile validation rejected", { status: captchaResponse.status, codes, hostnameMatches, verified: captchaResult.success === true });
             if (codes.includes("invalid-input-secret") || codes.includes("missing-input-secret") ||
                 (captchaResult.success === true && !hostnameMatches)) {
