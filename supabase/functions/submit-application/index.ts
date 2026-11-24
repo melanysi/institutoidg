@@ -165,7 +165,7 @@ Deno.serve(async (request) => {
     }
 
     const turnstileSecret = Deno.env.get("TURNSTILE_SECRET_KEY");
-    const allowedHostname = Deno.env.get("IDG_ALLOWED_HOSTNAME");
+    const allowedHostname = Deno.env.get("IDG_ALLOWED_HOSTNAME")?.trim().toLowerCase();
     if (
         !turnstileSecret || !allowedHostname ||
         typeof body.turnstileToken !== "string" || !body.turnstileToken
@@ -187,6 +187,18 @@ Deno.serve(async (request) => {
         captchaValid = captchaResponse.ok &&
             captchaResult.success === true &&
             captchaResult.hostname === allowedHostname;
+        if (!captchaValid) {
+            const knownCodes = ["invalid-input-secret", "missing-input-secret", "invalid-input-response", "missing-input-response", "timeout-or-duplicate", "bad-request", "internal-error"];
+            const codes = Array.isArray(captchaResult["error-codes"])
+                ? captchaResult["error-codes"].filter((code: string) => knownCodes.includes(code))
+                : [];
+            const hostnameMatches = captchaResult.hostname === allowedHostname;
+            console.warn("Turnstile validation rejected", { status: captchaResponse.status, codes, hostnameMatches, verified: captchaResult.success === true });
+            if (codes.includes("invalid-input-secret") || codes.includes("missing-input-secret") ||
+                (captchaResult.success === true && !hostnameMatches)) {
+                return jsonResponse(503, { error: "A verificação de segurança está com um problema de configuração. Avise a equipe do Instituto." });
+            }
+        }
     } catch {
         return jsonResponse(503, { error: "Não foi possível validar a proteção antispam. Tente novamente." });
     }
