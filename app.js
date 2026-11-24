@@ -130,7 +130,7 @@
     }
 
     function showFormStatus(form, message, isError = false) {
-        const result = form.querySelector(".form-result");
+        const result = form.querySelector(".form-result:not([data-captcha-status])");
         if (!result) return;
         result.textContent = message;
         result.dataset.state = isError ? "error" : "success";
@@ -404,6 +404,9 @@
 
         form.addEventListener("submit", async event => {
             event.preventDefault();
+            if (form.dataset.sending === "true") return;
+            form.dataset.sending = "true";
+            showFormStatus(form, "Enviando…");
             const submitButton = form.querySelector('[type="submit"]');
             submitButton.disabled = true;
             try {
@@ -413,10 +416,14 @@
                 const confirmation = result.emailSent
                     ? "Recebemos suas informações! 💛 Agradecemos pelo interesse em fazer parte das nossas ações. Enviamos uma confirmação por e-mail. Nossa equipe irá analisar as informações e, quando necessário, entrará em contato pelos dados informados. O envio não garante vaga, participação, benefício, parceria ou aprovação."
                     : "Recebemos suas informações! 💛 Agradecemos pelo interesse em fazer parte das nossas ações. Nossa equipe irá analisar as informações e, quando necessário, entrará em contato pelos dados informados no formulário. O envio não garante vaga, participação, benefício, parceria ou aprovação.";
-                showFormStatus(form, confirmation);
+                showFormStatus(form, form.dataset.applicationForm === "course"
+                    ? "Inscrição recebida! A equipe do Instituto entrará em contato para confirmar a vaga." + (result.emailSent ? " Enviamos uma confirmação por e-mail." : "")
+                    : confirmation);
             } catch (error) {
                 showFormStatus(form, getErrorMessage(error), true);
             } finally {
+                delete form.dataset.sending;
+                form.querySelector(".form-result:not([data-captcha-status])")?.scrollIntoView({ block: "nearest" });
                 const widgetId = captchaWidgets.get(form);
                 if (window.turnstile && widgetId !== undefined) {
                     form.dataset.turnstileToken = "";
@@ -432,17 +439,32 @@
     function prepareCaptcha(form, attempt = 0) {
         const submitButton = form.querySelector('[type="submit"]');
         if (captchaWidgets.has(form)) return;
+        const widget = form.querySelector("[data-turnstile-widget]");
+        let notice = widget.nextElementSibling;
+        if (!notice?.hasAttribute("data-captcha-status")) {
+            notice = document.createElement("p");
+            notice.className = "form-result";
+            notice.dataset.captchaStatus = "";
+            notice.setAttribute("role", "status");
+            notice.hidden = true;
+            widget.after(notice);
+        }
+        function showCaptchaStatus(message, isError = false) {
+            notice.textContent = message;
+            notice.dataset.state = isError ? "error" : "success";
+            notice.hidden = !message;
+        }
         submitButton.disabled = true;
         if (!config || !config.turnstileSiteKey) {
-            showFormStatus(form, "A configuração de segurança não foi carregada. Atualize a página.", true);
+            showCaptchaStatus("A configuração de segurança não foi carregada. Atualize a página.", true);
             return;
         }
         if (!window.turnstile || typeof window.turnstile.render !== "function") {
             if (attempt < 30) {
-                if (attempt === 0) showFormStatus(form, "Carregando a verificação de segurança…");
+                if (attempt === 0) showCaptchaStatus("Carregando a verificação de segurança…");
                 window.setTimeout(() => prepareCaptcha(form, attempt + 1), 500);
             } else {
-                showFormStatus(form, "Não foi possível carregar o Cloudflare. Verifique bloqueadores de conteúdo e tente novamente.", true);
+                showCaptchaStatus("Não foi possível carregar o Cloudflare. Verifique bloqueadores de conteúdo e tente novamente.", true);
             }
             return;
         }
@@ -451,8 +473,8 @@
                 sitekey: config.turnstileSiteKey,
                 callback: token => {
                     form.dataset.turnstileToken = token;
-                    submitButton.disabled = false;
-                    showFormStatus(form, "");
+                    submitButton.disabled = form.dataset.sending === "true";
+                    showCaptchaStatus("");
                 },
                 "expired-callback": () => {
                     form.dataset.turnstileToken = "";
@@ -462,13 +484,13 @@
                     form.dataset.turnstileToken = "";
                     submitButton.disabled = true;
                     const code = typeof errorCode === "string" && /^[0-9]{3,8}$/.test(errorCode) ? errorCode : "não informado";
-                    showFormStatus(form, "A verificação de segurança falhou (código Cloudflare: " + code + "). Nenhum dado foi enviado. Informe este código à equipe.", true);
+                    showCaptchaStatus("A verificação de segurança falhou (código Cloudflare: " + code + "). Nenhum dado foi enviado. Informe este código à equipe.", true);
                     console.warn("IDG Turnstile error code:", code);
                 }
             });
             captchaWidgets.set(form, widgetId);
         } catch (error) {
-            showFormStatus(form, "Não foi possível iniciar a verificação de segurança. Atualize a página.", true);
+            showCaptchaStatus("Não foi possível iniciar a verificação de segurança. Atualize a página.", true);
         }
     }
 
