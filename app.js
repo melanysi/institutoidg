@@ -417,7 +417,7 @@
                     ? "Recebemos suas informações! 💛 Agradecemos pelo interesse em fazer parte das nossas ações. Enviamos uma confirmação por e-mail. Nossa equipe irá analisar as informações e, quando necessário, entrará em contato pelos dados informados. O envio não garante vaga, participação, benefício, parceria ou aprovação."
                     : "Recebemos suas informações! 💛 Agradecemos pelo interesse em fazer parte das nossas ações. Nossa equipe irá analisar as informações e, quando necessário, entrará em contato pelos dados informados no formulário. O envio não garante vaga, participação, benefício, parceria ou aprovação.";
                 showFormStatus(form, form.dataset.applicationForm === "course"
-                    ? "Inscrição recebida! A equipe do Instituto entrará em contato para confirmar a vaga." + (result.emailSent ? " Enviamos uma confirmação por e-mail." : "")
+                    ? "Inscrição confirmada! Agora é só aguardar. A equipe do Instituto entrará em contato para confirmar sua vaga." + (result.emailSent ? " Enviamos uma confirmação por e-mail." : "")
                     : confirmation);
             } catch (error) {
                 showFormStatus(form, getErrorMessage(error), true);
