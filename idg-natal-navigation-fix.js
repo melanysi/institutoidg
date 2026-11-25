@@ -22,10 +22,28 @@
   ]);
   const campaign=settings.data;
   const reserved=new Map((reservations.data||[]).map(row=>[row.child_id,row.mine]));
-  overlay.querySelector('.idg-christmas-info>p').textContent='Os presentes dos Correios já chegaram! Você também pode apadrinhar um kit complementar. Pode ser um brinquedo, um calçado, material escolar ou produtos de higiene pessoal. Um único presente já pode compor o kit.';
+  overlay.querySelector('.idg-christmas-info>p').textContent='Os presentes dos Correios já chegaram! Para o kit complementar, você escolhe o que doar. Um brinquedo, um calçado, material escolar ou um produto de higiene pessoal já compõe o kit.';
   if(disclaimer)disclaimer.textContent='As informações das crianças são exclusivas dos parceiros aprovados.';
-  const summary=make('p',settings.error||reservations.error?'Não foi possível consultar os kits. Reabra a campanha para atualizar.':campaign?.open?'Entrega da doação: '+campaign.delivery+' · Natal Solidário: '+campaign.event_details:'Apadrinhamento de kits fechado no momento.');
-  summary.className='idg-natal-availability-summary';grid.before(summary);
+  const summary=make('div');
+  summary.className='idg-natal-availability-summary';
+  if(settings.error||reservations.error){
+   summary.textContent='Não foi possível consultar os kits. Reabra a campanha para atualizar.';
+  }else if(campaign?.open){
+   Object.assign(summary.style,{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(min(100%,250px),1fr))',gap:'12px',padding:'0',background:'transparent',textAlign:'left'});
+   for(const [title,value,color] of [
+    ['Entrega da doação',campaign.delivery,'#edf5eb'],
+    ['Dia do Natal Solidário',campaign.event_details,'#fff3df']
+   ]){
+    const section=make('section');
+    Object.assign(section.style,{padding:'16px',borderRadius:'14px',background:color});
+    const heading=make('h3',title);
+    Object.assign(heading.style,{margin:'0 0 6px',fontSize:'1.05rem',textAlign:'left',color:'#305739'});
+    const details=make('div',value);
+    Object.assign(details.style,{whiteSpace:'pre-line',overflowWrap:'anywhere',fontWeight:'400',lineHeight:'1.55',color:'#413a32'});
+    section.append(heading,details);summary.append(section);
+   }
+  }else summary.textContent='Apadrinhamento de kits fechado no momento.';
+  grid.before(summary);
   for(const child of data){
    const card=make('article');card.className='idg-christmas-card';
    const art=make('div');art.className='idg-christmas-art';
