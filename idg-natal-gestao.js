@@ -44,8 +44,41 @@ async function reload(){
  for(const [name,count] of [['Presentes recebidos',records.length],['Separados',records.filter(r=>r.preparation_status==='pronto').length],['Entregues às crianças',records.filter(r=>r.child_delivery_status==='entregue').length]]){
   const box=el('div');box.className='metric';box.append(el('small',name),el('strong',String(count)));metrics.append(box);
  }
- render();notice('Controle atualizado. Apadrinhamentos encerrados: doação dos Correios.');
+ render();notice('Controle atualizado.');await loadKits();
 }
+async function loadKits(){
+ const panel=$('kit-admin');panel.hidden=true;
+ const {data:admin,error:authError}=await db.rpc('is_idg_admin');
+ if(authError||!admin)return;
+ const [settings,kits]=await Promise.all([
+  db.from('idg_kit_settings').select('*').eq('year',2026).single(),
+  db.from('idg_kit_reservations').select('child_id,child_name,email,gift,stage').order('child_name')
+ ]);
+ if(settings.error||kits.error){notice('Não foi possível carregar os kits complementares.',true);return}
+ panel.hidden=false;$('kit-delivery').value=settings.data.delivery;$('kit-event').value=settings.data.event_details;$('kit-open').checked=settings.data.open;
+ const list=$('kit-list');list.replaceChildren();
+ for(const kit of kits.data){
+  const row=el('article');row.className='item';
+  row.append(el('h3',kit.child_name),el('p',kit.email),el('p',kit.gift||'Presente à escolha do parceiro'));
+  const label=el('label','Situação do kit '),select=el('select');
+  for(const stage of ['Aguardando recebimento','Recebido','Separado','Entregue'])select.append(el('option',stage));
+  select.value=kit.stage;label.append(select);row.append(label);list.append(row);
+  select.onchange=async()=>{
+   select.disabled=true;
+   const {error}=await db.from('idg_kit_reservations').update({stage:select.value}).eq('child_id',kit.child_id).select('child_id').single();
+   if(error){select.value=kit.stage;notice('Não foi possível atualizar o kit.',true)}else{kit.stage=select.value;notice('Situação do kit atualizada.')}
+   select.disabled=false;
+  };
+ }
+ if(!kits.data.length)list.append(el('p','Nenhum kit apadrinhado até o momento.'));
+}
+$('kit-settings').onsubmit=async event=>{
+ event.preventDefault();
+ const open=$('kit-open').checked, delivery=$('kit-delivery').value.trim(), event_details=$('kit-event').value.trim();
+ if(open&&(!delivery||!event_details)){notice('Preencha as orientações de entrega e da ação antes de abrir os kits.',true);return}
+ const {error}=await db.from('idg_kit_settings').update({open,delivery,event_details}).eq('year',2026).select('year').single();
+ notice(error?'Não foi possível salvar as orientações.':'Orientações dos kits salvas.',Boolean(error));
+};
 async function refresh(){
  const {data:{user}}=await db.auth.getUser();
  if(!user){$('login-box').hidden=false;$('dashboard').hidden=true;$('logout').hidden=true;return}

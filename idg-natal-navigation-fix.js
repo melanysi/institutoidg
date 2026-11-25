@@ -16,9 +16,15 @@
   if(error){loading.textContent='A lista não está disponível para esta conta.';return}
   grid.replaceChildren();
   if(!data?.length){grid.append(make('p','Nenhuma criança validada disponível para consulta.'));return}
-  overlay.querySelector('.idg-christmas-info>p').textContent='A campanha recebeu a doação de presentes dos Correios. O Instituto está organizando a distribuição às crianças.';
-  if(disclaimer)disclaimer.textContent='Apadrinhamentos encerrados. A doação já foi recebida pelo Instituto; a entrega às crianças acontecerá na data programada. Os dados privados das famílias não são divulgados.';
-  const summary=make('p','Presentes doados pelos Correios · Em organização para entrega às crianças');
+  const [settings, reservations]=await Promise.all([
+   db.from('idg_kit_settings').select('open,delivery,event_details').eq('year',2026).maybeSingle(),
+   db.rpc('idg_reserved_kits')
+  ]);
+  const campaign=settings.data;
+  const reserved=new Map((reservations.data||[]).map(row=>[row.child_id,row.mine]));
+  overlay.querySelector('.idg-christmas-info>p').textContent='Os presentes dos Correios já chegaram! Você também pode apadrinhar um kit complementar. Pode ser um brinquedo, um calçado, material escolar ou produtos de higiene pessoal. Um único presente já pode compor o kit.';
+  if(disclaimer)disclaimer.textContent='As informações das crianças são exclusivas dos parceiros aprovados.';
+  const summary=make('p',settings.error||reservations.error?'Não foi possível consultar os kits. Reabra a campanha para atualizar.':campaign?.open?'Entrega da doação: '+campaign.delivery+' · Natal Solidário: '+campaign.event_details:'Apadrinhamento de kits fechado no momento.');
   summary.className='idg-natal-availability-summary';grid.before(summary);
   for(const child of data){
    const card=make('article');card.className='idg-christmas-card';
@@ -37,7 +43,28 @@
    for(const [label,value] of [['Roupa',child.roupa],['Calçado',child.calcado]]){const box=make('div');box.append(make('small',label),make('strong',value));sizes.append(box)}
    const status=make('p','Presente apadrinhado pelos Correios · Entrega às crianças pendente');
    status.className='idg-natal-card-status';
-   body.append(tag,title,age,sizes,status);card.append(art,body);grid.append(card);
+   body.append(tag,title,age,sizes,status);const id=String(child.id_origem);
+   if(reserved.has(id)){
+    body.append(make('strong',reserved.get(id)?'Você apadrinhou este kit':'Kit complementar já apadrinhado'));
+   }else if(campaign?.open && !reservations.error){
+    const start=make('button','Apadrinhar kit complementar');start.type='button';
+    const form=make('form');form.hidden=true;
+    const label=make('label','Já sabe o que gostaria de doar? (opcional)');
+    const input=make('input');input.maxLength=180;label.append(input);
+    const submit=make('button','Confirmar apadrinhamento');submit.type='submit';
+    const feedback=make('p');feedback.setAttribute('role','status');
+    form.append(label,submit);body.append(start,form,feedback);
+    start.onclick=()=>{start.hidden=true;form.hidden=false;input.focus()};
+    form.onsubmit=async event=>{
+     event.preventDefault();submit.disabled=true;feedback.textContent='Confirmando…';
+     try{
+      const result=await db.rpc('idg_reserve_kit',{child:id,present:input.value});
+      if(result.error)throw result.error;
+      form.hidden=true;feedback.textContent='Kit de '+child.nome_crianca+' apadrinhado com sucesso! A confirmação será enviada ao e-mail do seu cadastro.';
+     }catch(error){feedback.textContent=error.message||'Não foi possível confirmar. Tente novamente.';submit.disabled=false}
+    };
+   }
+   card.append(art,body);grid.append(card);
   }
  }catch(_e){loading.textContent='Não foi possível consultar a campanha. Atualize a página.'}
 }
