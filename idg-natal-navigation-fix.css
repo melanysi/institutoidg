@@ -79,3 +79,8 @@
 #idg-christmas-page-v2 .idg-natal-sponsor-action:focus-visible{outline:3px solid #26764d;outline-offset:3px}
 #idg-christmas-page-v2 .idg-natal-card-status{font-weight:750;color:#376749}
 #idg-christmas-page-v2 .idg-natal-card-feedback{min-height:1.2em;font-size:.85rem;color:#9d3030}
+
+.idg-christmas-cardbody form[hidden],.idg-christmas-cardbody button[hidden]{display:none}
+.idg-christmas-cardbody form label{display:block}
+.idg-christmas-cardbody form input{display:block;width:100%;box-sizing:border-box;margin:.5rem 0;padding:.65rem;border:1px solid #b9a495;border-radius:.5rem;font:inherit}
+.idg-christmas-cardbody button{border:0;border-radius:.65rem;padding:.75rem 1rem;background:#842539;color:white;font:inherit;font-weight:700;cursor:pointer}
