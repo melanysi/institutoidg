@@ -14,7 +14,76 @@ function render(){stats.replaceChildren();for(const [label,count] of [["Importad
 const term=search.value.trim().toLocaleLowerCase("pt-BR");const group=records.filter(r=>(!term||[r.nome_crianca,r.id_origem,r.responsavel].some(v=>String(v||"").toLocaleLowerCase("pt-BR").includes(term)))&&(!filter.value||(filter.value==="incompleto"?missing(r):filter.value===status(r))));tbody.replaceChildren();$("idg-natal-count").textContent=group.length+" registro(s) exibido(s)";
 for(const r of group){const tr=el("tr");const summary=[r.nome_crianca||"Sem nome",r.idade_original||"Não informada",r.roupa_original||"—",r.sapato_original||"—",status(r)==="validado"?"Validado":missing(r)?"Dados pendentes":"Aguardando"];for(const v of summary)tr.append(el("td",v));const td=el("td"),btn=el("button","Conferir");btn.type="button";btn.className="secondary";btn.addEventListener("click",()=>open(r));td.append(btn);tr.append(td);tbody.append(tr)}if(!group.length){const tr=el("tr"),td=el("td","Nenhum registro encontrado.");td.colSpan=6;tr.append(td);tbody.append(tr)}}
 function open(r){current=r;editor.hidden=false;$("idg-natal-edit-title").textContent="Conferir: "+r.nome_crianca;for(const [field,key] of Object.entries({nome:"nome_crianca",idade:"idade_original",roupa:"roupa_original",sapato:"sapato_original",responsavel:"responsavel",contato:"contato_original",genero:"genero_confirmar",pendencias:"pendencias"}))$("idg-natal-"+field).value=r[key]||"";$("idg-natal-situacao").value=status(r);editor.scrollIntoView({behavior:"smooth",block:"start"});}
-async function reload(){const user=await isAdmin();allowed=!!user;root.hidden=!allowed;if(!allowed)return;message("Carregando registros privados…");const {data,error}=await db.from("idg_natal_2026_importacao").select("id_origem,nome_crianca,idade_original,roupa_original,sapato_original,responsavel,contato_original,genero_confirmar,situacao_importacao,pendencias").order("id_origem").range(0,999);if(error){message("Falha ao carregar os dados: "+error.message,true);return}records=data||[];render();message("Dados atualizados. A conferência não publica cartões para parceiros.");}
+async function loadPortalRegistrations(){
+    const list=$("idg-natal-portal-list");
+    list.textContent="Carregando inscrições do Portal da Família…";
+    const events=await db.from("idg_events").select("id,title")
+        .gte("starts_at","2026-01-01T03:00:00Z").lt("starts_at","2027-01-01T03:00:00Z");
+    if(events.error){
+        list.textContent="Não foi possível carregar as ações.";
+        return;
+    }
+    const eventIds=events.data.filter(event=>/^natal\s+solid[aá]rio\b/i.test(event.title.trim())).map(event=>event.id);
+    const registrations=[];
+    for(let offset=0;eventIds.length;offset+=100){
+        const page=await db.from("idg_event_registrations").select("id,family_member_id,status,clothing_size,shoe_size")
+            .in("event_id",eventIds).order("created_at",{ascending:false}).order("id").range(offset,offset+99);
+        if(page.error){
+            list.textContent="Não foi possível carregar as inscrições do portal.";
+            return;
+        }
+        registrations.push(...page.data);
+        if(page.data.length<100)break;
+    }
+    if(!registrations.length){
+        list.textContent="Nenhuma inscrição do Portal da Família encontrada.";
+        return;
+    }
+    const memberIds=[...new Set(registrations.map(row=>row.family_member_id))];
+    const names=new Map();
+    for(let offset=0;offset<memberIds.length;offset+=100){
+        const members=await db.from("idg_family_members").select("id,full_name")
+            .in("id",memberIds.slice(offset,offset+100));
+        if(members.error){
+            list.textContent="Não foi possível consultar os participantes do portal.";
+            return;
+        }
+        for(const member of members.data)names.set(member.id,member.full_name);
+    }
+    if(!allowed)return;
+    const labels={received:"Recebida",confirmed:"Confirmada",waitlist:"Lista de espera",cancelled:"Cancelada"};
+    const rows=registrations.map(row=>{
+        const item=el("li");
+        item.append(el("strong",names.get(row.family_member_id)||"Participante"),
+            el("p",`${labels[row.status]||row.status} · Roupa: ${row.clothing_size||"A confirmar"} · Calçado: ${row.shoe_size||"A confirmar"}`));
+        return item;
+    });
+    const entries=el("ul");
+    entries.append(...rows);
+    list.replaceChildren(entries);
+}
+async function reload(){
+    const user=await isAdmin();
+    allowed=Boolean(user);
+    root.hidden=!allowed;
+    if(!allowed){
+        $("idg-natal-portal-list").replaceChildren();
+        return;
+    }
+    message("Carregando cadastros importados…");
+    await Promise.all([loadPortalRegistrations(),loadImportedRegistrations()]);
+}
+async function loadImportedRegistrations(){
+    const {data,error}=await db.from("idg_natal_2026_importacao").select("id_origem,nome_crianca,idade_original,roupa_original,sapato_original,responsavel,contato_original,genero_confirmar,situacao_importacao,pendencias").order("id_origem").range(0,999);
+    if(!allowed)return;
+    if(error){
+        message("Falha ao carregar os cadastros importados: "+error.message,true);
+        return;
+    }
+    records=data||[];
+    render();
+    message("Cadastros importados atualizados.");
+}
 $("idg-natal-reload").addEventListener("click",reload);search.addEventListener("input",render);filter.addEventListener("change",render);$("idg-natal-cancel").addEventListener("click",()=>{editor.hidden=true;current=null});
 $("idg-natal-form").addEventListener("submit",async e=>{e.preventDefault();if(!current||!allowed)return;const user=await isAdmin();if(!user){message("Sessão sem permissão administrativa.",true);return}
 const body={nome_crianca:$("idg-natal-nome").value.trim(),idade_original:$("idg-natal-idade").value.trim(),roupa_original:$("idg-natal-roupa").value.trim(),sapato_original:$("idg-natal-sapato").value.trim(),responsavel:$("idg-natal-responsavel").value.trim(),contato_original:$("idg-natal-contato").value.trim(),genero_confirmar:$("idg-natal-genero").value,situacao_importacao:$("idg-natal-situacao").value,pendencias:$("idg-natal-pendencias").value.trim()};
