@@ -54,8 +54,53 @@ async function loadPortalRegistrations(){
     const labels={received:"Recebida",confirmed:"Confirmada",waitlist:"Lista de espera",cancelled:"Cancelada"};
     const rows=registrations.map(row=>{
         const item=el("li");
-        item.append(el("strong",names.get(row.family_member_id)||"Participante"),
-            el("p",`${labels[row.status]||row.status} · Roupa: ${row.clothing_size||"A confirmar"} · Calçado: ${row.shoe_size||"A confirmar"}`));
+        const missingSizes=!row.clothing_size?.trim()||!row.shoe_size?.trim();
+        const details=el("p",`${labels[row.status]||row.status} · Roupa: ${row.clothing_size||"A confirmar"} · Calçado: ${row.shoe_size||"A confirmar"}`);
+        item.append(el("strong",names.get(row.family_member_id)||"Participante"),details);
+        if(missingSizes)item.append(el("p","Dados pendentes"));
+        const editor=el("details");
+        editor.append(el("summary","Editar roupa e calçado"));
+        const form=el("form");
+        const clothing=el("input"), shoes=el("input");
+        const clothingLabel=el("label","Tamanho da roupa"), shoesLabel=el("label","Número do calçado (BR)");
+        clothing.required=shoes.required=true;
+        clothing.maxLength=30;
+        shoes.maxLength=5;
+        shoes.pattern="[0-9]{1,2}([/][0-9]{1,2})?";
+        shoes.inputMode="numeric";
+        clothing.value=row.clothing_size||"";
+        shoes.value=row.shoe_size||"";
+        clothingLabel.append(clothing);
+        shoesLabel.append(shoes);
+        const save=el("button","Salvar tamanhos");
+        save.type="submit";
+        const feedback=el("p");
+        feedback.setAttribute("role","status");
+        form.append(clothingLabel,shoesLabel,save,feedback);
+        form.addEventListener("submit",async event=>{
+            event.preventDefault();
+            if(!allowed||save.disabled)return;
+            const clothingSize=clothing.value.trim();
+            if(!clothingSize){
+                feedback.textContent="Informe o tamanho da roupa.";
+                clothing.focus();
+                return;
+            }
+            save.disabled=true;
+            feedback.textContent="Salvando…";
+            const {data,error}=await db.from("idg_event_registrations")
+                .update({clothing_size:clothingSize,shoe_size:shoes.value.trim()})
+                .eq("id",row.id).select("id").maybeSingle();
+            save.disabled=false;
+            if(error||!data){
+                feedback.textContent="Não foi possível salvar os tamanhos. Atualize a lista e tente novamente.";
+                return;
+            }
+            await loadPortalRegistrations();
+            message("Tamanhos salvos.");
+        });
+        editor.append(form);
+        item.append(editor);
         return item;
     });
     const entries=el("ul");
